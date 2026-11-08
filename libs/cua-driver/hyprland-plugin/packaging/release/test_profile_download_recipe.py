@@ -23,7 +23,7 @@ class DownloadRecipeTest(unittest.TestCase):
         output, self.kit, self.provenance = self.fixture.generate()
         self.archive = next(output.glob("*.tar.gz"))
         self.checksum = verify.digest(self.archive)
-        self.url = "https://github.com/goat-si/goat-cua/releases/download/profile-kit-v1/" + self.archive.name
+        self.url = "https://github.com/trycua/cua/releases/download/profile-kit-v1/" + self.archive.name
         self.output = self.root / "PKGBUILD"
         self.payload = download.archive_payload(self.archive.read_bytes())
         self.srcdir = self.root / "makepkg src"
@@ -73,7 +73,7 @@ class DownloadRecipeTest(unittest.TestCase):
 
     def test_url_scope_and_shell_injection_refused(self):
         base = self.url.rsplit("/", 2)[0]
-        bad_urls = [self.url.replace("https:", "http:"), self.url.replace("goat-si/goat-cua", "other/cua"),
+        bad_urls = [self.url.replace("https:", "http:"), self.url.replace("trycua/cua", "other/cua"),
                     self.url.replace("github.com", "github.com.evil.invalid"), self.url + "?download=1",
                     self.url + "#fragment", self.url + "\n", self.url.replace(self.archive.name, "other.tar.gz")]
         bad_urls += [base + "/" + tag + "/" + self.archive.name

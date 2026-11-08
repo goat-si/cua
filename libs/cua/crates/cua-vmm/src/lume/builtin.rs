@@ -11,7 +11,7 @@
 //!   [`MIN_VERSION`] is never stopped (it may be a user's LaunchAgent):
 //!   `auto` and `builtin` run a current Lume on the next free port instead
 //!   ([`super::LumeRuntime::ensure_serving`]).
-//! * **Pinned and verified.** [`VERSION`] from the goat-si/goat-cua release, its
+//! * **Pinned and verified.** [`VERSION`] from the trycua/cua release, its
 //!   SHA-256 checked before anything is unpacked, then `codesign --verify`
 //!   and the Developer ID team ([`TEAM_ID`]) checked before it is used. A
 //!   new app (and cua) release moves the pin.
@@ -31,7 +31,8 @@ use crate::host;
 /// The pinned Lume release.
 pub const VERSION: &str = "0.7.0";
 /// Its Apple silicon tarball (`lume` launcher + signed `lume.app`).
-pub const URL: &str = "https://github.com/goat-si/goat-cua/releases/download/lume-v0.7.0/lume-0.7.0-darwin-arm64.tar.gz";
+pub const URL: &str =
+    "https://github.com/trycua/cua/releases/download/lume-v0.7.0/lume-0.7.0-darwin-arm64.tar.gz";
 /// The tarball's SHA-256 (the release manifest's).
 pub const SHA256: &str = "66ae137164f5428ef73f90994850db49f1270dec298653f9f806debe29d529fc";
 /// The tarball's size, for progress and the disk check.

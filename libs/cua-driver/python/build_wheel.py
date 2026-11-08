@@ -101,7 +101,7 @@ def get_release_url(version: str, platform_name: str, arch: str) -> tuple[str, l
     Returns:
         Tuple of (download_url, list_of_binary_names_in_archive)
     """
-    base_url = f"https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v{version}"
+    base_url = f"https://github.com/trycua/cua/releases/download/cua-driver-rs-v{version}"
 
     if platform_name == "darwin":
         # Universal binary tarball
@@ -135,7 +135,7 @@ def verify_sha256(file_path: Path, expected_sha256: str) -> None:
 
 def get_expected_sha256(version: str, archive_name: str) -> str:
     """Fetch and parse checksums.txt from GitHub release."""
-    checksums_url = f"https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v{version}/checksums.txt"
+    checksums_url = f"https://github.com/trycua/cua/releases/download/cua-driver-rs-v{version}/checksums.txt"
     print(f"Fetching checksums from {checksums_url}...")
 
     try:

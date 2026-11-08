@@ -214,7 +214,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
     bin=/usr/local/bin/cua-spacesd; \
     CUA_SPACESD_SOURCE="${CUA_SPACESD_SOURCE:-${CUA_GUESTD_SOURCE:-${CUA_ENV_DRIVER_SOURCE:-local}}}"; \
     CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION:-${CUA_GUESTD_VERSION:-${CUA_ENV_DRIVER_VERSION:-0.1.0}}}"; \
-    default_url='https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz'; \
+    default_url='https://github.com/trycua/cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz'; \
     CUA_SPACESD_RELEASE_URL="${CUA_SPACESD_RELEASE_URL:-${CUA_GUESTD_RELEASE_URL:-${CUA_ENV_DRIVER_RELEASE_URL:-$default_url}}}"; \
     case "$CUA_SPACESD_SOURCE" in \
       local) \

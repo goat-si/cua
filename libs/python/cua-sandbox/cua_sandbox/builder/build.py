@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 SPACESD_VERSION = "0.1.0"
 SPACESD_PORT = 3211
 SPACESD_RELEASE_URL = (
-    "https://github.com/goat-si/goat-cua/releases/download/"
+    "https://github.com/trycua/cua/releases/download/"
     "cua-spacesd-v{version}/cua-spacesd-{target}.{ext}"
 )
 
@@ -135,7 +135,7 @@ case "$(uname -m)" in
     aarch64|arm64) ARCH=aarch64 ;;
     *) echo "unsupported architecture $(uname -m)" >&2; exit 1 ;;
 esac
-URL="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz"
+URL="https://github.com/trycua/cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz"
 curl -fsSL "$URL" | sudo tar -xz -C /usr/local/bin cua-spacesd
 sudo chmod 0755 /usr/local/bin/cua-spacesd
 sudo ln -sfn cua-spacesd /usr/local/bin/cua-guestd  # older names, one release

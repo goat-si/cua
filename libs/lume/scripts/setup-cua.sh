@@ -11,7 +11,7 @@
 #
 # cua-spacesd comes from the release tarball (placeholder until the macOS
 # artifact is published; same naming as libs/cua-spacesd/packaging/install.sh):
-#   https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-apple-darwin.tar.gz
+#   https://github.com/trycua/cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-apple-darwin.tar.gz
 # Its token is read from $CUA_ENV_TOKEN at setup time or generated into
 # ~/.cua-env/env-token (mode 0600).
 #
@@ -280,7 +280,7 @@ setup_spacesd() {
         x86_64) arch=x86_64 ;;
         *) echo -e "${RED}Unsupported architecture $(uname -m)${NC}"; return 1 ;;
     esac
-    local url="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${CUA_SPACESD_VERSION}/cua-spacesd-${arch}-apple-darwin.tar.gz"
+    local url="https://github.com/trycua/cua/releases/download/cua-spacesd-v${CUA_SPACESD_VERSION}/cua-spacesd-${arch}-apple-darwin.tar.gz"
     echo "Downloading $url..."
     curl -fsSL "$url" | tar -xz -C "$CUA_DIR/bin" cua-spacesd
     chmod 755 "$CUA_DIR/bin/cua-spacesd"

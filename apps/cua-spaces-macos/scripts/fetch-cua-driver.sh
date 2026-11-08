@@ -49,7 +49,7 @@ else
     rm -rf "$dir"
     tmp="$(mktemp -d)"
     trap 'rm -rf "$tmp"' EXIT
-    base="${CUA_DRIVER_RELEASE_BASE_URL:-https://github.com/goat-si/goat-cua/releases/download/$tag}"
+    base="${CUA_DRIVER_RELEASE_BASE_URL:-https://github.com/trycua/cua/releases/download/$tag}"
     curl -fsSL --retry 3 -o "$tmp/$asset" "$base/$asset"
     got_bytes="$(stat -f %z "$tmp/$asset")"
     [ "$got_bytes" = "$bytes" ] ||

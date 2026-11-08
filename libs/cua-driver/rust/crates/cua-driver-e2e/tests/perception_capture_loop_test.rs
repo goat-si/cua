@@ -882,7 +882,7 @@ fn fetch_release_asset(directory: &Path, name: &str, expected_sha256: &str) {
         return;
     }
     let url = format!(
-        "https://github.com/goat-si/goat-cua/releases/download/cua-perception-v{PUBLISHED_VERSION}/{name}"
+        "https://github.com/trycua/cua/releases/download/cua-perception-v{PUBLISHED_VERSION}/{name}"
     );
     let partial = directory.join(format!("{name}.partial"));
     let started = Instant::now();

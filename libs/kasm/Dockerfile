@@ -76,7 +76,7 @@ RUN set -eux; \
       arm64|aarch64) arch=aarch64 ;; \
       *) echo "unsupported arch" >&2; exit 1 ;; \
     esac; \
-    url="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${CUA_SPACESD_VERSION}/cua-spacesd-${arch}-unknown-linux-gnu.tar.gz"; \
+    url="https://github.com/trycua/cua/releases/download/cua-spacesd-v${CUA_SPACESD_VERSION}/cua-spacesd-${arch}-unknown-linux-gnu.tar.gz"; \
     curl -fsSL "$url" | tar -xz -C /usr/local/bin cua-spacesd; \
     chmod 0755 /usr/local/bin/cua-spacesd; \
     ln -s cua-spacesd /usr/local/bin/cua-guestd; \

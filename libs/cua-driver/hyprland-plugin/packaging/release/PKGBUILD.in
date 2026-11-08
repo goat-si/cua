@@ -14,7 +14,7 @@ _revision='@REVISION@'
 _stem='@STEM@'
 _archive_sha256='@ARCHIVE_SHA256@'
 _manifest_sha256='@MANIFEST_SHA256@'
-source=("https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v${pkgver}/${_stem}.tar.gz")
+source=("https://github.com/trycua/cua/releases/download/cua-driver-rs-v${pkgver}/${_stem}.tar.gz")
 sha256sums=('@ARCHIVE_SHA256@')
 _cxx="${CUA_RELEASE_CXX:-/usr/bin/g++}"
 
