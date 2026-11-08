@@ -32,7 +32,7 @@ jobs:
     with:
       version: "0.28.2"
       source: release
-      # Cua Driver releases are published on goat-si/goat-cua; forks have none.
+      # Cua Driver releases are published on trycua/cua; forks have none.
       release_repository: trycua/cua
       legacy_unsigned_node_runtime: true
 
@@ -52,7 +52,7 @@ jobs:
     with:
       version: "0.28.3"
       source: release
-      # Cua Driver releases are published on goat-si/goat-cua; forks have none.
+      # Cua Driver releases are published on trycua/cua; forks have none.
       release_repository: trycua/cua
       expect_macos: fail
       expect_windows: pass
