@@ -13,7 +13,6 @@ PINNED_UPSTREAM_FILES = (
     "libs/cua-driver/hyprland-plugin/packaging/release/profile_download_recipe.py",
     "libs/cua-driver/hyprland-plugin/packaging/release/test_profile_download_recipe.py",
     "libs/cua-driver/rust/crates/cua-driver-e2e/tests/perception_capture_loop_test.rs",
-    "libs/images/linux/Dockerfile",
     "libs/images/omarchy/Dockerfile",
     "libs/xfce/Dockerfile",
     "libs/kasm/Dockerfile",
@@ -47,6 +46,13 @@ def test_current_install_and_update_links_use_goat_cua() -> None:
         text = (ROOT / name).read_text(encoding="utf-8")
         assert "goat-si/goat-cua" in text, name
         assert "releases/download" in text, name
+
+
+def test_linux_image_distinguishes_pinned_and_latest_downloads() -> None:
+    text = (ROOT / "libs/images/linux/Dockerfile").read_text(encoding="utf-8")
+    assert "default_url='https://github.com/trycua/cua/releases/download/" in text
+    assert "CUA_SPACESD_RELEASE_URL=\"https://github.com/goat-si/goat-cua/releases/download/" in text
+    assert "default_url='https://github.com/trycua/cua/releases/download/cua-sdk-v" in text
 
 
 def test_pinned_driver_keeps_checksum_and_signature_verification() -> None:

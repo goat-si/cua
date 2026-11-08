@@ -229,6 +229,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
         if [ "$CUA_SPACESD_VERSION" = latest ]; then \
           CUA_SPACESD_VERSION="$(curl -fsSL 'https://api.github.com/repos/goat-si/goat-cua/releases?per_page=100' \
             | python3 -c 'import json,sys; print(next(r["tag_name"][len("cua-spacesd-v"):] for r in json.load(sys.stdin) if r["tag_name"].startswith("cua-spacesd-v") and not r["draft"] and not r["prerelease"]))')"; \
+          CUA_SPACESD_RELEASE_URL="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz"; \
           echo "latest cua-spacesd release: $CUA_SPACESD_VERSION"; \
         fi; \
         url="$(echo "$CUA_SPACESD_RELEASE_URL" | sed "s/{version}/$CUA_SPACESD_VERSION/g; s/{arch}/$arch/g")"; \
