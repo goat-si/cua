@@ -331,6 +331,10 @@ class WorkflowWiringTests(unittest.TestCase):
                         self.assertEqual(self.evaluate(jobs[job]["if"], **context), expected, (lane, job, head_ref, decision))
         self.assertEqual(self.load("openkoalabot")["jobs"]["typescript"]["needs"], "changes")
 
+    def test_swift_cold_build_timeout_allows_slow_sdk_compilation(self):
+        swift = self.load("openkoalabot")["jobs"]["swift"]
+        self.assertEqual(swift["timeout-minutes"], 60)
+
     def test_no_other_job_in_the_infinite_canvas_workflow(self):
         self.assertEqual(set(self.load("infinite-canvas")["jobs"]), {"quick", "changes", "swift", "bench"})
 
