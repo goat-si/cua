@@ -258,7 +258,7 @@ mod tests {
         );
         assert_eq!(
             gcp::cloud_shell_url(REPO, REF),
-            "https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Ftrycua%2Fcua\
+            "https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fgoat-si%2Fgoat-cua\
              &cloudshell_git_branch=main&cloudshell_workspace=libs%2Fcua%2Fcrates%2Fcua-byoc%2Ftemplates%2Fgcp&show=terminal"
         );
         assert_eq!(
