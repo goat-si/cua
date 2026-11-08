@@ -61,7 +61,8 @@ jobs:
     # and the preflight checks the driver's embedded git sha against the
     # source under test, so a stale driver can never pass.
     name: "Linux / desktop readiness in a Cua sandbox"
-    runs-on: ubuntu-latest
+    # Build against the same glibc baseline as the Ubuntu 24.04 sandbox guest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
       CUA_E2E_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}

@@ -263,7 +263,9 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
     set -eu; \
     bin=/usr/local/bin/cua; \
     CUA_CLI_SOURCE="${CUA_CLI_SOURCE:-release}"; \
-    default_url='https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v{version}/cua-cli-{version}-linux-{arch}.tar.gz'; \
+    # cua-sdk-v0.10.1 is a pinned upstream release fixture; fork releases are
+    # not required for image builds.
+    default_url='https://github.com/trycua/cua/releases/download/cua-sdk-v{version}/cua-cli-{version}-linux-{arch}.tar.gz'; \
     CUA_CLI_RELEASE_URL="${CUA_CLI_RELEASE_URL:-$default_url}"; \
     case "$CUA_CLI_SOURCE" in \
       local) \
@@ -282,7 +284,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
           case "$TARGETARCH" in amd64) CUA_CLI_SHA256="$CUA_CLI_DEFAULT_SHA256_AMD64" ;; arm64) CUA_CLI_SHA256="$CUA_CLI_DEFAULT_SHA256_ARM64" ;; esac; \
         fi; \
         if [ -z "$CUA_CLI_SHA256" ]; then \
-          sums="https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v$CUA_CLI_VERSION/checksums.txt"; \
+          sums="https://github.com/trycua/cua/releases/download/cua-sdk-v$CUA_CLI_VERSION/checksums.txt"; \
           CUA_CLI_SHA256="$(curl -fsSL --retry 5 "$sums" | awk -v f="$(basename "$url")" '$2 == f || $2 == "*" f { print $1 }')"; \
           [ -n "$CUA_CLI_SHA256" ] || { echo "no sha256 for $(basename "$url") in $sums" >&2; exit 1; }; \
         fi; \

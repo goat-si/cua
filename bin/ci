@@ -743,7 +743,9 @@ def static_checks(changes: Changes, ctx: "Context") -> List[Check]:
     if docs_img:
         c = Check("docs-image-refs", "docs image refs have passing doctor reports",
                   f'set -e; l="$(mktemp -d)"; trap \'rm -rf "$l"\' EXIT; '
-                  f'git fetch -q origin image-doctor-ledger 2>/dev/null && git archive FETCH_HEAD | tar -x -C "$l" || true; '
+                  # These are upstream ghcr.io/trycua images; their canonical
+                  # doctor history lives on the upstream ledger, not a fork copy.
+                  f'git fetch -q https://github.com/trycua/cua.git image-doctor-ledger && git archive FETCH_HEAD | tar -x -C "$l" || true; '
                   f'b="$l/.base.json"; args=(--ledger "$l"); git show {changes.base}:scripts/images/docs-image-refs-baseline.json > "$b" 2>/dev/null && args+=(--baseline-base "$b"); '
                   f'python3 scripts/images/check-docs-image-refs.py "${{args[@]}}"',
                   tools=("crane",), hint="install crane: brew install crane")
