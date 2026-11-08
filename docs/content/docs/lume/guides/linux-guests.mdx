@@ -68,7 +68,7 @@ In the Archboot root shell (the script erases `/dev/vda` after you type
 `ERASE`):
 
 ```bash skip="macos-vm"
-curl -fLO https://raw.githubusercontent.com/trycua/cua/main/docs/public/scripts/omarchy-arm64-lume/install-arch.sh
+curl -fLO https://raw.githubusercontent.com/goat-si/goat-cua/main/docs/public/scripts/omarchy-arm64-lume/install-arch.sh
 chmod +x install-arch.sh
 TIMEZONE=UTC ./install-arch.sh /dev/vda
 arch-chroot /mnt passwd omarchy
@@ -85,7 +85,7 @@ lume run omarchy-arm64 --display vnc
 ```
 
 ```bash skip="macos-vm"
-curl -fLO https://raw.githubusercontent.com/trycua/cua/main/docs/public/scripts/omarchy-arm64-lume/install-omarchy.sh
+curl -fLO https://raw.githubusercontent.com/goat-si/goat-cua/main/docs/public/scripts/omarchy-arm64-lume/install-omarchy.sh
 chmod +x install-omarchy.sh
 sudo ./install-omarchy.sh
 sudo reboot
@@ -98,7 +98,7 @@ The guest reboots into the Omarchy desktop.
 With Rosetta on the host, Lume attaches it as a `rosetta` virtiofs share:
 
 ```bash skip="macos-vm"
-curl -fLO https://raw.githubusercontent.com/trycua/cua/main/docs/public/scripts/omarchy-arm64-lume/enable-rosetta.sh
+curl -fLO https://raw.githubusercontent.com/goat-si/goat-cua/main/docs/public/scripts/omarchy-arm64-lume/enable-rosetta.sh
 chmod +x enable-rosetta.sh
 sudo ./enable-rosetta.sh
 sudo reboot

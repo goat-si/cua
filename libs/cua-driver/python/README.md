@@ -1,7 +1,7 @@
 # cua-driver Python SDK
 
 Rust-backed Python SDK and bundled executable for
-[Cua Driver](https://github.com/trycua/cua/tree/main/libs/cua-driver).
+[Cua Driver](https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver).
 
 ## Product boundary
 
@@ -206,4 +206,4 @@ exit_code = run_cua_driver(["mcp"])
 
 ## License
 
-MIT License: see [LICENSE](https://github.com/trycua/cua/blob/main/LICENSE.md).
+MIT License: see [LICENSE](https://github.com/goat-si/goat-cua/blob/main/LICENSE.md).

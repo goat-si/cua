@@ -31,7 +31,7 @@ State the current work window when it matters:
 
 For example:
 
-> Poll `trycua/cua` for work this Mac Studio can complete today. Prefer Cua
+> Poll `goat-si/goat-cua` for work this Mac Studio can complete today. Prefer Cua
 > Driver bugs. Return five actionable candidates and two important blocked
 > items. Do not change GitHub.
 

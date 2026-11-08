@@ -192,7 +192,7 @@ wrapped by and to your account's added computers, and the fencing that
 keeps one coordinator and one result per job. How this was checked (a model
 checker, a simulation of the real code, and fault injection on real
 computers) is in the
-[design](https://github.com/trycua/cua/blob/main/docs/rfcs/pool-self-coordination.md).
+[design](https://github.com/goat-si/goat-cua/blob/main/docs/rfcs/pool-self-coordination.md).
 
 <Callout type="warn">
   The relay still decides which computers are your account's. A relay that is
@@ -273,7 +273,7 @@ against. The gate and sealing apply to the HTTPS path only.
   reports this on `GET /readyz` (a real write probe, free space, each
   store's last write) and `GET /metrics`; alert when `/readyz` fails, free
   space drops under 20%, or any write fails. The relay's
-  [README](https://github.com/trycua/cua/tree/main/libs/cua-spacesd/crates/cua-relay#state-and-monitoring)
+  [README](https://github.com/goat-si/goat-cua/tree/main/libs/cua-spacesd/crates/cua-relay#state-and-monitoring)
   lists the rules.
 - **No Nagle delay on relayed calls.** The relay and computers disable
   Nagle's algorithm on the tunnel, which used to add about 80 ms to each
@@ -433,7 +433,7 @@ the pseudonymous id.
 
 ## Reporting a concern
 
-See [`SECURITY.md`](https://github.com/trycua/cua/blob/main/.github/SECURITY.md) for
+See [`SECURITY.md`](https://github.com/goat-si/goat-cua/blob/main/.github/SECURITY.md) for
 how to report a vulnerability privately, our response targets, and our safe
 harbor for good-faith security research.
 

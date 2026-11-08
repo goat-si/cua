@@ -10,12 +10,12 @@
 # Release Please PR check run this before building anything.
 #
 # Usage: check_spacesd_published.sh [REPO]   (default: $GITHUB_REPOSITORY,
-#        else trycua/cua). Needs `gh` (GH_TOKEN) and curl.
-# A prerelease counts as published only off trycua/cua (staging publishes
+#        else goat-si/goat-cua). Needs `gh` (GH_TOKEN) and curl.
+# A prerelease counts as published only off goat-si/goat-cua (staging publishes
 # its cua-spacesd releases as prereleases).
 set -euo pipefail
 
-REPO="${1:-${GITHUB_REPOSITORY:-trycua/cua}}"
+REPO="${1:-${GITHUB_REPOSITORY:-goat-si/goat-cua}}"
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 VERSION="$(tr -d '[:space:]' < "$ROOT/libs/cua-spacesd/VERSION")"
 TAG="cua-spacesd-v$VERSION"
@@ -56,7 +56,7 @@ until json="$(gh api "repos/$REPO/releases/tags/$TAG" 2>/dev/null)"; do
   sleep 60
 done
 [ "$(jq -r .draft <<<"$json")" = false ] || fail "$TAG is still a draft"
-if [ "$REPO" = trycua/cua ] && [ "$(jq -r .prerelease <<<"$json")" != false ]; then
+if [ "$REPO" = goat-si/goat-cua ] && [ "$(jq -r .prerelease <<<"$json")" != false ]; then
   fail "$TAG is a prerelease; a release build must pin a full cua-spacesd release"
 fi
 

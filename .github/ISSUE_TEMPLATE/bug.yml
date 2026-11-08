@@ -10,7 +10,7 @@ body:
         Search existing issues and pull requests before filing. Describe the observed
         behavior and evidence rather than only a proposed fix. Do not include credentials,
         private application data, sensitive screenshots, or vulnerability details. Use
-        [private vulnerability reporting](https://github.com/trycua/cua/security/advisories/new)
+        [private vulnerability reporting](https://github.com/goat-si/goat-cua/security/advisories/new)
         for suspected security issues. File one problem per issue; open separate
         issues for unrelated bugs.
 

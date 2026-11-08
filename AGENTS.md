@@ -83,7 +83,7 @@ before every `git push`.
   commit." Sign off again after every new commit.
 
 Reviewers of an agent PR check, before approving, that the `local-ci` status is
-`success` on the current head commit (`gh api repos/trycua/cua/commits/<sha>/statuses`)
+`success` on the current head commit (`gh api repos/goat-si/goat-cua/commits/<sha>/statuses`)
 and that the PR's `bin/ci` checklist item is ticked. No status, no approval.
 
 **Agents on shared hosts (the dev host that runs live VMs) use `bin/ci --quick`.**

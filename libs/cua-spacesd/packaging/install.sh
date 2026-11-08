@@ -21,7 +21,7 @@
 set -euo pipefail
 
 binary="" version="" token="" token_file="" dry_run=0 no_service=0
-repo="${CUA_SPACESD_REPO:-${CUA_GUESTD_REPO:-${CUA_ENV_DRIVER_REPO:-trycua/cua}}}"
+repo="${CUA_SPACESD_REPO:-${CUA_GUESTD_REPO:-${CUA_ENV_DRIVER_REPO:-goat-si/goat-cua}}}"
 here="$(cd "$(dirname "$0")" && pwd)"
 
 usage() { sed -n '2,14p' "$0"; exit "${1:-0}"; }

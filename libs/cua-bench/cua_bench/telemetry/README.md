@@ -70,4 +70,4 @@ GeoIP lookup is disabled and no person profiles are created.
 
 ## Questions
 
-Open an issue on [GitHub](https://github.com/trycua/cua).
+Open an issue on [GitHub](https://github.com/goat-si/goat-cua).

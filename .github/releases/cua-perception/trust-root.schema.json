@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trycua/cua/.github/releases/cua-perception/trust-root.schema.json",
+  "$id": "https://github.com/goat-si/goat-cua/.github/releases/cua-perception/trust-root.schema.json",
   "title": "Cua extension signing trust root",
   "type": "object",
   "additionalProperties": false,

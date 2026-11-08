@@ -10,7 +10,7 @@
 # and user processes it starts land in delegated child cgroups.
 [Unit]
 Description=cua-spacesd (cua.env.v1 on :3211)
-Documentation=https://github.com/trycua/cua/tree/main/libs/cua-spacesd
+Documentation=https://github.com/goat-si/goat-cua/tree/main/libs/cua-spacesd
 After=network-online.target
 Wants=network-online.target
 

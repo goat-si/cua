@@ -24,7 +24,7 @@ name: "CD: cua-spacesd"
 # Archives hold the binary, LICENSE and THIRD_PARTY_NOTICES.md at the root.
 # Linux builds in debian:11 (glibc 2.31 floor, OpenSSL vendored statically via
 # the workspace `native-tls/vendored` feature); the musl targets are fully
-# static. A publishing run on trycua/cua
+# static. A publishing run on goat-si/goat-cua
 # requires macOS Developer ID signing + notarization and Windows Authenticode
 # (Azure Artifact Signing through the `cua-driver-release-signing`
 # environment) and fails without them; a dry run may ship ad-hoc signed /
@@ -70,8 +70,8 @@ env:
   CARGO_INCREMENTAL: "0"
   CARGO_BUILD_JOBS: "4"
   CARGO_PROFILE_RELEASE_DEBUG: "0"
-  # Registries and the fail-closed signing gates are for trycua/cua only.
-  CANONICAL: ${{ github.repository == 'trycua/cua' }}
+  # Registries and the fail-closed signing gates are for goat-si/goat-cua only.
+  CANONICAL: ${{ github.repository == 'goat-si/goat-cua' }}
 
 jobs:
   version:
@@ -108,7 +108,7 @@ jobs:
             echo "invalid version $VERSION" >&2; exit 1
           fi
           PRERELEASE=false
-          # Off trycua/cua every release is a prerelease (never "latest").
+          # Off goat-si/goat-cua every release is a prerelease (never "latest").
           [[ "$VERSION" == *-* || "$CANONICAL" != true ]] && PRERELEASE=true
           {
             echo "version=$VERSION"
@@ -215,8 +215,8 @@ jobs:
       KEYCHAIN_PASSWORD: temporary-cd-keychain-pwd
       BUNDLE_ID: com.trycua.cua-env-driver
       PUBLISH: ${{ needs.version.outputs.publish }}
-      # A publishing run on trycua/cua never ships unsigned assets.
-      REQUIRE_SIGNING: ${{ needs.version.outputs.publish == 'true' && github.repository == 'trycua/cua' }}
+      # A publishing run on goat-si/goat-cua never ships unsigned assets.
+      REQUIRE_SIGNING: ${{ needs.version.outputs.publish == 'true' && github.repository == 'goat-si/goat-cua' }}
     defaults:
       run:
         shell: bash
@@ -263,7 +263,7 @@ jobs:
           else
             echo "notarize=false" >> "$GITHUB_OUTPUT"
           fi
-          # A trycua/cua release never ships ad-hoc signed or unnotarized.
+          # A goat-si/goat-cua release never ships ad-hoc signed or unnotarized.
           if [ "$REQUIRE_SIGNING" = true ]; then
             for name in APPLICATION_CERT_BASE64 CERT_PASSWORD DEVELOPER_NAME TEAM_ID APPLE_ID APP_SPECIFIC_PASSWORD; do
               if [ -z "${!name}" ]; then
@@ -393,7 +393,7 @@ jobs:
           workspaces: "libs/cua-spacesd -> target"
           shared-key: libs-cua-spacesd-release
       - name: Require Authenticode for a published release
-        if: env.PUBLISH == 'true' && github.repository == 'trycua/cua' && (vars.AZURE_CLIENT_ID == '' || vars.AZURE_ARTIFACT_SIGNING_ENDPOINT == '')
+        if: env.PUBLISH == 'true' && github.repository == 'goat-si/goat-cua' && (vars.AZURE_CLIENT_ID == '' || vars.AZURE_ARTIFACT_SIGNING_ENDPOINT == '')
         run: |
           echo "::error::refusing to publish an unsigned cua-spacesd.exe: the Azure Artifact Signing vars are not set in the cua-driver-release-signing environment"
           exit 1
@@ -538,11 +538,11 @@ jobs:
       # (cua-spacesd 0.12.1 and 0.12.2 did, despite --latest=false). Put it back
       # on Cua Spaces; the release-latest-guard schedule is the backstop.
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-        if: always() && github.repository == 'trycua/cua'
+        if: always() && github.repository == 'goat-si/goat-cua'
         with:
           sparse-checkout: .github/scripts/pin_latest_release.py
       - name: Keep Latest on Cua Spaces
-        if: always() && github.repository == 'trycua/cua'
+        if: always() && github.repository == 'goat-si/goat-cua'
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/scripts/pin_latest_release.py

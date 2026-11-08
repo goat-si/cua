@@ -71,7 +71,7 @@ def fixture_documents():
     catalog = {
         "schemaVersion": 1,
         "kind": "release-backfill-catalog",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "generatedAt": "2026-07-17T00:00:00Z",
         "releases": [release],
     }
@@ -99,7 +99,7 @@ def fixture_documents():
     evidence = {
         "schemaVersion": 1,
         "kind": "release-backfill-evidence",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "generatedAt": "2026-07-17T00:00:00Z",
         "releases": [packet],
     }
@@ -366,7 +366,7 @@ class FakeMutationApi:
         self.patches = []
 
     def release(self, repository, release_id):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         assert release_id == self.release_data["id"]
         return dict(self.release_data)
 
@@ -449,7 +449,7 @@ def test_apply_recovers_verified_journal_after_post_patch_crash(tmp_path: Path):
         "schemaVersion": 1,
         "operation": "apply",
         "timestamp": "2026-07-17T00:00:00Z",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "key": release["key"],
         "releaseId": release["releaseId"],
         "tag": release["tag"],

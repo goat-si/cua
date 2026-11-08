@@ -6,7 +6,7 @@
       "artifact": "cua-perception-source.tar.gz",
       "artifactSha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "artifactSize": 1,
-      "repository": "https://github.com/trycua/cua",
+      "repository": "https://github.com/goat-si/goat-cua",
       "revision": "0000000000000000000000000000000000000000",
       "license": "MIT",
       "durableLocation": "Candidate archive source/cua-perception-source.tar.gz",

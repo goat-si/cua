@@ -3,12 +3,12 @@
 #
 #   ensure_upstream_tag.sh TAG...
 #
-# Staging shares trycua/cua's history but not its release tags, and pushing
+# Staging shares goat-si/goat-cua's history but not its release tags, and pushing
 # them here would start the stable release workflows. For each TAG missing
 # from the local clone, fetch it read-only from the public repository into
 # this runner's refs/tags only. Tags that already resolve are left alone.
 set -euo pipefail
-UPSTREAM="${CUA_RELEASE_TAG_UPSTREAM:-https://github.com/trycua/cua.git}"
+UPSTREAM="${CUA_RELEASE_TAG_UPSTREAM:-https://github.com/goat-si/goat-cua.git}"
 for tag in "$@"; do
     [ -n "$tag" ] || continue
     if git rev-parse -q --verify "refs/tags/$tag^{commit}" >/dev/null; then

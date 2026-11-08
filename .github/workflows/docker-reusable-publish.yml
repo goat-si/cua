@@ -95,9 +95,9 @@ jobs:
           tags: |
             type=raw,value=latest
 
-      # Docker Hub names belong to trycua/cua: other repositories never push.
+      # Docker Hub names belong to goat-si/goat-cua: other repositories never push.
       - name: Build & push digest (main)
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'trycua/cua'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'goat-si/goat-cua'
         id: build-main
         continue-on-error: true
         uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
@@ -125,7 +125,7 @@ jobs:
             type=raw,value=latest
 
       - name: Build & push digest (semver)
-        if: startsWith(github.ref, format('refs/tags/{0}', inputs.tag_prefix)) && github.repository == 'trycua/cua'
+        if: startsWith(github.ref, format('refs/tags/{0}', inputs.tag_prefix)) && github.repository == 'goat-si/goat-cua'
         id: build-semver
         continue-on-error: true
         uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
@@ -169,8 +169,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build-and-push
-    # Skip on PRs and off trycua/cua; run on push/tag even if some builds failed.
-    if: github.event_name != 'pull_request' && github.repository == 'trycua/cua' && (success() || failure())
+    # Skip on PRs and off goat-si/goat-cua; run on push/tag even if some builds failed.
+    if: github.event_name != 'pull_request' && github.repository == 'goat-si/goat-cua' && (success() || failure())
 
     steps:
       - name: Set up Docker Buildx

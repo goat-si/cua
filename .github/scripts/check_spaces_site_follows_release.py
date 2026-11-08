@@ -94,7 +94,7 @@ def mismatches(repo, ver, tag, feeds, token):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--version", required=True)
-    ap.add_argument("--repo", default="trycua/cua")
+    ap.add_argument("--repo", default="goat-si/goat-cua")
     ap.add_argument("--feeds", default=",".join(FEEDS), help="comma list; a platform the release skipped keeps its old feed")
     ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("--interval", type=int, default=30)

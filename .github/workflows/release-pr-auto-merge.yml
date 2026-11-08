@@ -39,7 +39,7 @@ concurrency:
 jobs:
   auto-merge:
     if: >-
-      github.repository == 'trycua/cua' &&
+      github.repository == 'goat-si/goat-cua' &&
       (github.event_name != 'pull_request_target' ||
        (startsWith(github.event.pull_request.head.ref, 'release-please--branches--') &&
         github.event.pull_request.head.repo.full_name == github.repository))

@@ -37,7 +37,7 @@ jobs:
   dispatch:
     name: Notify trycua/cloud
     runs-on: ubuntu-latest
-    if: github.repository == 'trycua/cua'  # public repo only: needs its release secrets / AWS OIDC trust
+    if: github.repository == 'goat-si/goat-cua'  # public repo only: needs its release secrets / AWS OIDC trust
     timeout-minutes: 5
     steps:
       - name: Configure AWS credentials
@@ -103,7 +103,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          gh api "repos/${{ github.repository_owner }}/cloud/dispatches" \
+          gh api "repos/trycua/cloud/dispatches" \
             -f event_type=cua-docs-updated \
             -f "client_payload[source_repo]=${{ github.repository }}" \
             -f "client_payload[source_sha]=${{ github.sha }}"

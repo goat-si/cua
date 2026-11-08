@@ -30,7 +30,7 @@ INSTALL_DIR="${INSTALL_DIR:-$DEFAULT_INSTALL_DIR}"
 APP_INSTALL_DIR="$HOME/.local/share/lume"
 
 # GitHub info
-GITHUB_REPO="trycua/cua"
+GITHUB_REPO="goat-si/goat-cua"
 
 # Option to skip background service setup (default: install it)
 INSTALL_BACKGROUND_SERVICE=true

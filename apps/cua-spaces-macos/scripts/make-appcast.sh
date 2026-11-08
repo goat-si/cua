@@ -11,7 +11,7 @@
 #
 #   CUA_SPACES_SPARKLE_ED_PRIVATE_KEY=... scripts/make-appcast.sh \
 #       --dmg cua-spaces-0.2.0-darwin-universal.dmg --version 0.2.0 \
-#       --download-base https://github.com/trycua/cua/releases/download/cua-spaces-v0.2.0/ \
+#       --download-base https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v0.2.0/ \
 #       [--previous cua-spaces-appcast.xml] [--notes notes.md] --out cua-spaces-appcast.xml
 #       [--sparkle-bin DIR] [--electron]
 #

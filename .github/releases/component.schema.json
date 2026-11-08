@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trycua/cua/.github/releases/component.schema.json",
+  "$id": "https://github.com/goat-si/goat-cua/.github/releases/component.schema.json",
   "title": "Cua release-channel component registry",
   "type": "object",
   "additionalProperties": false,

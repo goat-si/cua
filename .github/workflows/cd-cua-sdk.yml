@@ -32,7 +32,7 @@ name: "CD: cua SDK"
 # publishes it before the rolling cua-install-latest feed moves. A hand-pushed
 # tag with no release gets a new draft here.
 #
-# Canonical vs staging: only trycua/cua publishes to PyPI and npm and fails
+# Canonical vs staging: only goat-si/goat-cua publishes to PyPI and npm and fails
 # closed on missing signing secrets. Any other repository (trycua/cua-staging)
 # runs the same pipeline end to end but PyPI gets `twine check` (and TestPyPI
 # when TEST_PYPI_TOKEN is set), npm gets `npm publish --dry-run`, crates.io
@@ -41,7 +41,7 @@ name: "CD: cua SDK"
 # prerelease whose title and notes say so. The CLI's download URLs, the
 # installers' default repository and their Sigstore identity derive from
 # github.repository. A version with a suffix (X.Y.Z-rc.1) is a prerelease
-# everywhere: npm dist-tag `next`, never GitHub "latest", and on trycua/cua
+# everywhere: npm dist-tag `next`, never GitHub "latest", and on goat-si/goat-cua
 # it leaves the rolling installer feed alone.
 
 on:
@@ -75,8 +75,8 @@ env:
   CARGO_TERM_COLOR: always
   # `cua host setup` downloads cua-spacesd from this repository's releases.
   CUA_RELEASE_REPOSITORY: ${{ github.repository }}
-  # Registries and the fail-closed signing gates are for trycua/cua only.
-  CANONICAL: ${{ github.repository == 'trycua/cua' }}
+  # Registries and the fail-closed signing gates are for goat-si/goat-cua only.
+  CANONICAL: ${{ github.repository == 'goat-si/goat-cua' }}
 
 jobs:
   version:
@@ -140,8 +140,8 @@ jobs:
       id-token: write
     env:
       PUBLISH: ${{ needs.version.outputs.publish }}
-      # A publishing run on trycua/cua never ships unsigned binaries.
-      REQUIRE_SIGNING: ${{ needs.version.outputs.publish == 'true' && github.repository == 'trycua/cua' }}
+      # A publishing run on goat-si/goat-cua never ships unsigned binaries.
+      REQUIRE_SIGNING: ${{ needs.version.outputs.publish == 'true' && github.repository == 'goat-si/goat-cua' }}
     strategy:
       fail-fast: false
       matrix:
@@ -638,9 +638,9 @@ jobs:
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
-      # trycua/cua publishes; any other repository checks the wheels (and
+      # goat-si/goat-cua publishes; any other repository checks the wheels (and
       # uploads to TestPyPI when TEST_PYPI_TOKEN is set) without touching PyPI.
-      - name: Publish wheels to PyPI (trycua/cua) or check them (staging)
+      - name: Publish wheels to PyPI (goat-si/goat-cua) or check them (staging)
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
@@ -662,9 +662,9 @@ jobs:
             TWINE_PASSWORD="$TEST_PYPI_TOKEN" python -m twine upload --skip-existing \
               --repository-url https://test.pypi.org/legacy/ "${wheels[@]}"
           else
-            echo "::notice::$GITHUB_REPOSITORY is not trycua/cua: wheels checked, not uploaded to PyPI (DRY RUN)"
+            echo "::notice::$GITHUB_REPOSITORY is not goat-si/goat-cua: wheels checked, not uploaded to PyPI (DRY RUN)"
           fi
-      - name: Publish npm packages, native first (trycua/cua) or dry-run them (staging)
+      - name: Publish npm packages, native first (goat-si/goat-cua) or dry-run them (staging)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.version.outputs.version }}
@@ -675,7 +675,7 @@ jobs:
           if [ "$CANONICAL" = true ]; then
             flags+=(--provenance)
           else
-            echo "::notice::$GITHUB_REPOSITORY is not trycua/cua: npm publish --dry-run (nothing reaches the registry)"
+            echo "::notice::$GITHUB_REPOSITORY is not goat-si/goat-cua: npm publish --dry-run (nothing reaches the registry)"
             flags+=(--dry-run)
           fi
           # Native packages first. A version already on the registry (a
@@ -769,7 +769,7 @@ jobs:
             [ -n "$unsigned" ] && label="$label, UNSIGNED: $unsigned"
             {
               echo "**$GITHUB_REPOSITORY prerelease ($label).** Built by cd-cua-sdk.yml at $GITHUB_REF ($GITHUB_SHA)."
-              echo "Installs from $GITHUB_REPOSITORY, not trycua/cua."
+              echo "Installs from $GITHUB_REPOSITORY, not goat-si/goat-cua."
               [ "$CANONICAL" = true ] || echo "PyPI and npm were dry runs: nothing was published to either registry."
               echo
               echo "Signing:"
@@ -784,18 +784,18 @@ jobs:
       # (cua-spacesd 0.12.1 and 0.12.2 did, despite --latest=false). Put it back
       # on Cua Spaces; the release-latest-guard schedule is the backstop.
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-        if: always() && github.repository == 'trycua/cua'
+        if: always() && github.repository == 'goat-si/goat-cua'
         with:
           sparse-checkout: .github/scripts/pin_latest_release.py
       - name: Keep Latest on Cua Spaces
-        if: always() && github.repository == 'trycua/cua'
+        if: always() && github.repository == 'goat-si/goat-cua'
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/scripts/pin_latest_release.py
-      # A prerelease on trycua/cua stays off the rolling feed; on any other
+      # A prerelease on goat-si/goat-cua stays off the rolling feed; on any other
       # repository the feed is that repository's own and follows every release.
       - name: Update the rolling installer manifest (cua-install-latest)
-        if: needs.version.outputs.prerelease != 'true' || github.repository != 'trycua/cua'
+        if: needs.version.outputs.prerelease != 'true' || github.repository != 'goat-si/goat-cua'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -817,7 +817,7 @@ jobs:
             stamped/install.sh stamped/install.ps1 stamped/uninstall.sh stamped/uninstall.ps1 \
             --clobber --repo "$GITHUB_REPOSITORY"
 
-  # crates.io after the GitHub release is out, like PyPI and npm: trycua/cua
+  # crates.io after the GitHub release is out, like PyPI and npm: goat-si/goat-cua
   # only, and only when the CARGO_REGISTRY_TOKEN secret (a crates.io API
   # token with publish-new and publish-update scopes) is set; otherwise the
   # step says so and the release goes on without it.
@@ -840,7 +840,7 @@ jobs:
           crates="$(cargo metadata --manifest-path libs/cua/Cargo.toml --no-deps --format-version 1 \
             | jq -r '.packages[] | select(.name == "cua-sdk") | .version')"
           if [ "$CANONICAL" != true ]; then
-            echo "::notice::$GITHUB_REPOSITORY is not trycua/cua: crates.io got the dry run only (protos-and-crates)"
+            echo "::notice::$GITHUB_REPOSITORY is not goat-si/goat-cua: crates.io got the dry run only (protos-and-crates)"
           elif [ -z "$CARGO_REGISTRY_TOKEN" ]; then
             echo "::warning::CARGO_REGISTRY_TOKEN is not set: the cua-sdk $VERSION crates were not published to crates.io"
           elif [ "$crates" != "$VERSION" ]; then

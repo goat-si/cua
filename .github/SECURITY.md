@@ -3,11 +3,11 @@
 ## Report a Vulnerability
 
 Do not open a public issue, RFC, discussion, or pull request for a suspected
-vulnerability. Use [GitHub private vulnerability reporting](https://github.com/trycua/cua/security/advisories/new)
+vulnerability. Use [GitHub private vulnerability reporting](https://github.com/goat-si/goat-cua/security/advisories/new)
 so the report reaches the maintainers without disclosing details publicly.
 This is the only reporting channel this repository currently has set up and
-verified to reach us; if we later stand up a dedicated mailbox (for example
-`security@trycua.com`) and a `security.txt`, this page and the "What the
+verified to reach us; if we later stand up a dedicated security mailbox and a
+`security.txt`, this page and the "What the
 relay can see" doc will link them here instead of or alongside GitHub.
 
 ## Response targets
@@ -27,7 +27,7 @@ These are targets, not contractual guarantees:
 
 ## Supported versions
 
-Cua is a monorepo of independently released components (CLI, SDK, Cua
+GOAT Cua is a monorepo of independently released components (CLI, SDK, Cua
 Driver, Cua Spaces apps, the relay, the Keyvault, teleport, and others; see
 [`Development.md`](../docs/contributing/Development.md)). We support and patch the **current
 released version of each component**, plus the version actually deployed

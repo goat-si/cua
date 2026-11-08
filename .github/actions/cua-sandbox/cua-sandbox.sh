@@ -100,7 +100,7 @@ install_cua() {
     esac
     dir="$state/cua-$version"
     mkdir -p "$dir"
-    url="https://github.com/trycua/cua/releases/download/cua-sdk-v$version"
+    url="https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v$version"
     log "installing cua $version ($platform)"
     curl -fsSL --retry 5 --retry-delay 2 --retry-all-errors --connect-timeout 20 -o "$dir/cua.tar.gz" "$url/cua-cli-$version-$platform.tar.gz" \
         || die "cua $version is not released for $platform ($url); pin another cua-version or pass cua-bin"

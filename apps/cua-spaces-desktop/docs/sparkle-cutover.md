@@ -139,7 +139,7 @@ releases feed only test Macs.
 
 ## Rehearsal without a staging repository
 
-The same check can run from trycua/cua (or the staging repository, whose
+The same check can run from goat-si/goat-cua (or the staging repository, whose
 CI holds the same signing secrets) without publishing anything:
 
 1. On a throwaway branch with `STABLE_FEED = true` (and the test above),
@@ -162,7 +162,7 @@ CI holds the same signing secrets) without publishing anything:
    Electron app's Check Now then updates from the real `beta*.yml`.
 4. `defaults delete com.trycua.spaces.macos SUFeedURL` and stop the server.
 
-## The one release (trycua/cua)
+## The one release (goat-si/goat-cua)
 
 1. Before merging the Release Please PR for version X.Y.Z, set the
    repository variable `CUA_SPACES_SPARKLE_ELECTRON_VERSION=X.Y.Z`.

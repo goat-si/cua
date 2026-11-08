@@ -146,7 +146,7 @@ if ($PSVersionTable.PSEdition -eq 'Desktop') {
     $env:PSModulePath = $modulePaths -join ';'
 }
 
-$Repo       = "trycua/cua"
+$Repo       = "goat-si/goat-cua"
 $TagPrefix  = "cua-driver-rs-v"
 $NightlyTagPrefix = "nightly-cua-driver-rs-v"
 $BinaryName = "cua-driver.exe"
@@ -303,7 +303,7 @@ function Get-TargetTriple {
         default {
             Write-ErrorStep "unsupported Windows architecture: $arch"
             Write-ErrorStep "  cua-driver-rs ships prebuilts for: x86_64 (AMD64) and arm64 (ARM64)."
-            Write-ErrorStep "  Please file an issue at https://github.com/trycua/cua/issues with the output of"
+            Write-ErrorStep "  Please file an issue at https://github.com/goat-si/goat-cua/issues with the output of"
             Write-ErrorStep "  'echo `$env:PROCESSOR_ARCHITECTURE'."
             exit 1
         }
@@ -2097,7 +2097,7 @@ catch {
     # Network fetch failed — print one-line essentials so users always
     # get enough to recover.
     Write-Host "Next steps: $installedBinary --version  |  $installedBinary connect  |  $installedBinary skills install"
-    Write-Host "Docs: https://github.com/trycua/cua/tree/main/libs/cua-driver/rust"
+    Write-Host "Docs: https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust"
 } }
 
 # Windows-specific autostart hint (kept inline; OS-natural location).

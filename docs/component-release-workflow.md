@@ -39,15 +39,15 @@ branches and synchronizes generated version files.
 Check the preparation run and locate the component pull request:
 
 ```bash
-gh run list --repo trycua/cua \
+gh run list --repo goat-si/goat-cua \
   --workflow release-please.yml --branch main --limit 10
 
 # Cua Driver
-gh pr list --repo trycua/cua --state open \
+gh pr list --repo goat-si/goat-cua --state open \
   --head release-please--branches--main--components--cua-driver-rs
 
 # Lume
-gh pr list --repo trycua/cua --state open \
+gh pr list --repo goat-si/goat-cua --state open \
   --head release-please--branches--main--components--lume
 ```
 
@@ -56,7 +56,7 @@ a release. `automatic` is the normal bump choice. A forced bump is a release
 decision, not a way to compensate for an incorrect product pull request title.
 
 ```bash
-gh workflow run release-please.yml --repo trycua/cua --ref main \
+gh workflow run release-please.yml --repo goat-si/goat-cua --ref main \
   -f component=cua-driver-rs -f bump=automatic
 ```
 
@@ -65,11 +65,11 @@ gh workflow run release-please.yml --repo trycua/cua --ref main \
 Set `PR` to the Release Please pull request number, then inspect its live state:
 
 ```bash
-gh pr view "$PR" --repo trycua/cua \
+gh pr view "$PR" --repo goat-si/goat-cua \
   --json title,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,baseRefOid
-gh pr diff "$PR" --repo trycua/cua --name-only
-gh pr diff "$PR" --repo trycua/cua
-gh pr checks "$PR" --repo trycua/cua
+gh pr diff "$PR" --repo goat-si/goat-cua --name-only
+gh pr diff "$PR" --repo goat-si/goat-cua
+gh pr checks "$PR" --repo goat-si/goat-cua
 ```
 
 Require all of the following:
@@ -106,7 +106,7 @@ Merge only the component that is ready to ship. Perform the same fresh checks
 immediately before merging.
 
 ```bash
-gh pr merge "$PR" --repo trycua/cua --squash
+gh pr merge "$PR" --repo goat-si/goat-cua --squash
 ```
 
 Repository policy may allow an authorized maintainer to bypass a missing
@@ -122,7 +122,7 @@ TAG="cua-driver-rs-v${VERSION}"
 
 git fetch --tags origin
 git rev-list -n 1 "$TAG"
-gh release view "$TAG" --repo trycua/cua \
+gh release view "$TAG" --repo goat-si/goat-cua \
   --json tagName,isDraft,isPrerelease,publishedAt,targetCommitish,url,assets
 ```
 
@@ -134,9 +134,9 @@ immutable candidate. It does not publish the draft.
 Find and watch the tag-triggered candidate run:
 
 ```bash
-gh run list --repo trycua/cua \
+gh run list --repo goat-si/goat-cua \
   --workflow cd-rust-cua-driver.yml --branch "$TAG" --limit 5
-gh run watch "$RUN_ID" --repo trycua/cua --exit-status
+gh run watch "$RUN_ID" --repo goat-si/goat-cua --exit-status
 ```
 
 Require the attribution preflight, platform builds, Windows x64 and ARM64 native
@@ -154,12 +154,12 @@ publish run from current `main`. The workflow checks out source from the immutab
 tag while using current release-control helpers.
 
 ```bash
-gh workflow run cd-rust-cua-driver.yml --repo trycua/cua --ref main \
+gh workflow run cd-rust-cua-driver.yml --repo goat-si/goat-cua --ref main \
   -f version="$VERSION" -f notarize=true -f publish=true
 
-gh run list --repo trycua/cua \
+gh run list --repo goat-si/goat-cua \
   --workflow cd-rust-cua-driver.yml --event workflow_dispatch --limit 5
-gh run watch "$PUBLISH_RUN_ID" --repo trycua/cua --exit-status
+gh run watch "$PUBLISH_RUN_ID" --repo goat-si/goat-cua --exit-status
 ```
 
 The successful publish run uploads the release assets, publishes the verified
@@ -170,11 +170,11 @@ and platform-native npm packages from the same tag.
 Watch the SDK publisher before calling the component shipped:
 
 ```bash
-gh run list --repo trycua/cua \
+gh run list --repo goat-si/goat-cua \
   --workflow cd-py-cua-driver.yml --event workflow_run --limit 10 \
   --json databaseId,createdAt,event,headSha,status,conclusion
-gh run view "$SDK_RUN_ID" --repo trycua/cua --json jobs,status,conclusion
-gh run watch "$SDK_RUN_ID" --repo trycua/cua --exit-status
+gh run view "$SDK_RUN_ID" --repo goat-si/goat-cua --json jobs,status,conclusion
+gh run watch "$SDK_RUN_ID" --repo goat-si/goat-cua --exit-status
 ```
 
 The candidate completion also starts this workflow, but its `get-version` job
@@ -192,9 +192,9 @@ notarizes, uploads assets, and publishes the verified Release Please draft.
 VERSION=0.5.2
 TAG="lume-v${VERSION}"
 
-gh run list --repo trycua/cua \
+gh run list --repo goat-si/goat-cua \
   --workflow cd-swift-lume.yml --branch "$TAG" --limit 5
-gh run watch "$RUN_ID" --repo trycua/cua --exit-status
+gh run watch "$RUN_ID" --repo goat-si/goat-cua --exit-status
 ```
 
 Require the checked-in versions, notarized assets, attribution manifest, release
@@ -208,7 +208,7 @@ release badge or `/releases/latest` for Cua Driver.
 For Cua Driver:
 
 ```bash
-gh release view "$TAG" --repo trycua/cua \
+gh release view "$TAG" --repo goat-si/goat-cua \
   --json tagName,isDraft,isPrerelease,publishedAt,targetCommitish,url,assets
 
 npm view @trycua/cua-driver version
@@ -231,7 +231,7 @@ component has shipped.
 For Lume:
 
 ```bash
-gh release view "$TAG" --repo trycua/cua \
+gh release view "$TAG" --repo goat-si/goat-cua \
   --json tagName,isDraft,isPrerelease,publishedAt,targetCommitish,url,assets
 
 git fetch origin main

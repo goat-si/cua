@@ -52,7 +52,7 @@ def test_gate_revalidates_the_current_labeled_head_for_any_pull_request() -> Non
     text, workflow = load_workflow(TRIGGER)
     gate = workflow["jobs"]["resolve"]["steps"][0]["run"]
     for contract in (
-        '[[ "$GITHUB_REPOSITORY" == "trycua/cua" ]]',
+        '[[ "$GITHUB_REPOSITORY" == "goat-si/goat-cua" ]]',
         '[[ "$EVENT_PR_NUMBER" =~ ^[1-9][0-9]*$ ]]',
         '[[ "$(jq -r .state <<<"$pr_json")" == "open" ]]',
         '[[ "$(jq -r .head.repo.full_name <<<"$pr_json")" == "$GITHUB_REPOSITORY" ]]',

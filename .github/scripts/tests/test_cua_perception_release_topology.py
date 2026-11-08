@@ -147,7 +147,7 @@ esac
             "size": len(content),
             "license": {
                 "spdx": "Apache-2.0",
-                "source": "https://github.com/trycua/cua",
+                "source": "https://github.com/goat-si/goat-cua",
                 "notice": "payload/NOTICE",
             },
         }
@@ -239,7 +239,7 @@ esac
                     "artifact": "cua-perception-source.tar.gz",
                     "artifactSha256": digest(values["payload/source.tar.gz"]),
                     "artifactSize": len(values["payload/source.tar.gz"]),
-                    "repository": "https://github.com/trycua/cua",
+                    "repository": "https://github.com/goat-si/goat-cua",
                     "revision": "a" * 40,
                     "license": "Apache-2.0",
                     "durableLocation": "candidate archive source/",

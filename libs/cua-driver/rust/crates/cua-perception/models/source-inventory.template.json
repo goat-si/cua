@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "component": "cua-perception",
-  "repository": "https://github.com/trycua/cua",
+  "repository": "https://github.com/goat-si/goat-cua",
   "revision": "REPLACE_WITH_EXACT_40_CHARACTER_COMMIT",
   "archive": {
     "path": "source/cua-perception-source.tar.gz",

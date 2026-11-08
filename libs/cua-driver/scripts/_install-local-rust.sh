@@ -623,7 +623,7 @@ else
     # Repo layout changed or running from an unexpected location — fall
     # back to one-line essentials so users still know what to do next.
     echo "Next steps: $INSTALLED_BIN --version  |  $INSTALLED_BIN mcp-config  |  $INSTALLED_BIN skills install"
-    echo "Docs: https://github.com/trycua/cua/tree/main/libs/cua-driver/rust"
+    echo "Docs: https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust"
 fi
 
 # The local/release identity split deliberately stopped source installs from

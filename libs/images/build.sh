@@ -138,7 +138,7 @@ for platform in ${PLATFORMS//,/ }; do
     log "rootfs -> $rootfs_ref"
     timed docker buildx build --platform "$platform" --load \
         -f "$IMAGE_DIR/Dockerfile" ${BUILD_ARGS[@]+"${BUILD_ARGS[@]}"} \
-        --label "org.opencontainers.image.source=https://github.com/trycua/cua" \
+        --label "org.opencontainers.image.source=https://github.com/goat-si/goat-cua" \
         --label "ai.cua.image.variant=rootfs" "${META_LABELS[@]}" ${EXTRA_LABELS[@]+"${EXTRA_LABELS[@]}"} \
         -t "$rootfs_ref" "$HERE"
     # The labels are derived from build inputs; the manifest from what was

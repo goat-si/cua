@@ -10,7 +10,7 @@ import { classify, presentHostFailure, refusalCode } from "../src/model/host-fai
 import { Failure, reply } from "../src/bridge/host";
 
 const MISSING_RELEASE =
-  "http: download: https://github.com/trycua/cua/releases/download/cua-spacesd-v0.2.0/cua-spacesd-aarch64-apple-darwin.tar.gz: HTTP 404";
+  "http: download: https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v0.2.0/cua-spacesd-aarch64-apple-darwin.tar.gz: HTTP 404";
 
 describe("host setup failures", () => {
   it("a missing release is a download failure without the URL", () => {

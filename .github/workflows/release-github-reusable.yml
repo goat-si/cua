@@ -216,7 +216,7 @@ jobs:
       # Safety net: if anything above left another component as the repo-wide
       # "Latest", put it back on the newest Cua Spaces release.
       - name: Keep Latest on Cua Spaces
-        if: always() && github.repository == 'trycua/cua'
+        if: always() && github.repository == 'goat-si/goat-cua'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 .github/scripts/pin_latest_release.py

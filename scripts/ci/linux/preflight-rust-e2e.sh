@@ -98,6 +98,7 @@ if [[ -x "${DRIVER_BIN}" ]]; then
       fail "stale driver: built from ${driver_sha}, source under test is ${source_sha:-unknown}"
     fi
   else
+    printf 'driver --version failed with status %d: %s\n' "$?" "${version}" >&2
     fail "source driver cannot run --version: ${DRIVER_BIN}"
   fi
 else

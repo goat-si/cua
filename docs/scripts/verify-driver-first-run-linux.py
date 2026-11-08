@@ -283,7 +283,7 @@ def main():
         require(resolved.is_relative_to(task / "package/packages/releases"), "Installed binary escaped task package home")
         version = run([str(binary), "--version"], env=env).stdout.strip()
         require(re.search(rf"(?<![\d.]){re.escape(baked)}(?![\d.])", version), "Installed version differs from baked release")
-        url = f"https://github.com/trycua/cua/releases/download/cua-driver-rs-v{baked}/cua-driver-rs-{baked}-linux-x86_64-binary.tar.gz"
+        url = f"https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v{baked}/cua-driver-rs-{baked}-linux-x86_64-binary.tar.gz"
         require(url in installed.stdout, "Installer did not report the expected exact component asset URL")
         provenance.update(installed_path=str(binary), resolved_binary=str(resolved), installed_version=version,
                           binary_sha256=hashlib.sha256(resolved.read_bytes()).hexdigest(), component_asset_url=url)

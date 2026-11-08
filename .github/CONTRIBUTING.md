@@ -1,6 +1,7 @@
-# Contributing to Cua
+# Contributing to GOAT Cua
 
-Thanks for contributing to Cua. The repository includes the cua SDK and `cua`
+Thanks for contributing to GOAT Cua, an independent fork of
+[`trycua/cua`](https://github.com/trycua/cua). The repository includes the cua SDK and `cua`
 CLI (a Rust core with Python, TypeScript, Swift, and Kotlin bindings), the
 in-sandbox cua-spacesd, the Cua Spaces app, the cua-driver desktop driver,
 Python and TypeScript packages, Swift virtualization tools, container images,
@@ -14,7 +15,7 @@ want to change; [`Development.md`](../docs/contributing/Development.md) maps the
 | Report reproducible incorrect behavior                                                               | The **Bug report** issue form                                                                                                           |
 | Describe a user problem or product improvement                                                       | The **Feature request** issue form                                                                                                      |
 | Change a public contract, compatibility policy, permission boundary, or cross-component architecture | The **Request for comments** issue form and [`rfcs/README.md`](../docs/rfcs/README.md)                                                  |
-| Report a suspected vulnerability                                                                     | [GitHub private vulnerability reporting](https://github.com/trycua/cua/security/advisories/new), following [`SECURITY.md`](SECURITY.md) |
+| Report a suspected vulnerability                                                                     | [GitHub private vulnerability reporting](https://github.com/goat-si/goat-cua/security/advisories/new), following [`SECURITY.md`](SECURITY.md) |
 | Ask for contributor help                                                                             | The [Cua Discord community](https://discord.com/invite/mVnXXpdE85)                                                                      |
 
 The issue tracker is an intake queue and historical record, not a promise that
@@ -85,16 +86,12 @@ GitHub issue form. Longer proposals and diagrams remain in this repository under
 5. Run the formatters and linters owned by the changed component.
 6. Open a focused pull request that explains behavior, validation, and known gaps.
 
-### Contributor License Agreement
+### Contribution licensing
 
-Contributors accept the [Contributor License Agreement](../legal/CLA.md) once. The
-**CI: CLA** check comments on your first pull request with instructions; reply with
-the sentence it gives you to sign. The agreement applies to your later contributions,
-and you keep ownership of your work. Maintainers and automation accounts are exempt.
-
-The required `contributor-attribution` check enforces the CLA. It fails when a pull
-request touching the Cua Spaces apps or `libs/cua-spacesd` has an unsigned or
-unverifiable contributor, and it only warns elsewhere.
+GOAT Cua accepts contributions under the licence covering each modified file or
+directory, as described in the [contribution licensing policy](../legal/CLA.md).
+No separate Contributor License Agreement or signature is required. You keep
+ownership of your work and must preserve upstream and third-party notices.
 
 ### Agent-Assisted Contributions
 

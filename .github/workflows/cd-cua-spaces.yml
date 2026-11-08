@@ -36,7 +36,7 @@ name: "CD: Cua Spaces"
 # published and every other step is unchanged. The macOS job writes the
 # appcast (merged into the published one) as a workflow artifact; the last
 # job publishes it once the release itself is published, so the feed never
-# names a draft's asset. Prereleases on trycua/cua update it too (their
+# names a draft's asset. Prereleases on goat-si/goat-cua update it too (their
 # items are Beta only). Two releases publishing at once could drop one
 # item; the next release adds it back.
 #
@@ -71,7 +71,7 @@ name: "CD: Cua Spaces"
 # installers after; the updater signatures are then regenerated so they match
 # the signed installers.
 #
-# On trycua/cua a tag push refuses to publish anything unsigned: every signing
+# On goat-si/goat-cua a tag push refuses to publish anything unsigned: every signing
 # secret must be present. On any other repository (trycua/cua-staging) a
 # missing Apple or Azure secret gives an unsigned (macOS: ad-hoc signed, not
 # notarized) build instead, published as a prerelease whose title and notes
@@ -81,10 +81,10 @@ name: "CD: Cua Spaces"
 # the Linux and Windows apps (scripts/release-config.py), the installers'
 # default repository (scripts/install/stamp_installers.py) and the Sigstore
 # identity they verify all come from github.repository, so a cua-staging build
-# installs and updates from cua-staging and a trycua/cua build from
-# trycua/cua. A prerelease version (X.Y.Z-suffix, e.g.
+# installs and updates from cua-staging and a goat-si/goat-cua build from
+# goat-si/goat-cua. A prerelease version (X.Y.Z-suffix, e.g.
 # cua-spaces-v0.2.0-staging.1) is published as a GitHub prerelease, never
-# marked latest; on trycua/cua it does not move the rolling feeds.
+# marked latest; on goat-si/goat-cua it does not move the rolling feeds.
 #
 # The Tauri updater feed (`latest.json` on this release and on the rolling
 # `cua-spaces-latest` release) is written once every platform has finished
@@ -256,7 +256,7 @@ env:
   # The CLI sidecar downloads cua-spacesd from this repository's releases.
   CUA_RELEASE_REPOSITORY: ${{ github.repository }}
   # Fail closed on the canonical repository only (see the header).
-  REQUIRE_SIGNING: ${{ github.repository == 'trycua/cua' && (startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.rebuild_tag != '')) }}
+  REQUIRE_SIGNING: ${{ github.repository == 'goat-si/goat-cua' && (startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.rebuild_tag != '')) }}
   # The release this run is about: the pushed tag or, for a rebuild dispatch
   # (run from main so fixed workflow files apply to an existing tag), the
   # requested tag. Shell steps read these instead of GITHUB_REF, GITHUB_REF_NAME
@@ -457,7 +457,7 @@ jobs:
           # A semver prerelease, or any build off the canonical repository,
           # becomes a GitHub prerelease (never "latest").
           PRERELEASE=false
-          if [[ "$VERSION" == *-* || "$GITHUB_REPOSITORY" != trycua/cua ]]; then PRERELEASE=true; fi
+          if [[ "$VERSION" == *-* || "$GITHUB_REPOSITORY" != goat-si/goat-cua ]]; then PRERELEASE=true; fi
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "prerelease=${PRERELEASE}" >> "$GITHUB_OUTPUT"
           echo "Building Cua Spaces v${VERSION} from ${GITHUB_REPOSITORY} (prerelease=${PRERELEASE})"
@@ -1106,16 +1106,16 @@ jobs:
           # A semver prerelease, or any build off the canonical repository,
           # is a GitHub prerelease (never "latest").
           prerelease=false
-          if [[ "$VERSION" == *-* || "$GITHUB_REPOSITORY" != trycua/cua ]]; then prerelease=true; fi
+          if [[ "$VERSION" == *-* || "$GITHUB_REPOSITORY" != goat-si/goat-cua ]]; then prerelease=true; fi
 
           # Platforms (CUA-2068). Default: all three. Narrowed only by a manual
-          # list with a reason, or (stable tag, trycua/cua only) when every path
+          # list with a reason, or (stable tag, goat-si/goat-cua only) when every path
           # changed since the previous published stable release is classified.
           # A prerelease, the Sparkle cutover and any doubt build everything.
           force=""
           if [ "$cutover" = true ]; then force="Sparkle cutover"
           elif [ "$beta" = true ]; then force="prerelease"
-          elif [ "$EVENT" != workflow_dispatch ] && [ "$GITHUB_REPOSITORY" != trycua/cua ]; then force="not trycua/cua"
+          elif [ "$EVENT" != workflow_dispatch ] && [ "$GITHUB_REPOSITORY" != goat-si/goat-cua ]; then force="not goat-si/goat-cua"
           fi
           previous=""
           if [ -z "$force" ] && [ "$EVENT" != workflow_dispatch ]; then
@@ -2037,7 +2037,7 @@ jobs:
   # (prereleases on the beta channel only) and the Electron feeds (this
   # version, this repository, the files' sha512). installer-manifest publishes
   # only after it passes; a manual run from a branch runs it on the build.
-  # Unsigned parts (allowed off trycua/cua) are skipped with a warning.
+  # Unsigned parts (allowed off goat-si/goat-cua) are skipped with a warning.
   # Start the staging smoke for this tag (CUA-1993): trycua/cloud's
   # spaces-staging-smoke workflow runs it and posts the commit status that
   # `staging-gate` waits for. Needs the release app installed on trycua/cloud
@@ -2226,7 +2226,7 @@ jobs:
           if [ "$SWIFT" != true ]; then
             echo "::notice::no macOS in this release (platform patch): the SwiftUI build is not verified"
           elif [ "$REQUIRE_SIGNING" = true ] && [ "$SWIFT_SIGNED" != true ]; then
-            echo "::error::trycua/cua release tag with an unsigned SwiftUI build: refusing to verify-skip"
+            echo "::error::goat-si/goat-cua release tag with an unsigned SwiftUI build: refusing to verify-skip"
             exit 1
           elif [ "$SWIFT_SIGNED" = true ]; then
             expect+=(swift)
@@ -2251,7 +2251,7 @@ jobs:
           [ "$APPCAST" = true ] && expect+=(appcast)
           if [ ${#expect[@]} -eq 0 ]; then
             if [ "$REQUIRE_SIGNING" = true ]; then
-              echo "::error::nothing signed on a trycua/cua release tag"
+              echo "::error::nothing signed on a goat-si/goat-cua release tag"
               exit 1
             fi
             echo "::warning::nothing in this build is signed: no release verification"
@@ -2398,16 +2398,16 @@ jobs:
             # Cua Spaces is the one package allowed to be the repo-wide "Latest".
             # Every other release workflow passes --latest=false (release-latest-policy test).
             flags+=(--prerelease=false)
-            [ "$GITHUB_REPOSITORY" = trycua/cua ] && flags+=(--latest)
+            [ "$GITHUB_REPOSITORY" = goat-si/goat-cua ] && flags+=(--latest)
           fi
-          if [ "$GITHUB_REPOSITORY" != trycua/cua ] || grep -q UNSIGNED signing/*.txt; then
-            label="staging"; [ "$GITHUB_REPOSITORY" = trycua/cua ] && label="test"
+          if [ "$GITHUB_REPOSITORY" != goat-si/goat-cua ] || grep -q UNSIGNED signing/*.txt; then
+            label="staging"; [ "$GITHUB_REPOSITORY" = goat-si/goat-cua ] && label="test"
             # Name the unsigned platforms: "UNSIGNED: windows-x64".
             unsigned="$(grep -h UNSIGNED signing/*.txt | cut -d: -f1 | sort | paste -sd, - | sed 's/,/, /g')"
             [ -n "$unsigned" ] && label="$label, UNSIGNED: $unsigned"
             {
               echo "**$GITHUB_REPOSITORY prerelease ($label).** Built by cd-cua-spaces.yml at $GITHUB_REF ($GITHUB_SHA)."
-              echo "Installs and updates from $GITHUB_REPOSITORY, not trycua/cua."
+              echo "Installs and updates from $GITHUB_REPOSITORY, not goat-si/goat-cua."
               echo
               echo "Signing:"
               sed 's/^/- /' signing/*.txt
@@ -2448,10 +2448,10 @@ jobs:
           } > notes-with-platforms.md
           gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --notes-file notes-with-platforms.md
       # The Electron feed, once the release it names is published: beta*.yml
-      # for a prerelease (stable apps never read it, so a trycua/cua
+      # for a prerelease (stable apps never read it, so a goat-si/goat-cua
       # prerelease updates it too, like the Sparkle beta items below),
       # latest*.yml for a stable release (Windows and Linux; macOS only at the
-      # cutover). A trycua/cua prerelease never moves the stable feed.
+      # cutover). A goat-si/goat-cua prerelease never moves the stable feed.
       - name: Fetch the Electron feed
         if: needs.electron-publish.result == 'success'
         uses: actions/download-artifact@v4
@@ -2462,7 +2462,7 @@ jobs:
         if: >-
           needs.electron-publish.result == 'success'
           && (contains(needs.electron-plan.outputs.version, '-')
-            || needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'trycua/cua')
+            || needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'goat-si/goat-cua')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -2506,10 +2506,10 @@ jobs:
           fi
           gh release upload cua-spaces-latest sparkle/cua-spaces-appcast.xml --clobber --repo "$GITHUB_REPOSITORY"
       # Only a published release feeds installs and updates. A prerelease on
-      # trycua/cua stays off the rolling feeds; on any other repository the
+      # goat-si/goat-cua stays off the rolling feeds; on any other repository the
       # feeds are that repository's own, so they follow every release.
       - name: Update the rolling feeds (cua-spaces-latest, cua-install-latest)
-        if: needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'trycua/cua'
+        if: needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'goat-si/goat-cua'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -2563,7 +2563,7 @@ jobs:
     if: >-
       !cancelled() && needs.installer-manifest.result == 'success'
       && (startsWith(github.ref, 'refs/tags/cua-spaces-v') || (github.event_name == 'workflow_dispatch' && inputs.rebuild_tag != ''))
-      && github.repository == 'trycua/cua'
+      && github.repository == 'goat-si/goat-cua'
       && needs.electron-plan.outputs.prerelease != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 50

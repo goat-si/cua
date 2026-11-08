@@ -103,7 +103,7 @@ Agents use the MCP tool `stream_endpoint`. A Space without `desktop_stream`,
 </Callout>
 
 The wire format is in
-[`libs/cua/proto/MEDIA.md`](https://github.com/trycua/cua/blob/main/libs/cua/proto/MEDIA.md).
+[`libs/cua/proto/MEDIA.md`](https://github.com/goat-si/goat-cua/blob/main/libs/cua/proto/MEDIA.md).
 
 ## Presence
 
@@ -129,18 +129,18 @@ Python: `space.join_presence(identity, timeout_ms)`. Rust:
 
 Each example streams the desktop and one window with audio, clicks, and
 verifies, against `CUA_ENV_URL` and `CUA_ENV_TOKEN`:
-[Rust](https://github.com/trycua/cua/tree/main/examples/streaming/rust),
-[Python](https://github.com/trycua/cua/tree/main/examples/streaming/python),
-[TypeScript (Node)](https://github.com/trycua/cua/tree/main/examples/streaming/typescript-node),
-[TypeScript (browser)](https://github.com/trycua/cua/tree/main/examples/streaming/typescript-web),
-[Swift](https://github.com/trycua/cua/tree/main/examples/streaming/swift),
-[Kotlin](https://github.com/trycua/cua/tree/main/examples/streaming/kotlin).
+[Rust](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/rust),
+[Python](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/python),
+[TypeScript (Node)](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/typescript-node),
+[TypeScript (browser)](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/typescript-web),
+[Swift](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/swift),
+[Kotlin](https://github.com/goat-si/goat-cua/tree/main/examples/streaming/kotlin).
 
 ```bash skip="no-runner"
 libs/cua/bench/streaming/scripts/space.sh start        # a throwaway local Space
 eval "$(libs/cua/bench/streaming/scripts/space.sh env)"
 ```
 
-[`libs/cua/bench/streaming`](https://github.com/trycua/cua/tree/main/libs/cua/bench/streaming)
+[`libs/cua/bench/streaming`](https://github.com/goat-si/goat-cua/tree/main/libs/cua/bench/streaming)
 benchmarks time to first frame, fps, bandwidth and latency per codec,
 transport and language against `budgets.json`.

@@ -60,8 +60,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/trycua/cua"
-Repository = "https://github.com/trycua/cua"
+Homepage = "https://github.com/goat-si/goat-cua"
+Repository = "https://github.com/goat-si/goat-cua"
 
 [build-system]
 requires = ["hatchling"]

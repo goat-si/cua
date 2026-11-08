@@ -5,7 +5,7 @@ pkgver=@DRIVER_VERSION@
 pkgrel=1
 pkgdesc='Cua production input candidate for pinned Hyprland 0.56.2'
 arch=('x86_64')
-url='https://github.com/trycua/cua'
+url='https://github.com/goat-si/goat-cua'
 license=('MIT')
 depends=('hyprland=0.56.2-1' 'gcc-libs')
 makedepends=('cmake>=3.30' 'ninja' 'pkgconf' 'binutils' 'python>=3.11' 'gcc')

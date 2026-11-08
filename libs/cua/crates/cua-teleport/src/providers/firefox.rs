@@ -930,7 +930,7 @@ mod tests {
                         {"url": "https://mail.example/inbox"}
                     ]},
                     {"index": 1, "entries": [{"url": "about:newtab"}]},
-                    {"entries": [{"url": "https://github.com/trycua/cua"}]}
+                    {"entries": [{"url": "https://github.com/goat-si/goat-cua"}]}
                 ]
             }]
         });
@@ -939,7 +939,7 @@ mod tests {
             urls,
             vec![
                 "https://mail.example/inbox".to_string(),
-                "https://github.com/trycua/cua".to_string()
+                "https://github.com/goat-si/goat-cua".to_string()
             ]
         );
     }

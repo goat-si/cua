@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 TOOL = Path(__file__).resolve().parent.parent / "updater_feed.py"
-BASE = "https://github.com/trycua/cua/releases/download/cua-spaces-v1.2.3"
+BASE = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v1.2.3"
 
 
 def run(*args: str) -> subprocess.CompletedProcess:

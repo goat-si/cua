@@ -5,13 +5,13 @@
   "description": "Reusable playground UI for Cua computer-use agents",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/trycua/cua/tree/main/libs/typescript/playground",
+  "homepage": "https://github.com/goat-si/goat-cua/tree/main/libs/typescript/playground",
   "bugs": {
-    "url": "https://github.com/trycua/cua/issues"
+    "url": "https://github.com/goat-si/goat-cua/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trycua/cua.git"
+    "url": "git+https://github.com/goat-si/goat-cua.git"
   },
   "author": "cua",
   "files": [

@@ -52,7 +52,7 @@ Without the tarball, generate straight from a git ref:
 
 ```sh
 buf generate --template buf.gen.yaml \
-  "https://github.com/trycua/cua.git#ref=cua-sdk-v<version>,subdir=libs/cua/proto"
+  "https://github.com/goat-si/goat-cua.git#ref=cua-sdk-v<version>,subdir=libs/cua/proto"
 ```
 
 Plain `protoc` works too: the include root is this directory.

@@ -784,7 +784,7 @@ describe.skipIf(!built)("This machine, Devices and Settings on the app core", ()
     system.updater.report({ type: "downloaded", version: "0.9.3" }, "downloaded");
     await tick(5);
     expect(events.some((e) => e.event === "update.changed")).toBe(true);
-    expect(await call("update.get")).toMatchObject({ status: "downloaded", version: "0.9.3", percent: 100, notesUrl: "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3" });
+    expect(await call("update.get")).toMatchObject({ status: "downloaded", version: "0.9.3", percent: 100, notesUrl: "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3" });
     expect(system.updater.installs).toBe(0);
     const answer = await call("update.install");
     expect((answer as { status: string }).status).toBe("downloaded");

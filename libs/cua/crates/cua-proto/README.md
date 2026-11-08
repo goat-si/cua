@@ -24,7 +24,7 @@ Features: `client` and `server` (default) gate the generated tonic modules;
 `serde` adds canonical proto3-JSON impls for every message.
 
 Other languages: the same files are attached to every `cua-sdk-v*` GitHub
-release of [trycua/cua](https://github.com/trycua/cua/releases) as
+release of [goat-si/goat-cua](https://github.com/goat-si/goat-cua/releases) as
 `cua-proto-<version>.tar.gz`, with a `buf.gen.yaml` for `buf generate`.
 
 MIT licensed.

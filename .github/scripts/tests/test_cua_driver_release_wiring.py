@@ -238,14 +238,14 @@ fi
         )
         expected = {
             "type": "git",
-            "url": "git+https://github.com/trycua/cua.git",
+            "url": "git+https://github.com/goat-si/goat-cua.git",
         }
 
         self.assertEqual(package["repository"], expected)
         self.assertEqual(package_lock["packages"][""]["repository"], expected)
         self.assertIn("npm pkg set repository.type=git", workflow)
         self.assertIn(
-            'test "$REPOSITORY" = "git+https://github.com/trycua/cua.git"',
+            'test "$REPOSITORY" = "git+https://github.com/goat-si/goat-cua.git"',
             workflow,
         )
 
@@ -824,7 +824,7 @@ fi
             skill_installer,
         )
         self.assertIn(
-            "raw.githubusercontent.com/trycua/cua/main/"
+            "raw.githubusercontent.com/goat-si/goat-cua/main/"
             "libs/cua-driver/rust/Skills/cua-driver",
             skill_installer,
         )
@@ -1168,7 +1168,7 @@ fi
         self.assertIn("workflow_call:\n", workflow)
         self.assertIn("Installer compatibility summary", workflow)
         self.assertIn("ubuntu-latest, macos-26, windows-latest", workflow)
-        # Versions come from the repository the installers download from.
+        # Compatibility fixtures are published on trycua/cua; forks have none.
         self.assertIn("RELEASE_REPOSITORY: trycua/cua", workflow)
         self.assertIn("repos/$RELEASE_REPOSITORY/releases?per_page=100", workflow)
         self.assertIn("libs/cua-driver/scripts/install.sh", workflow)

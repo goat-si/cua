@@ -12,7 +12,7 @@ source-available under the
 ## Quick start
 
 ```sh
-git clone https://github.com/trycua/cua && cd cua/examples/openkoalabot-example-swift
+git clone https://github.com/goat-si/goat-cua && cd goat-cua/examples/openkoalabot-example-swift
 (cd ../../libs/cua && cargo build --release -p cua-sdk && node scripts/stage-uniffi-library.mjs --only=swift)
 swift build && .build/debug/OpenKoalaBotExample
 ```
@@ -22,7 +22,7 @@ swift build && .build/debug/OpenKoalaBotExample
 `../../libs/cua/swift` by path, and the `Cua` package links the cua SDK dylib
 staged into `libs/cua/swift/lib` by the second command. That is how the sample
 is developed inside this repository. A copy taken on its own
-(`npx degit trycua/cua/examples/openkoalabot-example-swift`) needs those three
+(`npx degit goat-si/goat-cua/examples/openkoalabot-example-swift`) needs those three
 packages next to it at the same relative paths, or the three
 `.package(path:)` lines pointed at your checkout of them.
 

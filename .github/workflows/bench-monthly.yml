@@ -56,7 +56,7 @@ env:
 jobs:
   run:
     name: macOS benchmarks (self-hosted)
-    if: github.repository_owner == 'trycua' && vars.CUA_E2E_LUME_RUNNER != ''
+    if: github.repository_owner == 'goat-si' && vars.CUA_E2E_LUME_RUNNER != ''
     runs-on: ["self-hosted", "macOS", "${{ vars.CUA_E2E_LUME_RUNNER }}"]
     timeout-minutes: 720
     outputs:
@@ -81,7 +81,7 @@ jobs:
               echo "CUA_BENCH_SOURCE=source build of $GITHUB_SHA (not a release)" >>"$GITHUB_ENV"
               exit 0 ;;
             latest)
-              tag=$(git ls-remote --tags --refs https://github.com/trycua/cua 'refs/tags/cua-sdk-v*' |
+              tag=$(git ls-remote --tags --refs https://github.com/goat-si/goat-cua 'refs/tags/cua-sdk-v*' |
                 awk '{sub("refs/tags/", "", $2); print $2}' | grep -E '^cua-sdk-v[0-9]+\.[0-9]+\.[0-9]+$' |
                 sort -V | tail -1) ;;
             cua-sdk-v*)
@@ -89,10 +89,10 @@ jobs:
               tag=$RELEASE ;;
             *) echo "release must be cua-sdk-vX.Y.Z, latest or main" >&2; exit 2 ;;
           esac
-          [ -n "$tag" ] || { echo "no cua-sdk release tag on trycua/cua" >&2; exit 2; }
+          [ -n "$tag" ] || { echo "no cua-sdk release tag on goat-si/goat-cua" >&2; exit 2; }
           src="$RUNNER_TEMP/release-src"
           rm -rf "$src"
-          git clone --quiet --depth 1 --branch "$tag" https://github.com/trycua/cua "$src"
+          git clone --quiet --depth 1 --branch "$tag" https://github.com/goat-si/goat-cua "$src"
           sha=$(git -C "$src" rev-parse --short HEAD)
           echo "released=true" >>"$GITHUB_OUTPUT"
           echo "tag=$tag" >>"$GITHUB_OUTPUT"
@@ -232,7 +232,7 @@ jobs:
     if: >-
       vars.BENCH_PUBLISH_SITE == 'true' &&
       github.event_name != 'pull_request' &&
-      github.repository_owner == 'trycua' &&
+      github.repository_owner == 'goat-si' &&
       needs.run.result == 'success' &&
       needs.run.outputs.released == 'true'
     runs-on: ubuntu-24.04

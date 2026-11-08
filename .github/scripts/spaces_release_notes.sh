@@ -9,7 +9,7 @@
 # generic line.
 set -euo pipefail
 version="$1"
-repo="${GITHUB_REPOSITORY:-trycua/cua}"
+repo="${GITHUB_REPOSITORY:-goat-si/goat-cua}"
 body="$(gh api --paginate "repos/$repo/releases?per_page=100" \
   --jq ".[] | select(.draft and .name == \"cua-spaces: v$version\") | .body" 2>/dev/null | head -c 100000 || true)"
 if [ -n "${body//[[:space:]]/}" ]; then

@@ -77,7 +77,7 @@ def test_permissions_are_read_only_except_the_release_job() -> None:
 def test_resolve_binds_tag_version_commit_and_main_history() -> None:
     resolve = workflow()["jobs"]["resolve"]
     script = run_text(resolve)
-    assert "github.repository == 'trycua/cua'" in resolve["if"]
+    assert "github.repository == 'goat-si/goat-cua'" in resolve["if"]
     assert "head.repo.full_name == github.repository" in resolve["if"]
     assert '[[ "$TAG" == "cua-perception-v$VERSION" ]]' in script
     assert '[[ "$TAG_TYPE" == commit && "$TAG_SHA" == "$SOURCE_SHA" ]]' in script

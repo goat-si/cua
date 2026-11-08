@@ -227,8 +227,9 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
         case "$TARGETARCH" in amd64) arch=x86_64 ;; arm64) arch=aarch64 ;; *) arch="$TARGETARCH" ;; esac; \
         CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION#cua-spacesd-v}"; CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION#v}"; \
         if [ "$CUA_SPACESD_VERSION" = latest ]; then \
-          CUA_SPACESD_VERSION="$(curl -fsSL 'https://api.github.com/repos/trycua/cua/releases?per_page=100' \
+          CUA_SPACESD_VERSION="$(curl -fsSL 'https://api.github.com/repos/goat-si/goat-cua/releases?per_page=100' \
             | python3 -c 'import json,sys; print(next(r["tag_name"][len("cua-spacesd-v"):] for r in json.load(sys.stdin) if r["tag_name"].startswith("cua-spacesd-v") and not r["draft"] and not r["prerelease"]))')"; \
+          CUA_SPACESD_RELEASE_URL="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz"; \
           echo "latest cua-spacesd release: $CUA_SPACESD_VERSION"; \
         fi; \
         url="$(echo "$CUA_SPACESD_RELEASE_URL" | sed "s/{version}/$CUA_SPACESD_VERSION/g; s/{arch}/$arch/g")"; \
@@ -263,6 +264,8 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
     set -eu; \
     bin=/usr/local/bin/cua; \
     CUA_CLI_SOURCE="${CUA_CLI_SOURCE:-release}"; \
+    # cua-sdk-v0.10.1 is a pinned upstream release fixture; fork releases are
+    # not required for image builds.
     default_url='https://github.com/trycua/cua/releases/download/cua-sdk-v{version}/cua-cli-{version}-linux-{arch}.tar.gz'; \
     CUA_CLI_RELEASE_URL="${CUA_CLI_RELEASE_URL:-$default_url}"; \
     case "$CUA_CLI_SOURCE" in \

@@ -3,7 +3,7 @@ import Foundation
 enum LumeVersionCheck {
     static let releaseTagPrefix = "lume-v"
     static let nightlyReleaseTagPrefix = "nightly-lume-v"
-    static let releasesURL = URL(string: "https://api.github.com/repos/trycua/cua/releases?per_page=40")!
+    static let releasesURL = URL(string: "https://api.github.com/repos/goat-si/goat-cua/releases?per_page=40")!
     static let defaultInstallScriptURL =
         "https://cua.ai/lume/install.sh"
 
@@ -152,7 +152,7 @@ enum LumeVersionCheck {
         let prefix = selectedChannel == .nightly ? nightlyReleaseTagPrefix : releaseTagPrefix
         let releaseNotesURL =
             updateAvailable
-            ? "https://github.com/trycua/cua/releases/tag/\(prefix)\(latest ?? "")"
+            ? "https://github.com/goat-si/goat-cua/releases/tag/\(prefix)\(latest ?? "")"
             : nil
 
         return State(

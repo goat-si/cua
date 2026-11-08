@@ -43,7 +43,7 @@ interface SDKConfig {
 
 const ROOT_DIR = path.resolve(__dirname, '../..');
 const DOCS_BASE = path.join(ROOT_DIR, 'docs/content/docs');
-const GITHUB_REPO = 'trycua/cua';
+const GITHUB_REPO = 'goat-si/goat-cua';
 
 const SDK_CONFIGS: SDKConfig[] = [
   {
@@ -323,7 +323,7 @@ function formatDate(isoDate: string): string {
  * - Commit SHAs like (abc1234)
  *
  * Adds:
- * - Linked PR numbers: (#789) -> ([#789](https://github.com/trycua/cua/pull/789))
+ * - Linked PR numbers: (#789) -> ([#789](https://github.com/goat-si/goat-cua/pull/789))
  *
  * Detects:
  * - Bot-only releases (all entries are "Bump cua-X") -> "Maintenance release."
@@ -402,7 +402,7 @@ function processReleaseBody(body: string): string {
   // Strip heading markers (## / ###) from remaining content to avoid hierarchy issues
   processed = processed.replace(/^#{1,3}\s+/gm, '');
 
-  // Link PR numbers: (#123) -> ([#123](https://github.com/trycua/cua/pull/123))
+  // Link PR numbers: (#123) -> ([#123](https://github.com/goat-si/goat-cua/pull/123))
   processed = processed.replace(
     /\(#(\d+)\)/g,
     `([#$1](https://github.com/${GITHUB_REPO}/pull/$1))`

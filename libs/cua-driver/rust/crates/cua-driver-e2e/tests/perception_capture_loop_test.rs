@@ -227,7 +227,7 @@ fn swatch_extension_archive(directory: &Path) -> PathBuf {
             "version": EXTENSION_VERSION,
             "license": "MIT",
             "notice": "Cua E2E swatch worker; test support only",
-            "source_uri": "https://github.com/trycua/cua",
+            "source_uri": "https://github.com/goat-si/goat-cua",
             "source_revision": "e2e-swatch",
             "notice_file": {"path": "LICENSES/NOTICE.txt", "sha256": hash_of("LICENSES/NOTICE.txt")}
         }],
@@ -236,8 +236,8 @@ fn swatch_extension_archive(directory: &Path) -> PathBuf {
             "sha256": hash_of("SOURCE/swatch-worker.rs")
         },
         "license": "MIT",
-        "source": "https://github.com/trycua/cua",
-        "corresponding_source_uri": "https://github.com/trycua/cua",
+        "source": "https://github.com/goat-si/goat-cua",
+        "corresponding_source_uri": "https://github.com/goat-si/goat-cua",
         "corresponding_source_revision": "e2e-swatch",
         "provenance": "cua-driver-e2e deterministic swatch worker",
         "health_args": [],

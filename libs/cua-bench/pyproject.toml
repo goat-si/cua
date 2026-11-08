@@ -146,10 +146,10 @@ dev = [
 rl = []
 
 [project.urls]
-Homepage = "https://github.com/trycua/cua"
+Homepage = "https://github.com/goat-si/goat-cua"
 Documentation = "https://docs.trycua.com"
-Repository = "https://github.com/trycua/cua"
-Issues = "https://github.com/trycua/cua/issues"
+Repository = "https://github.com/goat-si/goat-cua"
+Issues = "https://github.com/goat-si/goat-cua/issues"
 
 [project.scripts]
 cb = "cua_bench.cli.main:main"

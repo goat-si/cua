@@ -56,7 +56,7 @@ jq -n --arg d "$child_digest" --argjson s "$child_size" --arg mt "$child_mt" \
   mediaType: "application/vnd.oci.image.index.v1+json",
   manifests: [{mediaType: $mt, digest: $d, size: $s, platform: {architecture: "amd64", os: "linux"}}],
   annotations: {
-    "org.opencontainers.image.source": "https://github.com/trycua/cua",
+    "org.opencontainers.image.source": "https://github.com/goat-si/goat-cua",
     "org.opencontainers.image.revision": $rev,
     "org.opencontainers.image.title": "windows-2022 containerDisk",
     "ai.cua.image.os": "windows",

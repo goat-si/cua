@@ -13,7 +13,7 @@ Don't tag a beta. To test what is on main:
 
 - install or switch to the Nightly channel (Settings, Advanced, Nightly), or
   download a nightly directly from the
-  [`cua-spaces-nightly` release](https://github.com/trycua/cua/releases/tag/cua-spaces-nightly)
+  [`cua-spaces-nightly` release](https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-nightly)
   (the `cua-spaces-nightly-*` files keep their names every night); or
 - run the **Nightly: Cua Spaces** workflow by hand (Actions, Run workflow) to
   build main now. `force` builds even when nothing changed; `ignore_ci`
@@ -65,7 +65,7 @@ itself was broken), do not move or delete the tag. Dispatch the workflow from
 `main`, which carries the fix, with the tag and its commit:
 
 ```sh
-gh workflow run cd-cua-spaces.yml -R trycua/cua --ref main \
+gh workflow run cd-cua-spaces.yml -R goat-si/goat-cua --ref main \
   -f rebuild_tag=cua-spaces-vX.Y.Z -f rebuild_sha=<full commit SHA of the tag>
 ```
 

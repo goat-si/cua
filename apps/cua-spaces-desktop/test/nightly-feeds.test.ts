@@ -30,8 +30,8 @@ function config(env: Record<string, string | undefined> = {}) {
 }
 
 const VERSION = "0.21.0-nightly.20261105.42";
-const BASE = "https://github.com/trycua/cua/releases/download/cua-spaces-nightly";
-const STABLE_BASE = "https://github.com/trycua/cua/releases/download/cua-spaces-latest";
+const BASE = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-nightly";
+const STABLE_BASE = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest";
 
 const winFeed = (arch: string, version = VERSION) => `version: ${version}
 files:

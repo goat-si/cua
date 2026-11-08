@@ -27,7 +27,7 @@ const VERSION_HEADING = /^#{2,} \[?\d+\.\d+\.\d+[^\]]*\]?/;
 
 function offlineGithub(repoRoot) {
   return {
-    repository: { owner: 'trycua', repo: 'cua', defaultBranch: 'main' },
+    repository: { owner: 'goat-si', repo: 'goat-cua', defaultBranch: 'main' },
     async getFileJson(file) {
       return JSON.parse(fs.readFileSync(path.join(repoRoot, file), 'utf8'));
     },

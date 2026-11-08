@@ -33,7 +33,7 @@ for arch in arm64 amd64; do
     "$root/scripts/images/check-tag-safety.sh" "$repo:$tag-$arch"
     (cd "$out" && oras push "${cfg[@]}" "$repo:$tag-$arch" \
         --artifact-type application/vnd.trycua.runtime.v1 \
-        --annotation "org.opencontainers.image.source=https://github.com/trycua/cua" \
+        --annotation "org.opencontainers.image.source=https://github.com/goat-si/goat-cua" \
         --annotation "org.opencontainers.image.version=$tag" \
         --annotation "org.opencontainers.image.description=Cua built-in Linux runtime VM disk (Colima $COLIMA_VERSION, gVisor $GVISOR_VERSION)" \
         --annotation "ai.cua.runtime.arch=$arch" \
@@ -48,5 +48,5 @@ done
 [ ${#children[@]} -gt 0 ] || { echo "no disks in $out" >&2; exit 2; }
 "$root/scripts/images/check-tag-safety.sh" "$repo:$tag"
 oras manifest index create "${cfg[@]}" "$repo:$tag" "${children[@]}" \
-    --annotation "org.opencontainers.image.source=https://github.com/trycua/cua" >/dev/null
+    --annotation "org.opencontainers.image.source=https://github.com/goat-si/goat-cua" >/dev/null
 echo "pushed $repo:$tag (${children[*]})"

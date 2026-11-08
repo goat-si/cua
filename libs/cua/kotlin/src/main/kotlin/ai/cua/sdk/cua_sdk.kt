@@ -51261,7 +51261,7 @@ sealed class CuaException(message: String): kotlin.Exception(message) {
     /**
      * Bug or I/O failure.
      *
-     * Fix: Report it with the message at https://github.com/trycua/cua/issues.
+     * Fix: Report it with the message at https://github.com/goat-si/goat-cua/issues.
      */
         class Internal(message: String) : CuaException(message)
 

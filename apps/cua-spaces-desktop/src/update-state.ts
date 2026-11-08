@@ -30,7 +30,7 @@ export const UPDATE_STARTUP_DELAY_MS = 15_000;
 /** And repeats at this pace while the app stays open. */
 export const UPDATE_POLL_MS = 4 * 60 * 60 * 1000;
 
-const RELEASES = "https://github.com/trycua/cua/releases/tag";
+const RELEASES = "https://github.com/goat-si/goat-cua/releases/tag";
 
 /** The release notes for a version: the repository's `cua-spaces-v<version>` tag; a nightly's are the rolling nightly release's. */
 export function releaseNotesUrl(version: string): string {

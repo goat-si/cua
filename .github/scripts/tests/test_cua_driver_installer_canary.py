@@ -110,7 +110,7 @@ def _run_report(
         text=True,
         env={
             "PATH": os.environ["PATH"],
-            "GITHUB_REPOSITORY": "trycua/cua",
+            "GITHUB_REPOSITORY": "goat-si/goat-cua",
             "GITHUB_RUN_ID": "42",
             "GITHUB_SHA": "abc123",
             "TRIGGER": "schedule",
@@ -129,14 +129,14 @@ def _run_report(
 
 def test_report_creates_then_comments_instead_of_duplicating(tmp_path: Path, workflow: dict) -> None:
     calls, _ = _run_report(tmp_path, workflow, open_issues="", env={"CANARY_RESULT": "failure"})
-    assert calls[0][:5] == ["issue", "list", "--repo", "trycua/cua", "--state"]
+    assert calls[0][:5] == ["issue", "list", "--repo", "goat-si/goat-cua", "--state"]
     assert calls[1][:8] == [
-        "issue", "create", "--repo", "trycua/cua",
+        "issue", "create", "--repo", "goat-si/goat-cua",
         "--title", "Cua Driver canonical installer canary is failing",
         "--label", "bug",
     ]
     assert calls[1][8] == "--body"
-    assert "Workflow run: https://github.com/trycua/cua/actions/runs/42" in calls[1][9]
+    assert "Workflow run: https://github.com/goat-si/goat-cua/actions/runs/42" in calls[1][9]
     assert len(calls) == 2
 
     (tmp_path / "gh-calls").unlink()

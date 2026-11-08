@@ -34,7 +34,7 @@ def newest_spaces_release(releases: list[dict]) -> dict | None:
 
 
 def main() -> int:
-    repo = os.environ.get("GITHUB_REPOSITORY", "trycua/cua")
+    repo = os.environ.get("GITHUB_REPOSITORY", "goat-si/goat-cua")
     listing = json.loads(gh("release", "list", "--repo", repo, "--limit", "30", "--json", "tagName,isLatest"))
     current = next((r["tagName"] for r in listing if r["isLatest"]), None)
     if current and current.startswith(OWNER_PREFIX):

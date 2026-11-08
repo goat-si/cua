@@ -6,7 +6,7 @@ Space), and watch it work beside the thread. A small Node server on
 TypeScript built with Vite.
 
 ```sh
-npx degit trycua/cua/examples/openkoalabot-example-ts my-app
+npx degit goat-si/goat-cua/examples/openkoalabot-example-ts my-app
 cd my-app && npm install
 npm run build && npm run build:web && npm run serve
 ```

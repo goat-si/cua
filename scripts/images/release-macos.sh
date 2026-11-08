@@ -49,7 +49,7 @@ for a in "$@"; do
 done
 [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "usage: release-macos.sh X.Y.Z [--dry-run]" >&2; exit 2; }
 [ "$(uname -s)-$(uname -m)" = Darwin-arm64 ] || [ "$DRY" = 1 ] || { echo "needs an Apple silicon Mac" >&2; exit 2; }
-REPO_SLUG=trycua/cua
+REPO_SLUG=goat-si/goat-cua
 TAG="cua-spacesd-v$VERSION"
 ASSET=cua-spacesd-macos-universal.app.zip
 CUA="${CUA:-cua}"

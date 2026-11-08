@@ -211,7 +211,7 @@ pub enum CuaError {
     TeleportRefused(String),
     /// Bug or I/O failure.
     ///
-    /// Fix: Report it with the message at https://github.com/trycua/cua/issues.
+    /// Fix: Report it with the message at https://github.com/goat-si/goat-cua/issues.
     #[error("internal: {0}")]
     Internal(String),
     /// A bare sandbox name matches sandboxes in more than one location. The

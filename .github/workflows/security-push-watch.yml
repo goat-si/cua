@@ -23,7 +23,7 @@ concurrency:
 jobs:
   watch:
     name: Check recent pushes
-    if: github.repository == 'trycua/cua'
+    if: github.repository == 'goat-si/goat-cua'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

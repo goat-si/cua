@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trycua/cua/.github/releases/cua-perception/sbom.schema.json",
+  "$id": "https://github.com/goat-si/goat-cua/.github/releases/cua-perception/sbom.schema.json",
   "title": "Cua Perception candidate SPDX SBOM",
   "type": "object",
   "required": ["spdxVersion", "dataLicense", "SPDXID", "name", "documentNamespace", "packages", "files", "relationships"],

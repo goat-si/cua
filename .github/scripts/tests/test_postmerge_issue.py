@@ -14,7 +14,7 @@ WF = "CI: Cua Spaces for macOS (SwiftUI)"
 
 def a(conclusion="failure", event="push", branch="main"):
     return argparse.Namespace(workflow=WF, conclusion=conclusion, event=event, branch=branch, default_branch="main",
-                              sha="0123456789abcdef", run_url="https://example.invalid/run/1", repo="trycua/cua")
+                              sha="0123456789abcdef", run_url="https://example.invalid/run/1", repo="goat-si/goat-cua")
 
 
 def runner(open_issues):

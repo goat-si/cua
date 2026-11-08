@@ -51,7 +51,7 @@ class FakeGitHub:
         self.commit_sha = commit_sha
 
     def pulls_for_commit(self, repository: str, commit_sha: str):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         assert commit_sha == self.commit_sha
         return [{"number": 12, "merge_commit_sha": commit_sha, "merged_at": "now"}]
 
@@ -174,7 +174,7 @@ def test_release_notes_dedupe_contributors_across_roles_and_login_case():
     manifest = {
         "displayName": "Cua Driver",
         "version": "0.13.1",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "tag": "cua-driver-rs-v0.13.1",
         "compareUrl": (
             "https://github.com/trycua/cua/compare/cua-driver-rs-v0.12.6...cua-driver-rs-v0.13.1"
@@ -203,7 +203,7 @@ def test_cua_driver_release_footer_explains_github_prerelease_label():
     manifest = {
         "displayName": "Cua Driver",
         "version": "0.17.0",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "tag": "cua-driver-rs-v0.17.0",
         "compareUrl": (
             "https://github.com/trycua/cua/compare/cua-driver-rs-v0.16.0...cua-driver-rs-v0.17.0"
@@ -230,8 +230,8 @@ def test_cross_repository_references_are_not_resolved_in_cua():
         "Closes https://github.com/other/project/issues/7 and closes #8. "
         "Salvaged from https://github.com/other/project/pull/9 and source-pr: #10"
     )
-    assert linked_issue_numbers(body, "trycua/cua") == [8]
-    assert source_pull_numbers(body, "trycua/cua") == [10]
+    assert linked_issue_numbers(body, "goat-si/goat-cua") == [8]
+    assert source_pull_numbers(body, "goat-si/goat-cua") == [10]
 
 
 def test_exact_squash_title_resolves_when_commit_association_is_missing():
@@ -240,7 +240,7 @@ def test_exact_squash_title_resolves_when_commit_association_is_missing():
             return []
 
         def pull(self, repository: str, number: int):
-            assert repository == "trycua/cua"
+            assert repository == "goat-si/goat-cua"
             assert number == 2235
             return {
                 "number": 2235,
@@ -253,19 +253,19 @@ def test_exact_squash_title_resolves_when_commit_association_is_missing():
         "feat(driver): add YAML and Rego permission policies (#2235)",
         "",
     )
-    pull = resolve_pull_for_commit(UnassociatedGitHub(), "trycua/cua", commit)
+    pull = resolve_pull_for_commit(UnassociatedGitHub(), "goat-si/goat-cua", commit)
     assert pull["number"] == 2235
 
     with pytest.raises(ReleaseError, match="not associated"):
         resolve_pull_for_commit(
             UnassociatedGitHub(),
-            "trycua/cua",
+            "goat-si/goat-cua",
             CommitRecord("def456", "feat(driver): no pull suffix", ""),
         )
     assert (
         resolve_pull_for_commit(
             UnassociatedGitHub(),
-            "trycua/cua",
+            "goat-si/goat-cua",
             CommitRecord("def456", "test(driver): no pull suffix", ""),
             required=False,
         )
@@ -298,12 +298,12 @@ def test_merged_pr_override_recovers_a_non_releasing_squash_title(tmp_path: Path
 
     class OverrideGitHub:
         def pulls_for_commit(self, repository: str, commit_sha: str):
-            assert repository == "trycua/cua"
+            assert repository == "goat-si/goat-cua"
             assert commit_sha == release_sha
             return [{"number": 2367, "merge_commit_sha": commit_sha, "merged_at": "now"}]
 
         def pull(self, repository: str, number: int):
-            assert repository == "trycua/cua"
+            assert repository == "goat-si/goat-cua"
             assert number == 2367
             return {
                 "number": 2367,
@@ -323,7 +323,7 @@ def test_merged_pr_override_recovers_a_non_releasing_squash_title(tmp_path: Path
 
     manifest = build_manifest(
         repo_root=tmp_path,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         product="cua-driver-rs",
         display_name="Cua Driver",
         version="0.9.1",
@@ -438,7 +438,7 @@ def test_manifest_is_pr_first_and_renders_deterministically(tmp_path: Path):
     (assets / "cua-driver").write_bytes(b"binary")
     manifest = build_manifest(
         repo_root=tmp_path,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         product="cua-driver-rs",
         display_name="Cua Driver",
         version="0.8.2",
@@ -460,7 +460,7 @@ def test_manifest_is_pr_first_and_renders_deterministically(tmp_path: Path):
         asset_dir=assets,
     )
 
-    assert manifest["repository"] == "trycua/cua"
+    assert manifest["repository"] == "goat-si/goat-cua"
     assert manifest["schema"].endswith(f"/{commit_sha}/.github/release-manifest.schema.json")
     assert manifest["bump"] == "patch"
     assert manifest["visualRequested"] is True
@@ -485,7 +485,7 @@ def test_manifest_is_pr_first_and_renders_deterministically(tmp_path: Path):
     Draft202012Validator(schema, format_checker=None).validate(manifest)
     body = render_body(manifest)
     assert "Thanks @pr-author, @pair-user, @source-author; reported by @bug-reporter." in body
-    assert "https://github.com/trycua/cua/pull/12" in body
+    assert "https://github.com/goat-si/goat-cua/pull/12" in body
     assert "releases/download/cua-driver-rs-v0.8.2/release-card.png" in body
     social = render_social(manifest)
     assert len(social.rstrip()) <= 280
@@ -494,7 +494,7 @@ def test_manifest_is_pr_first_and_renders_deterministically(tmp_path: Path):
     assert "@pr-author" not in social
     card = render_card_svg(manifest)
     assert "Cua Driver" in card
-    assert "trycua/cua" in card
+    assert "goat-si/goat-cua" in card
     alt = render_card_alt_text(manifest)
     assert alt.startswith("Cua Driver 0.8.2 release highlights:")
     assert "4 external contributors" in alt
@@ -502,7 +502,7 @@ def test_manifest_is_pr_first_and_renders_deterministically(tmp_path: Path):
 
     preflight = build_manifest(
         repo_root=tmp_path,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         product="cua-driver-rs",
         display_name="Cua Driver",
         version="0.8.2",
@@ -557,7 +557,7 @@ def test_nightly_manifest_attributes_maintenance_prs_without_a_versioned_changel
     }
     manifest = build_manifest(
         repo_root=tmp_path,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         product="cua-driver-rs",
         display_name="Cua Driver",
         version="0.8.2-nightly.20260812.42",
@@ -592,7 +592,7 @@ def test_nightly_manifest_attributes_maintenance_prs_without_a_versioned_changel
     with pytest.raises(ReleaseError, match="no releasing pull requests"):
         build_manifest(
             repo_root=tmp_path,
-            repository="trycua/cua",
+            repository="goat-si/goat-cua",
             product="cua-driver-rs",
             display_name="Cua Driver",
             version="0.8.2",
@@ -634,7 +634,7 @@ def test_unresolved_coauthor_is_credited_by_name_without_a_mention():
         UNRESOLVED_PULL,
         UNRESOLVED_COMMIT,
         FakeGitHub("deadbeef"),
-        "trycua/cua",
+        "goat-si/goat-cua",
         BEST_EFFORT_CONFIG,
         unresolved=unresolved,
     )
@@ -671,7 +671,7 @@ def test_unresolved_coauthor_resolves_through_commits_api_and_email_search():
         ],
     )
     contributors, _, _ = _change_contributors(
-        {**UNRESOLVED_PULL, "number": 12}, UNRESOLVED_COMMIT, via_commits, "trycua/cua", BEST_EFFORT_CONFIG
+        {**UNRESOLVED_PULL, "number": 12}, UNRESOLVED_COMMIT, via_commits, "goat-si/goat-cua", BEST_EFFORT_CONFIG
     )
     assert {"login": "from-commits", "role": "coauthor", "external": True} in contributors
 
@@ -681,7 +681,7 @@ def test_unresolved_coauthor_resolves_through_commits_api_and_email_search():
         UNRESOLVED_PULL,
         UNRESOLVED_COMMIT,
         via_search,
-        "trycua/cua",
+        "goat-si/goat-cua",
         BEST_EFFORT_CONFIG,
         unresolved=unresolved,
     )
@@ -694,9 +694,9 @@ def test_render_credits_unresolved_names_without_mentions():
         "displayName": "Cua Driver",
         "version": "1.0.0",
         "tag": "cua-driver-rs-v1.0.0",
-        "repository": "trycua/cua",
+        "repository": "goat-si/goat-cua",
         "previousTag": None,
-        "compareUrl": "https://github.com/trycua/cua/releases/tag/cua-driver-rs-v1.0.0",
+        "compareUrl": "https://github.com/goat-si/goat-cua/releases/tag/cua-driver-rs-v1.0.0",
         "changes": [
             {
                 "type": "fix",
@@ -763,7 +763,7 @@ def test_stable_release_with_unresolved_coauthor_publishes(tmp_path: Path):
 
     manifest = build_manifest(
         repo_root=root,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         product="cua-driver-rs",
         display_name="Cua Driver",
         version="0.8.2",
@@ -875,7 +875,7 @@ def test_rolling_issue_refresh_clears_entries_that_now_resolve():
     assert "_None right now._" in only_resolved
 
     hub = SearchHub({
-        "search/issues?q=repo%3Atrycua/cua%20is%3Aissue%20is%3Aopen%20in%3Atitle%20%22Contributor%20attribution%3A%20unresolved%20identities%22&per_page=20": {
+      "search/issues?q=repo%3Agoat-si/goat-cua%20is%3Aissue%20is%3Aopen%20in%3Atitle%20%22Contributor%20attribution%3A%20unresolved%20identities%22&per_page=20": {
             "items": [
                 {
                     "number": 5,
@@ -885,7 +885,7 @@ def test_rolling_issue_refresh_clears_entries_that_now_resolve():
             ]
         }
     })
-    report_unresolved_identities(hub, "trycua/cua", [], {**config, "identityOverrides": {
+    report_unresolved_identities(hub, "goat-si/goat-cua", [], {**config, "identityOverrides": {
         "one@example.com": "one", "two@example.com": "two", "three@example.com": "three"}}, "v4")
     assert hub.writes and hub.writes[0][0] == "PATCH"
     assert "_None right now._" in hub.writes[0][2]["body"]
@@ -918,7 +918,7 @@ def test_pr_2805_coauthor_resolves_through_trusted_identity_override():
         pull,
         commit,
         FakeGitHub(commit.sha),
-        "trycua/cua",
+        "goat-si/goat-cua",
         config,
     )
 
@@ -948,7 +948,7 @@ def test_pr_3266_squash_coauthor_resolves_through_verified_identity_override():
         pull,
         commit,
         FakeGitHub(commit.sha),
-        "trycua/cua",
+        "goat-si/goat-cua",
         config,
     )
     assert contributors == [
@@ -965,11 +965,11 @@ class SquashTrailerGitHub:
         self.commits = commits
 
     def pull(self, repository: str, number: int):
-        assert (repository, number) == ("trycua/cua", 4500)
+        assert (repository, number) == ("goat-si/goat-cua", 4500)
         return {"number": 4500, "merged_by": {"login": self.merger}}
 
     def pull_commits(self, repository: str, number: int):
-        assert (repository, number) == ("trycua/cua", 4500)
+        assert (repository, number) == ("goat-si/goat-cua", 4500)
         return [
             {"author": {"login": login}, "commit": {"author": {"name": name}}}
             for login, name in self.commits
@@ -1004,7 +1004,7 @@ def test_merging_maintainer_squash_trailer_resolves_to_that_maintainer():
         [("wszkxlllll", "wszkxlllll"), ("ddupont808", "Dillon DuPont")],
     )
     contributors, _, _ = _change_contributors(
-        PULL_4500, SQUASH_4500, github, "trycua/cua", SQUASH_CONFIG
+        PULL_4500, SQUASH_4500, github, "goat-si/goat-cua", SQUASH_CONFIG
     )
     assert contributors == [
         {"login": "wszkxlllll", "role": "author", "external": True},
@@ -1019,7 +1019,7 @@ def test_pr_4500_squash_trailer_resolves_with_the_checked_in_config():
         [("wszkxlllll", "wszkxlllll"), ("ddupont808", "Dillon DuPont")],
     )
     contributors, _, _ = _change_contributors(
-        PULL_4500, SQUASH_4500, github, "trycua/cua", config
+        PULL_4500, SQUASH_4500, github, "goat-si/goat-cua", config
     )
     assert {"login": "ddupont808", "role": "coauthor", "external": False} in contributors
 
@@ -1043,7 +1043,7 @@ def test_squash_trailer_without_maintainer_provenance_is_credited_by_name(merger
         PULL_4500,
         SQUASH_4500,
         SquashTrailerGitHub(merger, commits),
-        "trycua/cua",
+        "goat-si/goat-cua",
         SQUASH_CONFIG,
         unresolved=unresolved,
     )
@@ -1167,7 +1167,7 @@ def test_no_release_metadata_only_pulls_are_not_required_changelog_entries(tmp_p
     def manifest(pulls: dict[str, tuple[int, list[str]]], metadata_paths=(changelog, version)):
         return build_manifest(
             repo_root=tmp_path,
-            repository="trycua/cua",
+            repository="goat-si/goat-cua",
             product="cua-driver-rs",
             display_name="Cua Driver",
             version="0.8.2",

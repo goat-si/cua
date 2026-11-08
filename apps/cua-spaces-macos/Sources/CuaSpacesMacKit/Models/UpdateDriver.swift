@@ -39,9 +39,9 @@ public struct UpdateState: Equatable, Sendable {
     /// for a nightly, the rolling nightly release (its notes list the changes).
     public static func notesURL(version: String) -> String {
         if version.split(separator: "+").first?.contains("-nightly") == true {
-            return "https://github.com/trycua/cua/releases/tag/cua-spaces-nightly"
+            return "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-nightly"
         }
-        return "https://github.com/trycua/cua/releases/tag/cua-spaces-v\(version)"
+        return "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v\(version)"
     }
 
     /// The bridge's record; absent values are explicit nulls.

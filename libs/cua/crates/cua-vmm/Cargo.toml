@@ -3,7 +3,7 @@ name = "cua-vmm"
 version.workspace = true
 edition = "2024"
 license.workspace = true
-repository = "https://github.com/trycua/cua"
+repository = "https://github.com/goat-si/goat-cua"
 description = "Local sandbox runtimes for the cua SDK: Lume, QEMU, OCI containers (gVisor) and microVMs (Firecracker, Virtualization.framework, Apple Containerization)."
 
 [features]

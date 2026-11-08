@@ -67,10 +67,10 @@ env:
 
 jobs:
   resolve:
-    # Registry names belong to trycua/cua (staging builds no images); only a
+    # Registry names belong to goat-si/goat-cua (staging builds no images); only a
     # successful tag-pushed cua-spacesd run counts.
     if: >-
-      github.repository == 'trycua/cua' && (
+      github.repository == 'goat-si/goat-cua' && (
         github.event_name == 'workflow_dispatch' || (
           github.event.workflow_run.conclusion == 'success' &&
           github.event.workflow_run.event == 'push' &&

@@ -2,7 +2,7 @@
 """Check a main-built Cua Spaces build set before a tag run promotes it (CUA-2067).
 
     spaces_verify_build_set.py DIR --tag-version V --tag-sha SHA \
-        [--repository trycua/cua] [--skip-attestations]
+        [--repository goat-si/goat-cua] [--skip-attestations]
 
 Fails (exit 1, one reason per line) unless DIR holds a complete set:
 - build-manifest.json exists and its source SHA is the tag's commit;
@@ -87,7 +87,7 @@ def main() -> int:
     p.add_argument("dir")
     p.add_argument("--tag-version", required=True)
     p.add_argument("--tag-sha", required=True)
-    p.add_argument("--repository", default="trycua/cua")
+    p.add_argument("--repository", default="goat-si/goat-cua")
     p.add_argument("--skip-attestations", action="store_true", help="tests only")
     a = p.parse_args()
     root = Path(a.dir)

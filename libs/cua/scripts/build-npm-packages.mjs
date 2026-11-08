@@ -123,7 +123,7 @@ for (const platform of platforms) {
     version,
     description: `Native cua SDK library for ${platform.triple}`,
     license: "MIT AND MPL-2.0",
-    repository: { type: "git", url: "git+https://github.com/trycua/cua.git" },
+    repository: { type: "git", url: "git+https://github.com/goat-si/goat-cua.git" },
     os: [platform.os],
     cpu: [platform.cpu],
     files,

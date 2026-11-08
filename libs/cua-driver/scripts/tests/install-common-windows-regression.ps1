@@ -164,7 +164,7 @@ $integrityCheck = $installAst.Find({
 Assert-True ($null -ne $integrityCheck) 'Assert-ReleaseZipIntegrity not found in install.ps1'
 . ([scriptblock]::Create($integrityCheck.Extent.Text))
 
-$Repo = 'trycua/cua'
+$Repo = 'goat-si/goat-cua'
 $TagPrefix = 'cua-driver-rs-v'
 $ChecksumsRequiredFrom = [version]'0.31.0'
 $SigstoreRequiredFrom = [version]'0.32.0'

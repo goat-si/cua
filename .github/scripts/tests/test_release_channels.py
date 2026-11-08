@@ -521,7 +521,7 @@ def test_manifest_uses_stable_authority_with_a_separately_versioned_asset_tree(
         source_sha,
         "cua-driver-rs-v0.19.3",
         assets,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         registry_path=registry,
         root=root,
         attribution_config_path=ROOT / ".github/release-attribution-config.json",
@@ -568,12 +568,12 @@ def test_nightly_manifest_reuses_pr_attribution_and_renders_contributors(tmp_pat
 
     class NightlyGitHub:
         def pulls_for_commit(self, repository: str, commit_sha: str):
-            assert repository == "trycua/cua"
+            assert repository == "goat-si/goat-cua"
             assert commit_sha == source_sha
             return [{"number": 42, "merge_commit_sha": commit_sha, "merged_at": "now"}]
 
         def pull(self, repository: str, number: int):
-            assert repository == "trycua/cua"
+            assert repository == "goat-si/goat-cua"
             assert number == 42
             return {
                 "number": 42,
@@ -598,7 +598,7 @@ def test_nightly_manifest_reuses_pr_attribution_and_renders_contributors(tmp_pat
         source_sha,
         "lume-v0.5.3",
         assets,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         registry_path=registry,
         root=root,
         attribution_config_path=ROOT / ".github/release-attribution-config.json",
@@ -621,7 +621,7 @@ def test_nightly_manifest_reuses_pr_attribution_and_renders_contributors(tmp_pat
     body = render_nightly_body(manifest)
     assert "LUME_VERSION=nightly-lume-v0.5.4-nightly.20260812.42" in body
     assert "never replace stable" in body
-    assert "[#42](https://github.com/trycua/cua/pull/42)" in body
+    assert "[#42](https://github.com/goat-si/goat-cua/pull/42)" in body
     assert body.count("@nightly-contributor") == 2
 
 
@@ -631,7 +631,7 @@ class RehearsalGitHub:
         self.title = title
 
     def pulls_for_commit(self, repository: str, commit_sha: str):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         assert commit_sha == self.source_sha
         return [
             {
@@ -642,7 +642,7 @@ class RehearsalGitHub:
         ]
 
     def pull(self, repository: str, number: int):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         assert number == 42
         return {
             "number": 42,
@@ -689,7 +689,7 @@ class RehearsalReleaseApi:
             "body": body["body"],
             "target_commitish": body["target_commitish"],
             "upload_url": "https://uploads.example/releases/8/assets{?name,label}",
-            "html_url": f"https://github.com/trycua/cua/releases/tag/{body['tag_name']}",
+            "html_url": f"https://github.com/goat-si/goat-cua/releases/tag/{body['tag_name']}",
         }
         return self.release
 
@@ -858,7 +858,7 @@ def test_nightly_transaction_rehearses_plan_stage_manifest_publish_and_retry(
                 "--asset-dir",
                 str(assets),
                 "--repository",
-                "trycua/cua",
+                "goat-si/goat-cua",
                 "--output",
                 str(manifest_path),
             ]
@@ -884,7 +884,7 @@ def test_nightly_transaction_rehearses_plan_stage_manifest_publish_and_retry(
     monkeypatch.setattr(github_release, "GitHubApi", lambda *_args, **_kwargs: api)
     publish_args = [
         "--repository",
-        "trycua/cua",
+        "goat-si/goat-cua",
         "--tag",
         plan["tag"],
         "--sha",

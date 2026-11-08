@@ -117,7 +117,7 @@ env:
   # The CLI sidecar downloads cua-spacesd from this repository's releases.
   CUA_RELEASE_REPOSITORY: ${{ github.repository }}
   # Fail closed on the canonical repository (a main build must be signed).
-  REQUIRE_SIGNING: ${{ github.repository == 'trycua/cua' }}
+  REQUIRE_SIGNING: ${{ github.repository == 'goat-si/goat-cua' }}
 
 jobs:
   # Decides whether to build and fixes the identity of the build: version,
@@ -996,7 +996,7 @@ jobs:
           set -euo pipefail
           expect=()
           if [ "$REQUIRE_SIGNING" = true ] && { [ "$SWIFT_SIGNED" != true ] || [ "$WINDOWS_SIGNED" != true ]; }; then
-            echo "::error::a trycua/cua main build must be fully signed (swift=$SWIFT_SIGNED windows=$WINDOWS_SIGNED)"
+            echo "::error::a goat-si/goat-cua main build must be fully signed (swift=$SWIFT_SIGNED windows=$WINDOWS_SIGNED)"
             exit 1
           fi
           if [ "$SWIFT_SIGNED" = true ]; then expect+=(swift); else

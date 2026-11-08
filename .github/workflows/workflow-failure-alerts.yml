@@ -56,7 +56,7 @@ concurrency:
 jobs:
   alert:
     # Forks copy this workflow and its cron; they hold no intake password and must not post alerts (CUA-2286).
-    if: github.repository == 'trycua/cua'
+    if: github.repository == 'goat-si/goat-cua'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:

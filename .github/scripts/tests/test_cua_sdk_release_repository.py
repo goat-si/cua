@@ -1,9 +1,9 @@
 """The cua SDK / cua-spacesd / Cua Spaces release workflows run the same on
-trycua/cua and on trycua/cua-staging.
+goat-si/goat-cua and on trycua/cua-staging.
 
 Staging must build, sign what it can, and publish GitHub prereleases from its
 own repository, while never reaching PyPI, npm or real registry names, and
-trycua/cua must keep failing closed on missing signing secrets.
+goat-si/goat-cua must keep failing closed on missing signing secrets.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[3]
 WORKFLOWS = ROOT / ".github/workflows"
 RELEASE_WORKFLOWS = ("cd-cua-sdk.yml", "cd-cua-spacesd.yml", "cd-cua-spaces.yml")
-CANONICAL = "github.repository == 'trycua/cua'"
+CANONICAL = "github.repository == 'goat-si/goat-cua'"
 
 
 def text(name: str) -> str:
@@ -43,9 +43,9 @@ def step(name: str, job: str, title: str) -> dict:
 @pytest.mark.parametrize("name", RELEASE_WORKFLOWS)
 def test_release_urls_derive_from_the_repository(name: str) -> None:
     source = text(name)
-    # No release URL, feed or identity is pinned to trycua/cua.
-    assert "github.com/trycua/cua/" not in source
-    assert "--repo trycua/cua" not in source
+    # No release URL, feed or identity is pinned to goat-si/goat-cua.
+    assert "github.com/goat-si/goat-cua/" not in source
+    assert "--repo goat-si/goat-cua" not in source
     assert CANONICAL in source
 
 
@@ -77,7 +77,7 @@ def test_spaces_builds_use_the_release_config_overlay() -> None:
 def test_spaces_signing_fails_closed_only_on_trycua_cua() -> None:
     wf = workflow("cd-cua-spaces.yml")
     assert wf["env"]["REQUIRE_SIGNING"] == (
-        "${{ github.repository == 'trycua/cua' && (startsWith(github.ref, 'refs/tags/') "
+        "${{ github.repository == 'goat-si/goat-cua' && (startsWith(github.ref, 'refs/tags/') "
         "|| (github.event_name == 'workflow_dispatch' && inputs.rebuild_tag != '')) }}"
     )
     gate = step("cd-cua-spaces.yml", "build-macos", "Signing configuration")["run"]
@@ -208,12 +208,12 @@ def test_spaces_prereleases_never_become_latest_or_move_canonical_feeds() -> Non
     assert "--latest=false" in publish and "--prerelease" in publish
     assert "UNSIGNED" in publish
     feeds = step("cd-cua-spaces.yml", "installer-manifest", "Update the rolling feeds")
-    assert feeds["if"] == "needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'trycua/cua'"
+    assert feeds["if"] == "needs.electron-plan.outputs.prerelease != 'true' || github.repository != 'goat-si/goat-cua'"
 
 
 def test_sdk_registries_publish_only_from_trycua_cua() -> None:
     wf = workflow("cd-cua-sdk.yml")
-    assert wf["env"]["CANONICAL"] == "${{ github.repository == 'trycua/cua' }}"
+    assert wf["env"]["CANONICAL"] == "${{ github.repository == 'goat-si/goat-cua' }}"
     pypi = step("cd-cua-sdk.yml", "publish", "Publish wheels to PyPI")["run"]
     # The first upload is PyPI (cua-cli wheels before cua, see the wheel list).
     upload = pypi.index("twine upload --skip-existing")
@@ -229,7 +229,7 @@ def test_sdk_registries_publish_only_from_trycua_cua() -> None:
 def test_sdk_signing_fails_closed_only_on_trycua_cua() -> None:
     native = workflow("cd-cua-sdk.yml")["jobs"]["native"]
     assert native["env"]["REQUIRE_SIGNING"] == (
-        "${{ needs.version.outputs.publish == 'true' && github.repository == 'trycua/cua' }}"
+        "${{ needs.version.outputs.publish == 'true' && github.repository == 'goat-si/goat-cua' }}"
     )
     mac = step("cd-cua-sdk.yml", "native", "Developer ID sign and notarize")["run"]
     assert 'if [ "$REQUIRE_SIGNING" = true ]; then' in mac
@@ -240,7 +240,7 @@ def test_sdk_signing_fails_closed_only_on_trycua_cua() -> None:
 def test_spacesd_signing_fails_closed_only_on_trycua_cua() -> None:
     mac = workflow("cd-cua-spacesd.yml")["jobs"]["macos"]
     assert mac["env"]["REQUIRE_SIGNING"] == (
-        "${{ needs.version.outputs.publish == 'true' && github.repository == 'trycua/cua' }}"
+        "${{ needs.version.outputs.publish == 'true' && github.repository == 'goat-si/goat-cua' }}"
     )
     gate = step("cd-cua-spacesd.yml", "windows", "Require Authenticode")
     assert CANONICAL in gate["if"]
@@ -248,14 +248,14 @@ def test_spacesd_signing_fails_closed_only_on_trycua_cua() -> None:
 
 def test_driver_packages_publish_only_from_trycua_cua() -> None:
     source = text("cd-py-cua-driver.yml")
-    assert workflow("cd-py-cua-driver.yml")["env"]["CANONICAL"] == "${{ github.repository == 'trycua/cua' }}"
+    assert workflow("cd-py-cua-driver.yml")["env"]["CANONICAL"] == "${{ github.repository == 'goat-si/goat-cua' }}"
     assert source.count("--access public --dry-run") == 2
     assert 'if [ "$CANONICAL" = true ]; then\n            python -m twine upload' in source
 
 
 @pytest.mark.parametrize("name", ("cd-image-linux.yml", "cd-image-omarchy.yml", "cd-image-macos.yml"))
 def test_images_never_push_off_trycua_cua(name: str) -> None:
-    assert 'if [ "$publish" = true ] && [ "$GITHUB_REPOSITORY" != trycua/cua ]; then' in text(name)
+    assert 'if [ "$publish" = true ] && [ "$GITHUB_REPOSITORY" != goat-si/goat-cua ]; then' in text(name)
 
 
 def test_docker_hub_pushes_only_from_trycua_cua() -> None:
@@ -296,13 +296,13 @@ def test_release_config_points_the_updater_at_the_building_repository(tmp_path: 
 
 def test_release_config_requires_a_stable_tag_to_match_the_app_version(tmp_path: Path) -> None:
     base = json.loads((ROOT / "apps/cua-spaces/src-tauri/tauri.conf.json").read_text())
-    code, conf, err = release_config(tmp_path, base["version"], "trycua/cua")
+    code, conf, err = release_config(tmp_path, base["version"], "goat-si/goat-cua")
     assert code == 0, err
     assert conf["plugins"]["updater"]["endpoints"] == base["plugins"]["updater"]["endpoints"]
     assert "wix" not in conf["bundle"].get("windows", {})
-    code, _, err = release_config(tmp_path / "x", "99.0.0", "trycua/cua")
+    code, _, err = release_config(tmp_path / "x", "99.0.0", "goat-si/goat-cua")
     assert code == 1 and "does not match" in err
-    for bad_version, bad_repo in (("1.2", "trycua/cua"), ("1.2.3", "trycua"), ("1.2.3", "a/b'c")):
+    for bad_version, bad_repo in (("1.2", "goat-si/goat-cua"), ("1.2.3", "trycua"), ("1.2.3", "a/b'c")):
         assert release_config(tmp_path, bad_version, bad_repo)[0] == 1
 
 

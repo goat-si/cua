@@ -180,7 +180,7 @@ which only apps on "Update to: Beta" read.
    newest beta item).
 2. Run it for real (`dry_run: false`). On a test install of the beta app on
    Windows or Linux, set the Update channel to Beta, then
-   `curl -L https://github.com/trycua/cua/releases/download/cua-spaces-latest/beta.yml`
+   `curl -L https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest/beta.yml`
    shows the field; the updater log prints `Staging percentage: 0.1, percentage: ...`.
 3. `stage: pause`, check the beta appcast item is gone and `stagingPercentage: 0`
    is set, then `stage: 100` and check the item is back with no interval.

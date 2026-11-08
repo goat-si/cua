@@ -1,7 +1,7 @@
 name: "CD: Cua Driver SDK packages"
 
 # Triggered after a Cua Driver release to publish version-locked Python wheels
-# and the TypeScript SDK plus its platform-native npm packages. Only trycua/cua
+# and the TypeScript SDK plus its platform-native npm packages. Only goat-si/goat-cua
 # publishes to PyPI and npm; any other repository (trycua/cua-staging) runs
 # `twine check` and `npm publish --dry-run` instead.
 
@@ -27,7 +27,7 @@ env:
   # Cua programs and packages run here never send usage telemetry.
   CUA_TELEMETRY: "0"
   DO_NOT_TRACK: "1"
-  CANONICAL: ${{ github.repository == 'trycua/cua' }}
+  CANONICAL: ${{ github.repository == 'goat-si/goat-cua' }}
 
 jobs:
   # Extract version from the triggering workflow or input
@@ -236,7 +236,7 @@ jobs:
           if [ "$CANONICAL" = true ]; then
             python -m twine upload --skip-existing --verbose dist/*
           else
-            echo "::notice::$GITHUB_REPOSITORY is not trycua/cua: wheels checked, not uploaded to PyPI (DRY RUN)"
+            echo "::notice::$GITHUB_REPOSITORY is not goat-si/goat-cua: wheels checked, not uploaded to PyPI (DRY RUN)"
           fi
       - name: Attach Python wheels to the Cua Driver release
         env:
@@ -264,7 +264,7 @@ jobs:
         working-directory: libs/cua-driver/typescript
         run: |
           npm pkg set repository.type=git \
-            repository.url=git+https://github.com/trycua/cua.git
+            repository.url=git+https://github.com/goat-si/goat-cua.git
       - name: Install and build TypeScript SDK
         working-directory: libs/cua-driver/typescript
         run: |
@@ -319,7 +319,7 @@ jobs:
           ROOT_PACKAGE="$RUNNER_TEMP/cua-driver-npm/trycua-cua-driver-${{ needs.get-version.outputs.version }}.tgz"
           REPOSITORY=$(tar -xOf "$ROOT_PACKAGE" package/package.json | node -e \
             "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).repository?.url ?? ''))")
-          test "$REPOSITORY" = "git+https://github.com/trycua/cua.git"
+          test "$REPOSITORY" = "git+https://github.com/goat-si/goat-cua.git"
           ls -lh "$RUNNER_TEMP/cua-driver-npm"/*.tgz
       - name: Smoke-test the packed Linux SDK
         run: |
@@ -376,7 +376,7 @@ jobs:
           VERSION: ${{ needs.get-version.outputs.version }}
         run: |
           if [ "$CANONICAL" != true ]; then
-            echo "::notice::$GITHUB_REPOSITORY is not trycua/cua: npm publish --dry-run"
+            echo "::notice::$GITHUB_REPOSITORY is not goat-si/goat-cua: npm publish --dry-run"
             npm publish "./dist/trycua-cua-driver-$VERSION.tgz" --access public --dry-run
           elif npm view "@trycua/cua-driver@$VERSION" version >/dev/null 2>&1; then
             echo "@trycua/cua-driver@$VERSION already published; skipping"

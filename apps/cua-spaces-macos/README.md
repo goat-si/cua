@@ -517,7 +517,7 @@ The app updates itself with [Sparkle](https://sparkle-project.org) 2
 (SwiftPM, pinned in `Package.resolved`; Settings, About drives it through
 the core's `about` module). Info.plist names the feed and the EdDSA public
 key: `SUFeedURL` is
-`https://github.com/trycua/cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml`,
+`https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml`,
 the rolling `cua-spaces-latest` release that already carries the Spaces
 updater feed. GitHub's repository-wide "latest" release belongs to whichever
 component released last, so a `/releases/latest/download/` URL would not

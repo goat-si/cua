@@ -37,7 +37,7 @@ class DocsGateTests(unittest.TestCase):
         with open(os.path.join(root, "docs", "guide.mdx"), "w") as fh:
             fh.write(
                 "Run `ghcr.io/trycua/linux:24.04` or the disk ghcr.io/trycua/linux:24.04-disk.\n"
-                "See github.com/trycua/cua and trycua/cua (a repo, not an image).\n"
+                "See github.com/goat-si/goat-cua and goat-si/goat-cua (a repo, not an image).\n"
                 "<!-- cua-image-unverified -->\n"
                 "docker run ghcr.io/trycua/example:1.0\n"
                 "Template ghcr.io/trycua/linux:<tag> is not a ref.\n"

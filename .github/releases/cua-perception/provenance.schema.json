@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trycua/cua/.github/releases/cua-perception/provenance.schema.json",
+  "$id": "https://github.com/goat-si/goat-cua/.github/releases/cua-perception/provenance.schema.json",
   "title": "Cua Perception redacted candidate provenance",
   "type": "object",
   "additionalProperties": false,

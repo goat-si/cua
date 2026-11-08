@@ -6,7 +6,7 @@ effects, an API for designing your own motions, and a small canvas player
 that draws the real Cua cursor.
 
 It is a TypeScript port of the Rust crate
-[`cua-cursor-motion`](https://github.com/trycua/cua/tree/main/libs/cua-driver/rust/crates/cua-cursor-motion),
+[`cua-cursor-motion`](https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust/crates/cua-cursor-motion),
 which Cua Driver uses for every move. Both are tested against the same golden
 trajectories, so a motion you design here plays the same in the driver. No
 runtime dependencies; about 14 KB gzipped.
@@ -14,12 +14,12 @@ runtime dependencies; about 14 KB gzipped.
 ## Use it
 
 Cua Cursor Motion is not published to npm. It lives in the
-[trycua/cua](https://github.com/trycua/cua) repository. Build it once from a
+[goat-si/goat-cua](https://github.com/goat-si/goat-cua) repository. Build it once from a
 checkout and copy the single-file ES module and its types into your project:
 
 ```bash
-git clone --depth 1 https://github.com/trycua/cua
-cd cua/libs/typescript
+git clone --depth 1 https://github.com/goat-si/goat-cua
+cd goat-cua/libs/typescript
 pnpm install
 pnpm --filter @trycua/cursor-motion build
 cp cursor-motion/dist/index.js   ../../../my-app/src/vendor/cua-cursor-motion.js

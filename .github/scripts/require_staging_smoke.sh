@@ -17,7 +17,7 @@
 # By hand, for a rerun or when the dispatch could not be sent:
 #   gh workflow run spaces-staging-smoke.yml -R trycua/cloud -f component=<c> -f sha=<tag sha>
 # or, after the release PR merges and the tag exists:
-#   GH_TOKEN=<statuses:write on trycua/cua> python3 scripts/spaces-staging/smoke.py \
+#   GH_TOKEN=<statuses:write on goat-si/goat-cua> python3 scripts/spaces-staging/smoke.py \
 #     --post-status <component> --sha <tag commit> --digest sha256:<artifact set>
 # then re-run the failed "staging smoke is green" job on the tag run; the
 # release jobs continue. For Cua Driver, the same command with

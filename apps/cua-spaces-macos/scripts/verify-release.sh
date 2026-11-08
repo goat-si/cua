@@ -43,7 +43,7 @@
 #
 #   scripts/verify-release.sh cua-spaces-0.8.0-darwin-universal.dmg
 #   scripts/verify-release.sh --dir DIR --version 0.8.0-beta.6 [--expect swift,electron,windows,appcast,feed,manifest]
-#       [--repo trycua/cua] [--team YCK386LBJ7] [--arch universal|arm64|x86_64]
+#       [--repo goat-si/goat-cua] [--team YCK386LBJ7] [--arch universal|arm64|x86_64]
 #       [--windows-signer "Cua AI, Inc."] [--no-launch] [--no-keyvault-smoke]
 #
 # --dir finds every asset of --version in DIR by its release name; --expect

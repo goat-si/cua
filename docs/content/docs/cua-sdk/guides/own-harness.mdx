@@ -166,7 +166,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cua-sdk = { git = "https://github.com/trycua/cua", tag = "cua-sdk-v0.12.1" }
+cua-sdk = { git = "https://github.com/goat-si/goat-cua", tag = "cua-sdk-v0.12.1" }
 serde_json = "1"
 tokio = { version = "1", features = ["full"] }
 ```
@@ -343,7 +343,7 @@ or `DriverService/CallTool`. Server-streaming RPCs, such as
 cua-spacesd serves native gRPC and gRPC-Web on port `3211`, with server
 reflection. Send the env token as `authorization: Bearer <token>`. The
 contract is the `.proto` files in
-[`libs/cua/proto`](https://github.com/trycua/cua/tree/main/libs/cua/proto)
+[`libs/cua/proto`](https://github.com/goat-si/goat-cua/tree/main/libs/cua/proto)
 (package `cua.env.v1`), so there is nothing to map by hand: generate a client
 for your language with [buf](https://buf.build). For Go, put this
 `buf.gen.yaml` in your module:
@@ -365,7 +365,7 @@ plugins:
 ```
 
 ```bash skip="third-party-cli"
-buf generate "https://github.com/trycua/cua.git#ref=main,subdir=libs/cua/proto"
+buf generate "https://github.com/goat-si/goat-cua.git#ref=main,subdir=libs/cua/proto"
 ```
 
 Then call it like any gRPC service. The examples below reach a spacesd at

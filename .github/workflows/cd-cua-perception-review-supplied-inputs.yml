@@ -86,7 +86,7 @@ jobs:
           REVIEWED_SOURCE_SHA: 289372dea8b2b11f572f0f6a15824315bc74026b
         run: |
           set -euo pipefail
-          [[ "$GITHUB_REPOSITORY" == "trycua/cua" ]]
+          [[ "$GITHUB_REPOSITORY" == "goat-si/goat-cua" ]]
           run_json="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$REVIEWED_RUN_ID")"
           [[ "$(jq -r .id <<<"$run_json")" == "$REVIEWED_RUN_ID" ]]
           [[ "$(jq -r .status <<<"$run_json")" == "completed" ]]
@@ -209,7 +209,7 @@ jobs:
           EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
-          test "$GITHUB_REPOSITORY" = "trycua/cua"
+          test "$GITHUB_REPOSITORY" = "goat-si/goat-cua"
           [[ "$REQUESTED_PR_NUMBER" =~ ^[1-9][0-9]*$ ]]
           [[ "$REQUESTED_SHA" =~ ^[0-9a-f]{40}$ ]]
           test "$(git rev-parse HEAD)" = "$REQUESTED_SHA"

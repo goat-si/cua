@@ -94,7 +94,7 @@ struct UpdatesTests {
         #expect(model.view.updates?.channels.map(\.id) == ["stable", "nightly"])
         model.choose(channel: "nightly")
         #expect(updater.channels == ["nightly"])
-        #expect(updater.feedURL == "https://github.com/trycua/cua/releases/download/cua-spaces-nightly/cua-spaces-nightly-appcast.xml")
+        #expect(updater.feedURL == "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-nightly/cua-spaces-nightly-appcast.xml")
         #expect(saved == [.nightly])
         #expect(model.view.updates?.channels.first(where: \.active)?.id == "nightly")
         // A switch checks the new channel at once.
@@ -114,8 +114,8 @@ struct UpdatesTests {
         let model = UpdatesModel(updater: FixtureUpdater(), channel: .nightly, info: info)
         #expect(model.view.versionLine == "Version 0.21.0-nightly.20261105.42+55e1f5d, built 5 Nov 2026")
         #expect(UpdateState.notesURL(version: "0.21.0-nightly.20261105.42+55e1f5d")
-            == "https://github.com/trycua/cua/releases/tag/cua-spaces-nightly")
-        #expect(UpdateState.notesURL(version: "0.20.0") == "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.20.0")
+            == "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-nightly")
+        #expect(UpdateState.notesURL(version: "0.20.0") == "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.20.0")
     }
 
     // MARK: - The in-app update flow
@@ -129,7 +129,7 @@ struct UpdatesTests {
         #expect(model.updateState.currentVersion == "0.2.0-staging.5")
         updater.simulateFound(version: "0.2.0-staging.6")
         #expect(model.updateState.status == .available)
-        #expect(model.updateState.notesUrl == "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.2.0-staging.6")
+        #expect(model.updateState.notesUrl == "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.2.0-staging.6")
         updater.simulateProgress(percent: 40)
         #expect(model.updateState.status == .downloading && model.updateState.percent == 40)
         #expect(!(model.input.checking))
@@ -162,7 +162,7 @@ struct UpdatesTests {
         let busy = UpdateState(status: .downloading, currentVersion: "0.9.2", version: "0.9.3", percent: 12,
                                notesUrl: UpdateState.notesURL(version: "0.9.3")).json
         #expect(busy["percent"] as? Int == 12)
-        #expect(busy["notesUrl"] as? String == "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3")
+        #expect(busy["notesUrl"] as? String == "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3")
     }
 
     @Test func aFlowReducesSparklesStepsToPercent() {

@@ -3,7 +3,7 @@
 The uninstallers (uninstall.sh / uninstall.ps1) download nothing from a release,
 so they are copied as they are, to publish next to the installers.
 
-The installers default to trycua/cua: their download base and the Sigstore
+The installers default to goat-si/goat-cua: their download base and the Sigstore
 identity they verify (the release workflow at its tag) both derive from it.
 A release workflow publishes the installers from the repository that built
 the release, so it stamps that repository in (a staging repository's feed
@@ -30,9 +30,9 @@ REPO_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})/[A-Za-z0-9._-]{1,100}$
 
 # (file, the exact default line fragment, its replacement template)
 DEFAULTS = {
-    "install.sh": ('REPO="${CUA_INSTALL_REPO:-trycua/cua}"', 'REPO="${{CUA_INSTALL_REPO:-{repo}}}"'),
+    "install.sh": ('REPO="${CUA_INSTALL_REPO:-goat-si/goat-cua}"', 'REPO="${{CUA_INSTALL_REPO:-{repo}}}"'),
     "install.ps1": (
-        "$Repo = if ($env:CUA_INSTALL_REPO) { $env:CUA_INSTALL_REPO } else { 'trycua/cua' }",
+        "$Repo = if ($env:CUA_INSTALL_REPO) { $env:CUA_INSTALL_REPO } else { 'goat-si/goat-cua' }",
         "$Repo = if ($env:CUA_INSTALL_REPO) {{ $env:CUA_INSTALL_REPO }} else {{ '{repo}' }}",
     ),
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trycua/cua/.github/releases/cua-perception/executed-verification.schema.json",
+  "$id": "https://github.com/goat-si/goat-cua/.github/releases/cua-perception/executed-verification.schema.json",
   "title": "Cua Perception executed candidate verification",
   "type": "object",
   "additionalProperties": false,

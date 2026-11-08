@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   pin-latest:
-    if: github.repository == 'trycua/cua'
+    if: github.repository == 'goat-si/goat-cua'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

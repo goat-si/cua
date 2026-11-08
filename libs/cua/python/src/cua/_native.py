@@ -30170,7 +30170,7 @@ class CuaError:  # type: ignore
         """
         Bug or I/O failure.
 
-        Fix: Report it with the message at https://github.com/trycua/cua/issues.
+        Fix: Report it with the message at https://github.com/goat-si/goat-cua/issues.
 """
         def __repr__(self):
             return "CuaError.Internal({})".format(repr(str(self)))
