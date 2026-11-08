@@ -182,8 +182,8 @@ def adapt_recipe(payload, profile, provenance, archive_name, expected_sha, downl
 
 def generate(archive, expected_sha, download_url, output):
     verify.require(isinstance(download_url, str) and re.fullmatch(
-        r"https://github\.com/trycua/cua/releases/download/[A-Za-z0-9][A-Za-z0-9._-]*/" + re.escape(archive.name),
-        download_url), "requires exact trycua/cua release URL, safe tag, and archive filename")
+        r"https://github\.com/goat-si/goat-cua/releases/download/[A-Za-z0-9][A-Za-z0-9._-]*/" + re.escape(archive.name),
+        download_url), "requires exact goat-si/goat-cua release URL, safe tag, and archive filename")
     payload, profile, provenance = reviewed_kit(archive, expected_sha)
     recipe = adapt_recipe(payload, profile, provenance, archive.name, expected_sha, download_url)
     # Never truncate an existing recipe, including a symlink target.

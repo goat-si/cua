@@ -3,7 +3,7 @@
 
 Each ```yaml block that uses the action (in the pages below) is wrapped into a
 complete workflow: a block with `jobs:` gets `on:`; a steps fragment gets a
-job around it. The local `uses: trycua/cua/.github/actions/cua-sandbox@...` is
+job around it. The local `uses: goat-si/goat-cua/.github/actions/cua-sandbox@...` is
 rewritten to `./.github/actions/cua-sandbox`, so actionlint also checks the
 inputs against action.yml.
 
@@ -25,7 +25,7 @@ PAGES = [
     "docs/content/docs/cua-driver/guides/vms-and-remote.mdx",
 ]
 FENCE = re.compile(r"^```yaml[^\n]*\n(.*?)^```", re.M | re.S)
-REMOTE = re.compile(r"trycua/cua/\.github/actions/cua-sandbox@\S+")
+REMOTE = re.compile(r"goat-si/goat-cua/\.github/actions/cua-sandbox@\S+")
 
 
 def workflows() -> list[tuple[str, str]]:

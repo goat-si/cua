@@ -111,7 +111,7 @@ pkgs.rustPlatform.buildRustPackage {
 
   meta = with pkgs.lib; {
     description = "Cross-platform MCP server for computer-use automation";
-    homepage = "https://github.com/trycua/cua";
+    homepage = "https://github.com/goat-si/goat-cua";
     license = licenses.mit;
     mainProgram = "cua-driver";
     platforms = platforms.linux;

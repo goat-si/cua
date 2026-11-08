@@ -17,7 +17,7 @@ use pip_preview::{PipBackend, PipConfig};
 pub fn start(_cfg: &PipConfig) -> anyhow::Result<Box<dyn PipBackend>> {
     Err(anyhow::anyhow!(
         "PiP preview is not yet implemented on Linux — track \
-         trycua/cua follow-up issue for status"
+         goat-si/goat-cua follow-up issue for status"
     ))
 }
 
@@ -30,7 +30,7 @@ mod tests {
         let error = start(&PipConfig::default()).err().expect("unsupported PiP");
         assert_eq!(
             error.to_string(),
-            "PiP preview is not yet implemented on Linux — track trycua/cua follow-up issue for status"
+            "PiP preview is not yet implemented on Linux — track goat-si/goat-cua follow-up issue for status"
         );
     }
 }

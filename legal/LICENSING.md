@@ -1,5 +1,11 @@
 # Licensing
 
+GOAT Cua (`goat-si/goat-cua`) is an independent fork of
+[`trycua/cua`](https://github.com/trycua/cua). Cua AI, Inc. retains its upstream
+copyrights and licence ownership. Goat-si's modifications are attributed in the
+root licence; this fork relationship does not relicense upstream code or grant
+rights in upstream trademarks.
+
 ## How licensing works here
 
 The root [`LICENSE.md`](../LICENSE.md) is the MIT License, and it covers everything

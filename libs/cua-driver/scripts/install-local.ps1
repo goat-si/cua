@@ -397,7 +397,7 @@ if (Test-Path -LiteralPath $HintsTxt) {
     # Repo layout changed or .txt missing — fall back to one-line
     # essentials so users still know what to do next.
     Write-Host "Next steps: $installedBinary --version  |  $installedBinary mcp-config  |  $installedBinary skills install"
-    Write-Host "Docs: https://github.com/trycua/cua/tree/main/libs/cua-driver/rust"
+    Write-Host "Docs: https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust"
 }
 
 # The local/release identity split deliberately stopped source installs from

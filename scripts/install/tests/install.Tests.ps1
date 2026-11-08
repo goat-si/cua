@@ -54,7 +54,7 @@ Describe 'functions' {
     }
 
     It 'only downloads over HTTPS (loopback HTTP for tests)' {
-        { Assert-DownloadUrl 'https://github.com/trycua/cua/a.zip' } | Should -Not -Throw
+        { Assert-DownloadUrl 'https://github.com/goat-si/goat-cua/a.zip' } | Should -Not -Throw
         { Assert-DownloadUrl 'http://127.0.0.1:8080/a.zip' } | Should -Not -Throw
         { Assert-DownloadUrl 'http://localhost/a.zip' } | Should -Not -Throw
         { Assert-DownloadUrl 'http://example.com/a.zip' } | Should -Throw '*non-HTTPS*'
@@ -66,8 +66,8 @@ Describe 'functions' {
 
     It 'accepts a main-branch app signature only with the tag identity or a signed claim for the tag' {
         Get-CosignIdentity ([pscustomobject]@{ component = 'app'; version = '1.2.3' }) |
-            Should -Be 'https://github.com/trycua/cua/.github/workflows/cd-cua-spaces.yml@refs/tags/cua-spaces-v1.2.3'
-        Get-RebuiltIdentity | Should -Be 'https://github.com/trycua/cua/.github/workflows/cd-cua-spaces.yml@refs/heads/main'
+            Should -Be 'https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-spaces.yml@refs/tags/cua-spaces-v1.2.3'
+        Get-RebuiltIdentity | Should -Be 'https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-spaces.yml@refs/heads/main'
     }
 
     # A POSIX shell script stands in for cosign: it passes only the main
@@ -77,7 +77,7 @@ Describe 'functions' {
         New-Item -ItemType Directory -Force -Path $dir | Out-Null
         $cosign = Join-Path $dir 'cosign'
         $main = Get-RebuiltIdentity
-        Set-Content -LiteralPath $cosign -Value "#!/bin/sh`nid=; repo=; ref=; trig=; prev=`nfor a in `"`$@`"; do case `"`$prev`" in --certificate-identity) id=`$a;; --certificate-github-workflow-repository) repo=`$a;; --certificate-github-workflow-ref) ref=`$a;; --certificate-github-workflow-trigger) trig=`$a;; esac; prev=`$a; done`n[ `"`$id`" = '$main' ] && [ `"`$repo`" = trycua/cua ] && [ `"`$ref`" = refs/heads/main ] && [ `"`$trig`" = workflow_dispatch ] && exit 0`nexit 1"
+        Set-Content -LiteralPath $cosign -Value "#!/bin/sh`nid=; repo=; ref=; trig=; prev=`nfor a in `"`$@`"; do case `"`$prev`" in --certificate-identity) id=`$a;; --certificate-github-workflow-repository) repo=`$a;; --certificate-github-workflow-ref) ref=`$a;; --certificate-github-workflow-trigger) trig=`$a;; esac; prev=`$a; done`n[ `"`$id`" = '$main' ] && [ `"`$repo`" = goat-si/goat-cua ] && [ `"`$ref`" = refs/heads/main ] && [ `"`$trig`" = workflow_dispatch ] && exit 0`nexit 1"
         chmod +x $cosign
         $file = Join-Path $dir 'cua-spaces-1.2.3-windows-x64-setup.exe'
         Set-Content -LiteralPath $file -Value 'nsis'
@@ -455,7 +455,7 @@ Describe 'install.ps1' {
         Set-Content -LiteralPath (Join-Path $sig 'cua-cli-1.2.3-windows-x64.zip.sigstore.json') -Value '{}'
         & $Python.Source $Tool --component cli --version 1.2.3 --dir $sig --out (Join-Path $sig 'release-artifacts.json')
         $log = Join-Path $env:CUA_TEST_ROOT 'cosign.log'
-        $want = 'https://github.com/trycua/cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v1.2.3'
+        $want = 'https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v1.2.3'
         if ($IsWindows) {
             # A batch file stands in for cosign.exe on Windows.
             Set-Content -LiteralPath (Join-Path $bin 'cosign.cmd') -Value "@echo off`r`necho %*>>`"$log`"`r`necho %* | findstr /C:`"--certificate-identity $want`" >nul && exit /b 0`r`nexit /b 1"

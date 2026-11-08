@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   issue:
-    if: github.repository == 'trycua/cua' && github.event.workflow_run.head_branch == github.event.repository.default_branch && (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch') && github.event.workflow_run.conclusion != 'cancelled' && github.event.workflow_run.conclusion != 'skipped'
+    if: github.repository == 'goat-si/goat-cua' && github.event.workflow_run.head_branch == github.event.repository.default_branch && (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch') && github.event.workflow_run.conclusion != 'cancelled' && github.event.workflow_run.conclusion != 'skipped'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

@@ -151,9 +151,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # A trycua/cua link to a path this repo has but trycua/cua does not yet
+      # A goat-si/goat-cua link to a path this repo has but goat-si/goat-cua does not yet
       # (it lands there at release) would 404; skip exactly those.
-      - name: Skip links to paths not released to trycua/cua yet
+      - name: Skip links to paths not released to goat-si/goat-cua yet
         run: scripts/ci/lychee-ignore-unreleased.sh >> .lycheeignore
 
       # 500 and 502-504 are accepted: a transient upstream error (ai.google.dev

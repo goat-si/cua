@@ -17,7 +17,7 @@
 
 /// The repository the files are published in (Cloud Shell clones it, the
 /// Deploy to Azure link reads the template from it).
-pub const REPO: &str = "https://github.com/trycua/cua";
+pub const REPO: &str = "https://github.com/goat-si/goat-cua";
 
 /// The branch or tag of [`REPO`] to read.
 pub const REF: &str = "main";
@@ -254,7 +254,7 @@ mod tests {
     fn links_point_at_the_published_files() {
         assert_eq!(
             raw_url(REPO, REF, "azure/cua-spaces.json"),
-            "https://raw.githubusercontent.com/trycua/cua/main/libs/cua/crates/cua-byoc/templates/azure/cua-spaces.json"
+            "https://raw.githubusercontent.com/goat-si/goat-cua/main/libs/cua/crates/cua-byoc/templates/azure/cua-spaces.json"
         );
         assert_eq!(
             gcp::cloud_shell_url(REPO, REF),

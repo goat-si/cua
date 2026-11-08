@@ -5,7 +5,7 @@
 # Release artifact (placeholder until the Windows build is published by the
 # cua-spacesd release workflow; mirrors the Linux tarball naming used by
 # libs/cua-spacesd/packaging/install.sh):
-#   https://github.com/trycua/cua/releases/download/cua-spacesd-v<VERSION>/cua-spacesd-x86_64-pc-windows-msvc.zip
+#   https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v<VERSION>/cua-spacesd-x86_64-pc-windows-msvc.zip
 #
 # Token: CUA_ENV_TOKEN, else C:\ProgramData\cua\env-token (copied from
 # C:\OEM\env-token when provided, otherwise generated). The token reaches the
@@ -27,7 +27,7 @@ $Port = if ($env:CUA_ENV_PORT) { $env:CUA_ENV_PORT } else { '3211' }
 $InstallDir = 'C:\Program Files\cua-spacesd'
 $DataDir = 'C:\ProgramData\cua'
 $TokenFile = Join-Path $DataDir 'env-token'
-$Url = "https://github.com/trycua/cua/releases/download/cua-spacesd-v$Version/cua-spacesd-x86_64-pc-windows-msvc.zip"
+$Url = "https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v$Version/cua-spacesd-x86_64-pc-windows-msvc.zip"
 
 Write-Log -LogFile $script:LogFile -Message "=== Installing cua-spacesd $Version ==="
 

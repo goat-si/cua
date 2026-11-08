@@ -337,7 +337,7 @@ describe("electron adapter", () => {
   });
 
   it("reads update.get and update.install from the host, and turns update.changed into the page's event", async () => {
-    const state = { status: "downloaded", currentVersion: "0.9.2", version: "0.9.3", percent: 100, notesUrl: "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3", message: null };
+    const state = { status: "downloaded", currentVersion: "0.9.2", version: "0.9.3", percent: 100, notesUrl: "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3", message: null };
     const asked: string[] = [];
     const { win, subs } = electronHost(bridged((method) => (asked.push(method), { ok: true, result: state })));
     const a = createElectronAdapter(win);

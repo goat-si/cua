@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   digest:
-    if: github.repository == 'trycua/cua'
+    if: github.repository == 'goat-si/goat-cua'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

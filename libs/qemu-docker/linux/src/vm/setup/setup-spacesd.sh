@@ -4,7 +4,7 @@
 # gRPC + gRPC-Web on 0.0.0.0:3211 inside the desktop session.
 #
 # Same artifact as libs/cua-spacesd/packaging/install.sh installs:
-#   https://github.com/trycua/cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz
+#   https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz
 #
 # Token: $CUA_ENV_TOKEN, else /run/cua/env-token, else /etc/cua/env-token.
 # Setup writes /etc/cua/env-token (from /opt/oem/env-token when provided,
@@ -34,7 +34,7 @@ case "$(uname -m)" in
     aarch64|arm64) ARCH=aarch64 ;;
     *) log "Unsupported architecture: $(uname -m)"; exit 1 ;;
 esac
-URL="https://github.com/trycua/cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz"
+URL="https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v${VERSION}/cua-spacesd-${ARCH}-unknown-linux-gnu.tar.gz"
 
 INSTALLED=false
 for i in 1 2 3 4 5; do

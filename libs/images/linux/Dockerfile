@@ -214,7 +214,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
     bin=/usr/local/bin/cua-spacesd; \
     CUA_SPACESD_SOURCE="${CUA_SPACESD_SOURCE:-${CUA_GUESTD_SOURCE:-${CUA_ENV_DRIVER_SOURCE:-local}}}"; \
     CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION:-${CUA_GUESTD_VERSION:-${CUA_ENV_DRIVER_VERSION:-0.1.0}}}"; \
-    default_url='https://github.com/trycua/cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz'; \
+    default_url='https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz'; \
     CUA_SPACESD_RELEASE_URL="${CUA_SPACESD_RELEASE_URL:-${CUA_GUESTD_RELEASE_URL:-${CUA_ENV_DRIVER_RELEASE_URL:-$default_url}}}"; \
     case "$CUA_SPACESD_SOURCE" in \
       local) \
@@ -227,7 +227,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
         case "$TARGETARCH" in amd64) arch=x86_64 ;; arm64) arch=aarch64 ;; *) arch="$TARGETARCH" ;; esac; \
         CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION#cua-spacesd-v}"; CUA_SPACESD_VERSION="${CUA_SPACESD_VERSION#v}"; \
         if [ "$CUA_SPACESD_VERSION" = latest ]; then \
-          CUA_SPACESD_VERSION="$(curl -fsSL 'https://api.github.com/repos/trycua/cua/releases?per_page=100' \
+          CUA_SPACESD_VERSION="$(curl -fsSL 'https://api.github.com/repos/goat-si/goat-cua/releases?per_page=100' \
             | python3 -c 'import json,sys; print(next(r["tag_name"][len("cua-spacesd-v"):] for r in json.load(sys.stdin) if r["tag_name"].startswith("cua-spacesd-v") and not r["draft"] and not r["prerelease"]))')"; \
           echo "latest cua-spacesd release: $CUA_SPACESD_VERSION"; \
         fi; \
@@ -263,7 +263,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
     set -eu; \
     bin=/usr/local/bin/cua; \
     CUA_CLI_SOURCE="${CUA_CLI_SOURCE:-release}"; \
-    default_url='https://github.com/trycua/cua/releases/download/cua-sdk-v{version}/cua-cli-{version}-linux-{arch}.tar.gz'; \
+    default_url='https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v{version}/cua-cli-{version}-linux-{arch}.tar.gz'; \
     CUA_CLI_RELEASE_URL="${CUA_CLI_RELEASE_URL:-$default_url}"; \
     case "$CUA_CLI_SOURCE" in \
       local) \
@@ -282,7 +282,7 @@ RUN --mount=type=bind,source=linux/dist,target=/dist \
           case "$TARGETARCH" in amd64) CUA_CLI_SHA256="$CUA_CLI_DEFAULT_SHA256_AMD64" ;; arm64) CUA_CLI_SHA256="$CUA_CLI_DEFAULT_SHA256_ARM64" ;; esac; \
         fi; \
         if [ -z "$CUA_CLI_SHA256" ]; then \
-          sums="https://github.com/trycua/cua/releases/download/cua-sdk-v$CUA_CLI_VERSION/checksums.txt"; \
+          sums="https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v$CUA_CLI_VERSION/checksums.txt"; \
           CUA_CLI_SHA256="$(curl -fsSL --retry 5 "$sums" | awk -v f="$(basename "$url")" '$2 == f || $2 == "*" f { print $1 }')"; \
           [ -n "$CUA_CLI_SHA256" ] || { echo "no sha256 for $(basename "$url") in $sums" >&2; exit 1; }; \
         fi; \

@@ -1483,7 +1483,7 @@ jobs:
             -exec cp {} release-upload/ \;
           # Ship the installer scripts as per-tag release assets too. The
           # canonical one-liners both fetch from
-          # raw.githubusercontent.com/trycua/cua/main/... so they always
+          # raw.githubusercontent.com/goat-si/goat-cua/main/... so they always
           # serve the current installer regardless of release flags
           # (no installer reads the repo-wide Latest release).
           # The tag-pinned asset URLs below are a convenience for users who

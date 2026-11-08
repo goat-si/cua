@@ -10,8 +10,8 @@ link. Every other Release Please component gets the same body from
 `.github/workflows/release-notes.yml` through this script:
 
     release_notes.py plan --tag cua-sdk-v0.4.2
-    release_notes.py render --tag cua-sdk-v0.4.2 --sha <sha> --repository trycua/cua --out-dir out
-    release_notes.py apply --tag cua-sdk-v0.4.2 --repository trycua/cua --body out/release-body.md
+    release_notes.py render --tag cua-sdk-v0.4.2 --sha <sha> --repository goat-si/goat-cua --out-dir out
+    release_notes.py apply --tag cua-sdk-v0.4.2 --repository goat-si/goat-cua --body out/release-body.md
 
 `publish-draft` lets a legacy CD workflow publish the Release Please draft it
 built assets for, instead of creating a second release for the same tag.

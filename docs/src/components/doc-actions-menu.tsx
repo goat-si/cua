@@ -17,7 +17,7 @@ export function DocActionsMenu({ pageUrl, pageTitle, filePath }: DocActionsMenuP
       if (!filePath) {
         throw new Error('No file path available');
       }
-      const githubRawUrl = `https://raw.githubusercontent.com/trycua/cua/refs/heads/main/docs/content/docs/${filePath}`;
+      const githubRawUrl = `https://raw.githubusercontent.com/goat-si/goat-cua/refs/heads/main/docs/content/docs/${filePath}`;
 
       const response = await fetch(githubRawUrl);
       if (!response.ok) {
@@ -50,7 +50,7 @@ export function DocActionsMenu({ pageUrl, pageTitle, filePath }: DocActionsMenuP
       return;
     }
 
-    const githubEditUrl = `https://github.com/trycua/cua/edit/main/docs/content/docs/${filePath}`;
+    const githubEditUrl = `https://github.com/goat-si/goat-cua/edit/main/docs/content/docs/${filePath}`;
     window.open(githubEditUrl, '_blank', 'noopener,noreferrer');
   };
 

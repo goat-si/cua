@@ -138,47 +138,47 @@ class FakeApi:
 
 def test_apply_replaces_only_the_body_of_a_draft():
     api = FakeApi([{"id": 7, "tag_name": "cua-sdk-v0.4.2", "draft": True, "body": "rp"}])
-    assert release_notes.apply(api, "trycua/cua", "cua-sdk-v0.4.2", "rendered", attempts=1, delay=0)
-    assert api.patches == [("repos/trycua/cua/releases/7", {"body": "rendered"})]
+    assert release_notes.apply(api, "goat-si/goat-cua", "cua-sdk-v0.4.2", "rendered", attempts=1, delay=0)
+    assert api.patches == [("repos/goat-si/goat-cua/releases/7", {"body": "rendered"})]
 
 
 def test_apply_is_idempotent_and_refuses_a_missing_or_duplicated_release():
     same = FakeApi([{"id": 7, "tag_name": "core-v0.3.3", "draft": False, "body": "rendered"}])
-    assert not release_notes.apply(same, "trycua/cua", "core-v0.3.3", "rendered", attempts=1, delay=0)
+    assert not release_notes.apply(same, "goat-si/goat-cua", "core-v0.3.3", "rendered", attempts=1, delay=0)
     assert same.patches == []
     with pytest.raises(ReleaseError, match="no GitHub release"):
-        release_notes.apply(FakeApi([]), "trycua/cua", "core-v0.3.3", "x", attempts=2, delay=0)
+        release_notes.apply(FakeApi([]), "goat-si/goat-cua", "core-v0.3.3", "x", attempts=2, delay=0)
     twice = FakeApi([{"id": 1, "tag_name": "core-v0.3.3"}, {"id": 2, "tag_name": "core-v0.3.3"}])
     with pytest.raises(ReleaseError, match="expected one"):
-        release_notes.apply(twice, "trycua/cua", "core-v0.3.3", "x", attempts=1, delay=0)
+        release_notes.apply(twice, "goat-si/goat-cua", "core-v0.3.3", "x", attempts=1, delay=0)
 
 
 def test_publish_draft_keeps_the_body_and_never_takes_latest():
     api = FakeApi([{"id": 9, "tag_name": "agent-v0.9.1", "draft": True, "body": "changelog"}])
     assert release_notes.publish_draft(
-        api, "trycua/cua", "agent-v0.9.1", asset_dir=None, prerelease=False, name="cua-agent v0.9.1"
+        api, "goat-si/goat-cua", "agent-v0.9.1", asset_dir=None, prerelease=False, name="cua-agent v0.9.1"
     )
     assert api.patches == [(
-        "repos/trycua/cua/releases/9",
+        "repos/goat-si/goat-cua/releases/9",
         {"draft": False, "prerelease": False, "make_latest": "false", "name": "cua-agent v0.9.1"},
     )]
     published = FakeApi([{"id": 9, "tag_name": "agent-v0.9.1", "draft": False}])
-    assert release_notes.publish_draft(published, "trycua/cua", "agent-v0.9.1", asset_dir=None, prerelease=False)
+    assert release_notes.publish_draft(published, "goat-si/goat-cua", "agent-v0.9.1", asset_dir=None, prerelease=False)
     assert published.patches == []
     # No draft: the legacy workflow creates the release as before.
-    assert not release_notes.publish_draft(FakeApi([]), "trycua/cua", "agent-v0.9.1", asset_dir=None, prerelease=False)
+    assert not release_notes.publish_draft(FakeApi([]), "goat-si/goat-cua", "agent-v0.9.1", asset_dir=None, prerelease=False)
 
 
 def test_publish_draft_adopts_an_untagged_release_please_draft():
     draft = {"id": 5, "tag_name": "untagged-abc", "name": "cua-spacesd: v0.12.5", "draft": True, "body": "rp"}
     other = {"id": 6, "tag_name": "untagged-def", "name": "cua-spacesd: v0.12.4", "draft": True}
     api = FakeApi([other, draft])
-    assert release_notes.publish_draft(api, "trycua/cua", "cua-spacesd-v0.12.5", asset_dir=None, prerelease=False)
+    assert release_notes.publish_draft(api, "goat-si/goat-cua", "cua-spacesd-v0.12.5", asset_dir=None, prerelease=False)
     assert api.patches == [(
-        "repos/trycua/cua/releases/5",
+        "repos/goat-si/goat-cua/releases/5",
         {"draft": False, "prerelease": False, "make_latest": "false", "tag_name": "cua-spacesd-v0.12.5"},
     )]
-    assert not release_notes.publish_draft(FakeApi([other]), "trycua/cua", "cua-spacesd-v0.12.5", asset_dir=None, prerelease=False)
+    assert not release_notes.publish_draft(FakeApi([other]), "goat-si/goat-cua", "cua-spacesd-v0.12.5", asset_dir=None, prerelease=False)
 
 
 def test_version_check_catches_a_package_file_that_drifted(tmp_path):
@@ -223,7 +223,7 @@ def test_only_a_legacy_baseline_relaxes_the_changelog_citation_check(monkeypatch
     monkeypatch.setattr(release_notes, "_build", fake_build)
     for previous in ("bench-v0.3.0", "bench-v0.3.1"):
         monkeypatch.setattr(release_notes.release_attribution, "find_previous_tag", lambda *_a, p=previous: p)
-        release_notes.render(repo_root=ROOT, repository="trycua/cua", tag="bench-v0.3.2",
+        release_notes.render(repo_root=ROOT, repository="goat-si/goat-cua", tag="bench-v0.3.2",
                              sha="a" * 40, out_dir=tmp_path, ref=None, github=object())
         assert release_notes.release_attribution.changelog_references_change is original
     assert seen == {"bench-v0.3.0": True, "bench-v0.3.1": False}

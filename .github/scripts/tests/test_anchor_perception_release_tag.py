@@ -15,7 +15,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[3]
 SCRIPT = ROOT / ".github/scripts/anchor_perception_release_tag.sh"
 VERSION_PATH = "libs/cua-driver/rust/crates/cua-perception/VERSION"
-REPOSITORY = "trycua/cua"
+REPOSITORY = "goat-si/goat-cua"
 
 # The fake gh keeps remote tags in a JSON file. Like the real gh, a GET for a
 # missing ref prints the 404 error body on stdout and exits nonzero.

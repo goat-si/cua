@@ -15,7 +15,7 @@ request or feature-branch run says nothing about main. Standard library only,
 talks to GitHub through the gh CLI.
 
     postmerge_issue.py --workflow "CI: Cua Spaces" --conclusion failure --event push \
-        --branch main --default-branch main --sha <sha> --run-url <url> --repo trycua/cua
+        --branch main --default-branch main --sha <sha> --run-url <url> --repo goat-si/goat-cua
 """
 
 from __future__ import annotations

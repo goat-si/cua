@@ -786,7 +786,7 @@ plugin because it can change independently of this plan.
    {
      "action": "spawn",
      "runner_id": "cua-bg-input-<unique-suffix>",
-     "repository_url": "https://github.com/trycua/cua.git",
+     "repository_url": "https://github.com/goat-si/goat-cua.git",
      "duration_minutes": 180
    }
    ```

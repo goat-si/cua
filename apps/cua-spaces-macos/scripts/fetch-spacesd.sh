@@ -20,7 +20,7 @@ if [ -n "${CUA_SPACESD_BIN:-}" ]; then
   bin="$CUA_SPACESD_BIN"
 else
   version="$(tr -d '[:space:]' < "$repo/libs/cua-spacesd/VERSION")"
-  release_repo="${CUA_RELEASE_REPOSITORY:-trycua/cua}"
+release_repo="${CUA_RELEASE_REPOSITORY:-goat-si/goat-cua}"
   dir="$here/.build/spacesd/$version"
   bin="$dir/cua-spacesd"
   if [ ! -x "$bin" ]; then

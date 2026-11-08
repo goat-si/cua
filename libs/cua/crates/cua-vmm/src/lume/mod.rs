@@ -115,7 +115,7 @@ fn macos_mount_shares(mounts: &[crate::Mount]) -> Result<Vec<SharedDir>> {
 
 /// Official installer (same one the docs and the Python SDK point to).
 pub const INSTALL_URL: &str =
-    "https://raw.githubusercontent.com/trycua/cua/main/libs/lume/scripts/install.sh";
+    "https://raw.githubusercontent.com/goat-si/goat-cua/main/libs/lume/scripts/install.sh";
 
 /// Configuration for [`LumeRuntime`].
 #[derive(Clone, Debug)]

@@ -343,7 +343,7 @@ public final class FixtureUpdater: UpdaterDriving {
     public var channels: [String] = []
     public var feedURL: String?
     /// The release appcast, so fixtures follow Nightly as the shipped app does.
-    public var stableFeed: String? = "https://github.com/trycua/cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml"
+    public var stableFeed: String? = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml"
     public var onUpdateEvent: ((String) -> Void)?
     public private(set) var checks = 0
     /// What the page shows; scripted by tests through the `simulate` calls.

@@ -12,7 +12,7 @@ import { SidebarUpdateButton, TopBarUpdateIndicator } from "./update-indicator";
 
 afterEach(cleanup);
 
-const NOTES = "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3";
+const NOTES = "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3";
 const ready: Partial<UpdateState> = { status: "downloaded", version: "0.9.3", percent: 100, notesUrl: NOTES };
 
 /** The demo host with an updater in `update`, recording what the page asks of it. */

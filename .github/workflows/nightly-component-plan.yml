@@ -80,7 +80,7 @@ jobs:
             | jq 'add' > "$RUNNER_TEMP/releases.json"
 
       # The first nightly diffs from the component's stable tag, which lives
-      # in trycua/cua, not here (see ensure_upstream_tag.sh).
+      # in goat-si/goat-cua, not here (see ensure_upstream_tag.sh).
       - name: Fetch the stable base tag read-only
         env:
           COMPONENT: ${{ inputs.component }}

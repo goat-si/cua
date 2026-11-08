@@ -74,7 +74,7 @@ jobs:
           TARGET_TRIPLE: ${{ inputs.target_triple }}
         run: |
           set -euo pipefail
-          test "$GITHUB_REPOSITORY" = "trycua/cua"
+          test "$GITHUB_REPOSITORY" = "goat-si/goat-cua"
           [[ "$SOURCE_REF" =~ ^[0-9a-f]{40}$ ]]
           [[ "$REVIEWED_REF" =~ ^refs/(pull/[0-9]+/head|tags/[A-Za-z0-9._/-]+)$ ]]
           test "$SOURCE_REF" = "$(git -C source rev-parse HEAD)"

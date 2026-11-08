@@ -138,7 +138,7 @@ if [[ "$_cua_install_common_loaded" == "0" ]]; then
     cua_driver_lsregister_path() { return 1; }
 fi
 
-REPO="trycua/cua"
+REPO="goat-si/goat-cua"
 BINARY_NAME="cua-driver"
 TAG_PREFIX="cua-driver-rs-v"
 NIGHTLY_TAG_PREFIX="nightly-cua-driver-rs-v"
@@ -1612,7 +1612,7 @@ if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
     esac
     if [[ "$NO_MODIFY_PATH" != "1" ]] && [[ -n "$SHELL_RC" ]]; then
         {
-            printf '\n# Added by cua-driver-rs installer — see https://github.com/trycua/cua\n'
+            printf '\n# Added by cua-driver-rs installer — see https://github.com/goat-si/goat-cua\n'
             printf 'export PATH="%s:$PATH"\n' "$BIN_DIR"
         } >> "$SHELL_RC"
         log "appended PATH update to $SHELL_RC — open a new shell or run \`source $SHELL_RC\`"
@@ -1704,7 +1704,7 @@ else
     # user always gets enough to recover, even if hint-text fetching is
     # blocked. Skip everything else.
     echo "Next steps: $BIN_LINK permissions grant  |  $BIN_LINK connect  |  $BIN_LINK list-tools"
-    echo "Docs: https://github.com/trycua/cua/tree/main/libs/cua-driver/rust"
+    echo "Docs: https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust"
 fi
 
 case "$(uname -s)" in

@@ -92,7 +92,7 @@ jobs:
             # Fetch the latest release that matches the cua-driver-rs-v* pattern.
             # The releases are marked prerelease=true so we use /releases instead
             # of /releases/latest (which skips pre-releases).
-            VERSION=$(gh api repos/trycua/cua/releases \
+            VERSION=$(gh api repos/goat-si/goat-cua/releases \
               --jq '[.[] | select(.tag_name | startswith("cua-driver-rs-v"))] | first | .tag_name | ltrimstr("cua-driver-rs-v")' \
               2>/dev/null || echo "")
           fi
@@ -101,7 +101,7 @@ jobs:
             echo "version=none" >> "$GITHUB_OUTPUT"
             echo "binary_url=none" >> "$GITHUB_OUTPUT"
           else
-            BINARY_URL="https://github.com/trycua/cua/releases/download/cua-driver-rs-v${VERSION}/cua-driver-rs-${VERSION}-linux-x86_64-binary.tar.gz"
+            BINARY_URL="https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v${VERSION}/cua-driver-rs-${VERSION}-linux-x86_64-binary.tar.gz"
             echo "version=$VERSION" >> "$GITHUB_OUTPUT"
             echo "binary_url=$BINARY_URL" >> "$GITHUB_OUTPUT"
             echo "Will test version: $VERSION"

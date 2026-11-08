@@ -1,6 +1,6 @@
-"""Nothing in trycua/cua may depend on GitHub's repo-wide "Latest" release.
+"""Nothing in goat-si/goat-cua may depend on GitHub's repo-wide "Latest" release.
 
-trycua/cua releases many products (cua-spaces, cua-spacesd, cua-driver-rs,
+goat-si/goat-cua releases many products (cua-spaces, cua-spacesd, cua-driver-rs,
 cua-sdk, lume, ...) from one repository, so "Latest" is whichever shipped last.
 Consumers read an explicit per-product source instead: a baked version
 constant, a release list filtered by tag prefix, or a fixed-tag rolling release
@@ -16,11 +16,11 @@ THIS = Path(__file__).resolve()
 # The guard reads Latest only to put it back on Cua Spaces; it is not a consumer.
 GUARD = ".github/scripts/pin_latest_release.py"
 
-# A lookup of the repo-wide Latest on trycua/cua, however it is spelled.
+# A lookup of the repo-wide Latest on goat-si/goat-cua, however it is spelled.
 CONSUMERS = [
-    re.compile(r"(trycua/cua|GITHUB_REPO\w*|\{repository\}|\{owner\}/\{repo\})[^\n]*releases/latest"),
-    re.compile(r"releases/latest[^\n]*trycua/cua"),
-    re.compile(r"github\.com/trycua/cua/releases/latest"),
+    re.compile(r"(goat-si/goat-cua|trycua/cua|GITHUB_REPO\w*|\{repository\}|\{owner\}/\{repo\})[^\n]*releases/latest"),
+    re.compile(r"releases/latest[^\n]*(goat-si/goat-cua|trycua/cua)"),
+    re.compile(r"github\.com/(goat-si/goat-cua|trycua/cua)/releases/latest"),
     re.compile(r"gh release view\s*(--|$)"),  # no tag: resolves to Latest
     re.compile(r"gh release download\s*(--|$)"),  # no tag: resolves to Latest
     re.compile(r"\bisLatest\b"),

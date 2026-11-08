@@ -2,7 +2,7 @@
 """Check a release's `checksums.txt` and `release-artifacts.json` against its files.
 
     check_release_manifest.py --dir release/ --component app --version 0.8.0 \
-        [--base-url https://github.com/trycua/cua/releases/download/cua-spaces-v0.8.0]
+        [--base-url https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v0.8.0]
 
 DIR holds every asset of the release (as `gh release download` writes them).
 It fails unless:

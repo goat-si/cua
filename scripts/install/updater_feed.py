@@ -11,7 +11,7 @@ installers under stable names, each with the minisign `.sig` the Tauri bundler
 wrote. Once every platform has finished, the release workflow calls:
 
     updater_feed.py --version 0.2.0 --dir assets \
-        --base-url https://github.com/trycua/cua/releases/download/cua-spaces-v0.2.0 \
+        --base-url https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v0.2.0 \
         --out latest.json
 
 Artifacts it reads from --dir (each needs `<name>.sig`):

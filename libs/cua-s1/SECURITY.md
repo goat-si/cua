@@ -4,7 +4,7 @@
 
 Do not open a public issue, discussion, or pull request for a suspected
 vulnerability. Use
-[GitHub private vulnerability reporting](https://github.com/trycua/cua/security/advisories/new)
+[GitHub private vulnerability reporting](https://github.com/goat-si/goat-cua/security/advisories/new)
 and identify Cua-S1 plus the affected checkpoint, package version, or commit.
 
 Provide the smallest reproduction needed to investigate, the security impact,

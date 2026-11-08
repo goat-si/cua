@@ -94,7 +94,7 @@ def test_every_release_gate_keys_on_a_tag_run_including_a_rebuild():
     assert jobs["promote-check"]["if"].strip() == f"{TAG_RUN} && vars.CUA_SPACES_PROMOTE_CHECK == 'true'"
     assert TAG_RUN in jobs["installer-manifest"]["if"]
     assert TAG_RUN in jobs["site-follows-release"]["if"]
-    assert "github.repository == 'trycua/cua'" in jobs["site-follows-release"]["if"]
+    assert "github.repository == 'goat-si/goat-cua'" in jobs["site-follows-release"]["if"]
     # No tag-only condition is left behind.
     bare = "startsWith(github.ref, 'refs/tags/cua-spaces-v')"
     assert text.count(bare) == text.count(TAG_RUN)

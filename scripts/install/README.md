@@ -133,10 +133,10 @@ Tests: `python3 -m unittest discover -s scripts/install/tests -p 'test_uninstall
 
 Both scripts read `release-artifacts.json`:
 
-- latest: `https://github.com/trycua/cua/releases/download/cua-install-latest/release-artifacts.json` (a rolling release the CD workflows update: `cd-cua-sdk.yml` moves the `cli` version after a cua SDK publish, `cd-cua-spaces.yml` the `app` version, and `release-installers-feed.yml` republishes install.sh / install.ps1 when they change on main)
-- pinned: `https://github.com/trycua/cua/releases/download/cua-sdk-v<version>/release-artifacts.json`
+- latest: `https://github.com/goat-si/goat-cua/releases/download/cua-install-latest/release-artifacts.json` (a rolling release the CD workflows update: `cd-cua-sdk.yml` moves the `cli` version after a cua SDK publish, `cd-cua-spaces.yml` the `app` version, and `release-installers-feed.yml` republishes install.sh / install.ps1 when they change on main)
+- pinned: `https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v<version>/release-artifacts.json`
 
-The copies of `install.sh` / `install.ps1` on a repository's `cua-install-latest` release default to that repository: the release workflows publish them through `stamp_installers.py --repo "$GITHUB_REPOSITORY"`, so the trycua/cua-staging feed downloads, and verifies Sigstore identities against, trycua/cua-staging's own releases. The files in this directory keep `trycua/cua`.
+The copies of `install.sh` / `install.ps1` on a repository's `cua-install-latest` release default to that repository: the release workflows publish them through `stamp_installers.py --repo "$GITHUB_REPOSITORY"`, so the trycua/cua-staging feed downloads, and verifies Sigstore identities against, trycua/cua-staging's own releases. The files in this directory keep `goat-si/goat-cua`.
 
 `release_manifest.py` writes it from a directory of release files. Names it recognises:
 

@@ -13,13 +13,13 @@ const conf = tauriConf as unknown as {
 describe('auto-update feed', () => {
   const updater = conf.plugins.updater;
 
-  it('reads only the public trycua/cua release feed over HTTPS', () => {
+  it('reads only the public goat-si/goat-cua release feed over HTTPS', () => {
     expect(updater.endpoints.length).toBeGreaterThan(0);
     for (const endpoint of updater.endpoints) {
       const url = new URL(endpoint);
       expect(url.protocol).toBe('https:');
       expect(url.host).toBe('github.com');
-      expect(url.pathname.startsWith('/trycua/cua/releases/download/')).toBe(true);
+      expect(url.pathname.startsWith('/goat-si/goat-cua/releases/download/')).toBe(true);
     }
   });
 

@@ -10,7 +10,7 @@ param(
   [string]$Binary,
   [string]$Version,
   [string]$Token,
-  [string]$Repo = "trycua/cua",
+  [string]$Repo = "goat-si/goat-cua",
   [string]$InstallDir = "$env:LOCALAPPDATA\cua\spacesd",
   [switch]$NoService
 )

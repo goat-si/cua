@@ -128,7 +128,7 @@ edition = "2024"
 rust-version = "1.97"
 authors = ["trycua"]
 license = "MIT"
-repository = "https://github.com/trycua/cua"
+repository = "https://github.com/goat-si/goat-cua"
 
 [workspace.dependencies]
 # Async runtime and RPC stack.

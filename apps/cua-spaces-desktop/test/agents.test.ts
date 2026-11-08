@@ -235,10 +235,10 @@ describe.skipIf(!built)("agents", () => {
 
   it("starts a run in a Space and sends it a reply", async () => {
     const { bridge } = makeBridge();
-    const run = (await call(bridge, "agents.start", { spaceId: "local:dev", agent: "claude-code", prompt: "Run the tests", repo: "https://github.com/trycua/cua" })) as Record<string, unknown>;
+    const run = (await call(bridge, "agents.start", { spaceId: "local:dev", agent: "claude-code", prompt: "Run the tests", repo: "https://github.com/goat-si/goat-cua" })) as Record<string, unknown>;
     expect(run).toMatchObject({ run_id: "run-2", agent: "claude-code" });
     expect(daemon.calls.at(-1)).toBe("agent_start");
-    expect(daemon.args.at(-1)).toEqual({ space: "local:dev", agent: "claude-code", prompt: "Run the tests", repo: "https://github.com/trycua/cua" });
+    expect(daemon.args.at(-1)).toEqual({ space: "local:dev", agent: "claude-code", prompt: "Run the tests", repo: "https://github.com/goat-si/goat-cua" });
     expect(shapeProblems("agents.start", run)).toEqual([]);
     const sent = await call(bridge, "agents.message", { spaceId: "local:dev", runId: "run-2", text: "Use Python 3.13", force: true });
     expect(daemon.args.at(-1)).toEqual({ space: "local:dev", run_id: "run-2", text: "Use Python 3.13", force: true });

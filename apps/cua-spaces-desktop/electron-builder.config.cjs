@@ -42,7 +42,7 @@
 //
 // Updates (electron-updater, see src/updater.ts): a generic feed on the
 // rolling `cua-spaces-latest` release of GITHUB_REPOSITORY (default
-// trycua/cua), baked into app-update.yml, so a build from another
+// goat-si/goat-cua), baked into app-update.yml, so a build from another
 // repository (<owner>/<repo>) updates from that repository. GitHub's own
 // provider cannot serve this monorepo: it wants semver tags and reads the
 // repository-wide latest release. An X.Y.Z-suffix version is channel `beta`
@@ -91,7 +91,7 @@ const buildNumber = env.CUA_SPACES_BUILD_NUMBER || "0";
 if (!/^\d+$/.test(buildNumber)) throw new Error("CUA_SPACES_BUILD_NUMBER must be a number");
 const buildVersion = `${semver[1]}.${semver[2]}.${semver[3]}.${buildNumber}`;
 
-const repository = env.GITHUB_REPOSITORY || "trycua/cua";
+const repository = env.GITHUB_REPOSITORY || "goat-si/goat-cua";
 if (!/^[\w.-]+\/[\w.-]+$/.test(repository)) throw new Error(`GITHUB_REPOSITORY must be owner/repo, got ${repository}`);
 const nightly = /^nightly(\.|$)/.test(semver[4] || "");
 const feedUrl = `https://github.com/${repository}/releases/download/${nightly ? "cua-spaces-nightly" : "cua-spaces-latest"}`;

@@ -25,8 +25,8 @@ dependencies = ["cua>=0.4.1"]
 test = ["pytest>=8", "pytest-asyncio>=0.21", "hypothesis>=6"]
 
 [project.urls]
-Homepage = "https://github.com/trycua/cua"
-Repository = "https://github.com/trycua/cua"
+Homepage = "https://github.com/goat-si/goat-cua"
+Repository = "https://github.com/goat-si/goat-cua"
 
 [build-system]
 requires = ["hatchling"]

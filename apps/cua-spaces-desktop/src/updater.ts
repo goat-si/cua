@@ -62,7 +62,7 @@ export function feedUrlFor(channel: UpdateChannel, baked: string): string {
 }
 
 /** The `url` electron-builder baked into app-update.yml (`fallback` when it can't be read). */
-export function bakedFeedUrl(text: string | null, fallback = "https://github.com/trycua/cua/releases/download/cua-spaces-latest"): string {
+export function bakedFeedUrl(text: string | null, fallback = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest"): string {
   const url = text ? /^url:\s*['"]?(https:\/\/[^'"\s]+)['"]?\s*$/m.exec(text)?.[1] : undefined;
   return url ?? fallback;
 }

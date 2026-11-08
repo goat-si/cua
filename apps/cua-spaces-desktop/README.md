@@ -708,7 +708,7 @@ report is in `dist/smoke/windows/report.txt`. All checks pass.
 
 electron-updater reads a generic feed on the rolling `cua-spaces-latest`
 release of the repository the build came from (`GITHUB_REPOSITORY` at build
-time, default `trycua/cua`, baked into `app-update.yml`). GitHub's own
+time, default `goat-si/goat-cua`, baked into `app-update.yml`). GitHub's own
 provider does not fit this monorepo: it needs semver tags and reads the
 repository-wide latest release.
 
@@ -761,7 +761,7 @@ Swift app's files stay as they are.
 | `CUA_SPACES_AUTO_UPDATE=1` | Turn on the updater |
 | `CUA_SPACES_VERSION` | Build time: the version (default `package.json`); `X.Y.Z-suffix` is a beta (`beta*.yml`) |
 | `CUA_SPACES_BUILD_NUMBER` | Build time: the last part of CFBundleVersion and the Windows file version, `X.Y.Z.N` (default 0) |
-| `GITHUB_REPOSITORY` | Build time: the repository whose `cua-spaces-latest` release is the update feed (default `trycua/cua`) |
+| `GITHUB_REPOSITORY` | Build time: the repository whose `cua-spaces-latest` release is the update feed (default `goat-si/goat-cua`) |
 | `CUA_SPACES_NO_FUSES=1` | Build time: leave the Electron fuses as Electron ships them (QA builds only) |
 | `CUA_SPACES_ARCHS` | Build time: `native` packs only the arches with a native folder, or a list (`x64`, `arm64,x64`); unset packs all (a release) |
 | `CUA_SPACES_TEST_STREAM_URL` | Answer every `spaces.openStream` with this URL (`{id}`, `{tier}` filled in), for the WebCodecs harness |

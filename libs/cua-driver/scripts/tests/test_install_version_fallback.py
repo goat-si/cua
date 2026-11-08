@@ -228,7 +228,7 @@ def test_windows_download_classifies_and_retries_failures_behaviorally(
         result = _run_powershell(
             tmp_path,
             f"""
-$Repo = 'trycua/cua'
+$Repo = 'goat-si/goat-cua'
 $TagPrefix = 'cua-driver-rs-v'
 function Write-Step {{ param([string]$Message) }}
 function Write-WarningStep {{ param([string]$Message) }}
@@ -269,7 +269,7 @@ def test_windows_api_resolver_filters_drafts_but_accepts_stable_prereleases(
     result = _run_powershell(
         tmp_path,
         f"""
-$Repo = 'trycua/cua'
+$Repo = 'goat-si/goat-cua'
 $TagPrefix = 'cua-driver-rs-v'
 function Write-Step {{ param([string]$Message) }}
 function Write-WarningStep {{ param([string]$Message) }}
@@ -320,7 +320,7 @@ def _run_resolver(
     script.write_text(
         textwrap.dedent("""\
             set -{flags}uo pipefail
-            REPO="trycua/cua"
+            REPO="goat-si/goat-cua"
             TAG_PREFIX="cua-driver-rs-v"
             curl() {{ cat "{fixture}"; }}
             CUA_DRIVER_RS_WITHDRAWN_VERSIONS="{withdrawn}"
@@ -481,7 +481,7 @@ def _run_paged_resolver(tmp_path: Path, pages: list[str]) -> tuple[str, list[str
         textwrap.dedent(
             """\
             set -euo pipefail
-            REPO="trycua/cua"
+            REPO="goat-si/goat-cua"
             TAG_PREFIX="cua-driver-rs-v"
             GH_TOKEN="test-token"
             curl() {{
@@ -554,7 +554,7 @@ def _run_download(tmp_path: Path, scenario: str, token_env: str = "") -> tuple[i
         textwrap.dedent(
             f"""\
             set -uo pipefail
-            REPO="trycua/cua"
+            REPO="goat-si/goat-cua"
             TAG_PREFIX="cua-driver-rs-v"
             TAG="cua-driver-rs-v1.2.3"
             LABEL="linux-x86_64"
@@ -730,7 +730,7 @@ def _run_fallback_flow(
             TAG_PREFIX="cua-driver-rs-v"
             TAG="${{TAG_PREFIX}}${{VERSION}}"
             LABEL="linux-x86_64"
-            REPO="trycua/cua"
+            REPO="goat-si/goat-cua"
             DOWNLOAD_RESULTS=({statuses})
             DOWNLOAD_INDEX=0
             err() {{ printf 'error: %s\\n' "$*" >&2; }}
@@ -850,7 +850,7 @@ def _run_resolution_flow(
         textwrap.dedent(
             f"""\
             set -uo pipefail
-            REPO="trycua/cua"
+            REPO="goat-si/goat-cua"
             TAG_PREFIX="cua-driver-rs-v"
             NIGHTLY_TAG_PREFIX="nightly-cua-driver-rs-v"
             SELECTED_CHANNEL="stable"
@@ -949,7 +949,7 @@ def test_windows_api_resolver_skips_withdrawn_releases(tmp_path: Path) -> None:
     result = _run_powershell(
         tmp_path,
         f"""
-$Repo = 'trycua/cua'
+$Repo = 'goat-si/goat-cua'
 $TagPrefix = 'cua-driver-rs-v'
 $Script:CuaDriverRsWithdrawnVersions = @('0.28.3')
 function Write-Step {{ param([string]$Message) }}

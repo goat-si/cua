@@ -58,7 +58,7 @@ from typing import Dict, List, Optional
 REPOS = {
     "small": "https://github.com/octocat/Hello-World",
     "medium": "https://github.com/vitejs/vite",
-    "large": "https://github.com/trycua/cua",
+    "large": "https://github.com/goat-si/goat-cua",
 }
 CASES = ("off", "miss", "hit", "hit_lease")
 SCHEMA = "cua.repo-clone/v1"

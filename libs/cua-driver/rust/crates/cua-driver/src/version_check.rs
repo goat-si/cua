@@ -65,7 +65,7 @@ const CACHE_REFRESH_SECONDS: u64 = 60 * 60; // 1 hour
 /// again. Explicit `check-update` / `update` calls ignore this.
 const ERROR_BACKOFF_SECONDS: u64 = 5 * 60;
 
-/// Tag-name prefix used by the Rust-port releases on the trycua/cua repo.
+/// Tag-name prefix used by the Rust-port releases on the goat-si/goat-cua repo.
 /// Releases tagged with anything else (e.g. the Swift port's
 /// `cua-driver-v*`) are filtered out so we never recommend the wrong binary.
 pub const RELEASE_TAG_PREFIX: &str = "cua-driver-rs-v";
@@ -289,7 +289,7 @@ pub(crate) fn check_update_state_with_ownership(no_cache: bool, managed: bool) -
         (
             Some(install_one_liner()),
             Some(format!(
-                "https://github.com/trycua/cua/releases/tag/{}{l}",
+                "https://github.com/goat-si/goat-cua/releases/tag/{}{l}",
                 tag_prefix(selected_channel)
             )),
         )
@@ -530,7 +530,7 @@ fn format_banner(
     format!(
         "\n\u{2728} cua-driver v{latest} is available (you have v{current}).\n   \
          Update with: cua-driver update\n   \
-         Release notes: https://github.com/trycua/cua/releases/tag/{prefix}{latest}\n\n",
+         Release notes: https://github.com/goat-si/goat-cua/releases/tag/{prefix}{latest}\n\n",
         prefix = tag_prefix(channel),
     )
 }
@@ -1495,7 +1495,8 @@ mod tests {
         );
         // Release notes URL uses the correct tag prefix.
         assert!(
-            banner.contains("https://github.com/trycua/cua/releases/tag/cua-driver-rs-v0.1.4"),
+            banner
+                .contains("https://github.com/goat-si/goat-cua/releases/tag/cua-driver-rs-v0.1.4"),
             "got: {banner:?}",
         );
     }
@@ -1521,7 +1522,7 @@ mod tests {
     #[test]
     fn pick_latest_release_skips_drafts_but_accepts_prereleases() {
         // Drafts are always skipped. Pre-releases are accepted — every
-        // cua-driver-rs release on `trycua/cua` is published as a
+        // cua-driver-rs release on `goat-si/goat-cua` is published as a
         // pre-release while the project is pre-1.0, so filtering them
         // out left the check finding zero candidates.
         let body = serde_json::json!([

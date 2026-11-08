@@ -5,7 +5,7 @@ Space), and watch it work beside the thread. Built on the cua SDK's Rust
 crates with a Tauri 2 shell and a React UI.
 
 ```sh
-npx degit trycua/cua/examples/openkoalabot-example-tauri my-app
+npx degit goat-si/goat-cua/examples/openkoalabot-example-tauri my-app
 cd my-app && pnpm install
 pnpm tauri dev
 ```

@@ -6,7 +6,7 @@ platform and kind, plus the version, build number, source SHA and input tree
 hash the build ran from. Phase 2 of CUA-1991 (the promote path) reads it.
 
     spaces_build_manifest.py DIR --version V --build-number N --source-sha SHA \
-        --tree-hash HASH --repository trycua/cua --run-id ID
+        --tree-hash HASH --repository goat-si/goat-cua --run-id ID
 """
 import argparse
 import hashlib

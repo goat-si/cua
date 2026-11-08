@@ -15,8 +15,8 @@ A finding fails the run (annotations + job summary) so the failure reaches the
 usual notifications. It prints refs, SHAs and pushers, never commit content.
 
 Usage:
-  push_watch.py --repo trycua/cua --since-last-run push-watch.yml
-  push_watch.py --repo trycua/cua --minutes 180        # local run, needs gh auth
+  push_watch.py --repo goat-si/goat-cua --since-last-run push-watch.yml
+  push_watch.py --repo goat-si/goat-cua --minutes 180        # local run, needs gh auth
 """
 
 from __future__ import annotations

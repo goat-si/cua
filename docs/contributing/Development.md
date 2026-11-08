@@ -38,7 +38,7 @@ Two boundaries to keep in mind:
 Clone the repository and enter it:
 
 ```bash
-git clone https://github.com/trycua/cua.git
+git clone https://github.com/goat-si/goat-cua.git
 cd cua
 ```
 
@@ -188,7 +188,7 @@ path, tag and publishing workflow. Their pull request titles decide the
 release; see [`CONTRIBUTING.md`](../../.github/CONTRIBUTING.md#agent-assisted-contributions).
 
 The Docker images are still released through the
-[Legacy packages: Bump Version](https://github.com/trycua/cua/actions/workflows/release-bump-version.yml)
+[Legacy packages: Bump Version](https://github.com/goat-si/goat-cua/actions/workflows/release-bump-version.yml)
 workflow. Its `service` input is the current target list. Each image's
 `.bumpversion.cfg` owns its version and tag format, and tag-triggered CD
 workflows publish.

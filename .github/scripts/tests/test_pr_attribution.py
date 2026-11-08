@@ -70,11 +70,11 @@ class SourceGitHub:
         return value
 
     def pull(self, repository: str, number: int):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         return {"number": number, "user": {"login": self.authors[number]}}
 
     def pull_commits(self, repository: str, number: int):
-        assert repository == "trycua/cua"
+        assert repository == "goat-si/goat-cua"
         return [
             {"commit": {"author": {"email": email}}} for email in self.source_emails.get(number, [])
         ]
@@ -93,7 +93,7 @@ def validate(
 ):
     base = base or config()
     validate_pr_attribution(
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         pull=pull_value or pull(),
         commits=commits or [],
         base_config=base,
@@ -221,13 +221,13 @@ def test_merge_coauthor_still_requires_source_evidence():
 def test_explicit_cherry_pick_source_reference_is_parsed_but_supersedes_is_not():
     assert source_pull_numbers(
         "Cert discovery (from #2280, thanks — cherry-picked to preserve authorship)",
-        "trycua/cua",
+        "goat-si/goat-cua",
     ) == [2280]
     assert source_pull_numbers(
         "The identity is verified by [PR #2280](https://github.com/trycua/cua/pull/2280)",
-        "trycua/cua",
+        "goat-si/goat-cua",
     ) == [2280]
-    assert source_pull_numbers("Supersedes #2280", "trycua/cua") == []
+    assert source_pull_numbers("Supersedes #2280", "goat-si/goat-cua") == []
 
 
 def test_direct_contributor_with_unlinked_email_is_rejected_before_squash_merge():
@@ -485,13 +485,13 @@ def test_compare_pages_that_stop_short_are_refused():
 )
 def test_main_sync_merge_authorship(status, branch_files, main_files, failure, clean):
     comparisons = {
-        "repos/trycua/cua/compare/main-tip...trusted-main": {"status": status} if status else {},
-        "repos/trycua/cua/compare/feature-tip...sync-merge": {
+        "repos/goat-si/goat-cua/compare/main-tip...trusted-main": {"status": status} if status else {},
+        "repos/goat-si/goat-cua/compare/feature-tip...sync-merge": {
             "files": [
                 name if isinstance(name, dict) else {"filename": name} for name in branch_files
             ]
         },
-        "repos/trycua/cua/compare/main-tip...sync-merge": (
+        "repos/goat-si/goat-cua/compare/main-tip...sync-merge": (
             ReleaseError("API failed")
             if failure is True
             else (

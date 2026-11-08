@@ -5,7 +5,7 @@ pkgver=@DRIVER_VERSION@
 pkgrel=@PKGREL@
 pkgdesc='Cua input candidate for reviewed profile @PROFILE_ID@'
 arch=('x86_64')
-url='https://github.com/trycua/cua'
+url='https://github.com/goat-si/goat-cua'
 license=('MIT')
 depends=('hyprland=@HYPRLAND_PACKAGE@' @RUNTIME_DEPENDS@ 'python>=3.11' 'binutils')
 makedepends=('cmake>=3.30' 'ninja' 'pkgconf' 'gcc')

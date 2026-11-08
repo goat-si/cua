@@ -1,4 +1,4 @@
-"""GitHub has one repo-wide "Latest" release and trycua/cua publishes many
+"""GitHub has one repo-wide "Latest" release and goat-si/goat-cua publishes many
 packages. Nothing depends on it (test_no_latest_consumers.py guards that), so
 which release carries the badge is cosmetic. We pin it to Cua Spaces, the app
 people browsing the repository expect; every other release workflow opts out
@@ -62,11 +62,11 @@ def test_cua_spaces_is_the_only_latest_owner():
     assert "flags+=(--latest)" in text
 
 
-def test_no_repo_wide_latest_lookup_for_trycua_cua():
+def test_no_repo_wide_latest_lookup_for_repository():
     bad = []
     pattern = re.compile(
-        r"(trycua/cua|\$GITHUB_REPO\b|\$\{GITHUB_REPO\}|\{repository\}|GITHUB_REPOSITORY)[^\n]*releases/latest"
-        r"|releases/latest[^\n]*(trycua/cua)"
+        r"(goat-si/goat-cua|trycua/cua|\$GITHUB_REPO\b|\$\{GITHUB_REPO\}|\{repository\}|GITHUB_REPOSITORY)[^\n]*releases/latest"
+        r"|releases/latest[^\n]*(goat-si/goat-cua|trycua/cua)"
     )
     for rel, text in _tracked_text_files():
         for n, line in enumerate(text.splitlines(), 1):

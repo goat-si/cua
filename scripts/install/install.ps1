@@ -115,7 +115,7 @@ if ($PSVersionTable.PSEdition -eq 'Desktop') {
     $env:PSModulePath = $modulePaths -join ';'
 }
 
-$Repo = if ($env:CUA_INSTALL_REPO) { $env:CUA_INSTALL_REPO } else { 'trycua/cua' }
+$Repo = if ($env:CUA_INSTALL_REPO) { $env:CUA_INSTALL_REPO } else { 'goat-si/goat-cua' }
 $BaseUrl = if ($env:CUA_INSTALL_BASE_URL) { $env:CUA_INSTALL_BASE_URL } else { "https://github.com/$Repo/releases/download" }
 $LatestTag = 'cua-install-latest'
 $MinisignPubkey = $env:CUA_INSTALL_MINISIGN_PUBKEY

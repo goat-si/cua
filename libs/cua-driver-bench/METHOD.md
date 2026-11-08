@@ -14,7 +14,7 @@ is a dated amendment committed before the trials it covers. The full text is
 each registration commit is tagged there (`cdb-prereg/*`). The commits and the
 pre-registration text are verifiable on request: ask Cua for the commit objects,
 and check the hashes and commit times below against them. Times are the commit
-times in UTC. Until 11 Oct 2026 the branch was also public on `trycua/cua`, so
+times in UTC. Until 11 Oct 2026 the branch was also public on `goat-si/goat-cua`, so
 GitHub's push history there is an independent record for the commits listed up
 to that date.
 

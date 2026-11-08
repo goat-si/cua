@@ -10,7 +10,7 @@ import Testing
 @Suite("Host setup failure")
 struct HostSetupFailureTests {
     static let missingRelease =
-        "http: download: https://github.com/trycua/cua/releases/download/cua-spacesd-v0.2.0/"
+        "http: download: https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v0.2.0/"
         + "cua-spacesd-aarch64-apple-darwin.tar.gz: HTTP 404"
 
     @Test func aMissingReleaseIsADownloadFailureWithoutTheURL() {

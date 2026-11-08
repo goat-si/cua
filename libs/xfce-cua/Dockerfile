@@ -7,7 +7,7 @@ FROM python:3.13-slim-bookworm
 
 LABEL org.opencontainers.image.title="Cua XFCE"
 LABEL org.opencontainers.image.description="Multi-architecture XFCE desktop with Cua Driver"
-LABEL org.opencontainers.image.source="https://github.com/trycua/cua"
+LABEL org.opencontainers.image.source="https://github.com/goat-si/goat-cua"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     HOME=/home/cua \

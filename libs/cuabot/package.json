@@ -5,7 +5,7 @@
   "description": "Sandboxed, co-op computer-use agents",
   "repository": {
     "type": "git",
-    "url": "https://github.com/trycua/cua",
+    "url": "https://github.com/goat-si/goat-cua",
     "directory": "libs/cuabot"
   },
   "license": "MIT",

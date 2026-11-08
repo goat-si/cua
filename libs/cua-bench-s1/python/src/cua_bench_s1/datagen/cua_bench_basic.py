@@ -642,7 +642,7 @@ def convert_episode(
                 group=f"{episode.env_name}:{episode.task_index}",
                 provenance={
                     "source": "cua-bench live environment (datasets/cua-bench-basic)",
-                    "source_url": "https://github.com/trycua/cua/tree/main/libs/cua-bench",
+                    "source_url": "https://github.com/goat-si/goat-cua/tree/main/libs/cua-bench",
                     "license": "MIT (cua-bench, this repository)",
                     "env_name": episode.env_name,
                     "task_index": episode.task_index,

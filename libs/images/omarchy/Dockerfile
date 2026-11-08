@@ -29,7 +29,7 @@ FROM ${ARCH_BASE} AS rootfs
 ARG TARGETARCH
 ARG CUA_SPACESD_SOURCE=local
 ARG CUA_SPACESD_VERSION=0.1.0
-ARG CUA_SPACESD_RELEASE_URL=https://github.com/trycua/cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz
+ARG CUA_SPACESD_RELEASE_URL=https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v{version}/cua-spacesd-linux-{arch}.tar.gz
 ARG OMARCHY_PACKAGES=desktop
 ARG OMARCHY_KEYRING=omarchy-keyring-20251027-1-any.pkg.tar.zst
 ARG OMARCHY_KEYRING_SHA256=9f45936fb1e0a13c6a7b5b15bcd27673465f8c51a8f68b8e1a6d46d586db588a

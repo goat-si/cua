@@ -23,7 +23,7 @@ import zipfile
 from evidence_envelope import _rename_directory_no_replace
 
 
-REPO = "trycua/cua"
+REPO = "goat-si/goat-cua"
 MEMBERS = ("primary-desktop.cuae", "window.cuae")
 SHA = re.compile(r"[0-9a-f]{40}\Z")
 DIGEST = re.compile(r"sha256:[0-9a-f]{64}\Z")

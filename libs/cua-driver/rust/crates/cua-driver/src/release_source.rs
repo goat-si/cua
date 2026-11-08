@@ -36,9 +36,9 @@ use crate::release_channel::ReleaseChannel;
 /// Installer script that carries the baked stable version.
 pub(crate) const INSTALLER_SCRIPT_URL: &str = "https://cua.ai/driver/_install-rust.sh";
 /// REST endpoint listing releases, newest first.
-pub(crate) const RELEASES_API_URL: &str = "https://api.github.com/repos/trycua/cua/releases";
+pub(crate) const RELEASES_API_URL: &str = "https://api.github.com/repos/goat-si/goat-cua/releases";
 /// Atom feed of the newest releases. Served from github.com, not the REST API.
-pub(crate) const RELEASES_FEED_URL: &str = "https://github.com/trycua/cua/releases.atom";
+pub(crate) const RELEASES_FEED_URL: &str = "https://github.com/goat-si/goat-cua/releases.atom";
 
 /// Pages of 100 releases to walk before giving up. The monorepo interleaves
 /// several products, so the newest `cua-driver-rs-v*` tag is not always on the
@@ -611,7 +611,7 @@ mod tests {
     }
 
     const SCRIPT: &str = "https://scripts.test/_install-rust.sh";
-    const API: &str = "https://api.test/repos/trycua/cua/releases";
+    const API: &str = "https://api.test/repos/goat-si/goat-cua/releases";
     const FEED: &str = "https://feed.test/releases.atom";
 
     fn endpoints() -> Endpoints {
@@ -683,7 +683,7 @@ mod tests {
             .map(|tag| {
                 format!(
                     "<entry><link rel=\"alternate\" type=\"text/html\" \
-                     href=\"https://github.com/trycua/cua/releases/tag/{tag}\"/>\
+                     href=\"https://github.com/goat-si/goat-cua/releases/tag/{tag}\"/>\
                      <title>{tag}</title></entry>"
                 )
             })
@@ -970,7 +970,7 @@ mod tests {
              {\"message\":\"API rate limit exceeded for ip\"}",
         );
         let endpoints = Endpoints {
-            releases_api: format!("{base}/repos/trycua/cua/releases"),
+            releases_api: format!("{base}/repos/goat-si/goat-cua/releases"),
             ..endpoints()
         };
         let error = fetch_via_api(

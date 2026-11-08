@@ -43,7 +43,7 @@ interface SDKConfig {
 
 const ROOT_DIR = path.resolve(__dirname, '../..');
 const DOCS_BASE = path.join(ROOT_DIR, 'docs/content/docs');
-const GITHUB_REPO = 'trycua/cua';
+const GITHUB_REPO = 'goat-si/goat-cua';
 
 const SDK_CONFIGS: SDKConfig[] = [
   {

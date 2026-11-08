@@ -13,7 +13,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[3]
-REPOSITORY = "trycua/cua"
+REPOSITORY = "goat-si/goat-cua"
 TAG = "lume-v1.2.3"
 SHA = "a" * 40
 API_PATH = f"/repos/{REPOSITORY}"

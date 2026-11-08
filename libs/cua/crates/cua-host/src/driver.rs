@@ -10,7 +10,7 @@
 //! base = $CUA_SPACESD_DOWNLOAD_BASE
 //!      | https://github.com/<repo>/releases/download/cua-spacesd-v<version>
 //! repo = the GitHub repository this build was released from
-//!        (`CUA_RELEASE_REPOSITORY` at build time; default trycua/cua)
+//!        (`CUA_RELEASE_REPOSITORY` at build time; default goat-si/goat-cua)
 //! version = $CUA_SPACESD_VERSION | the released driver version (libs/cua-spacesd/VERSION)
 //! os = linux | macos | windows, arch = x86_64 | aarch64
 //! ```
@@ -73,7 +73,7 @@ fn spacesd_env(name: &str) -> Option<std::ffi::OsString> {
 /// time, so a staging build fetches its own repository's cua-spacesd.
 pub const RELEASE_REPOSITORY: &str = match option_env!("CUA_RELEASE_REPOSITORY") {
     Some(r) if !r.is_empty() => r,
-    _ => "trycua/cua",
+    _ => "goat-si/goat-cua",
 };
 
 /// `CUA_SPACESD_DOWNLOAD_BASE`, when set.

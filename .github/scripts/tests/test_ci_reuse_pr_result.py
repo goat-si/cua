@@ -15,7 +15,7 @@ import ci_reuse_pr_result as reuse  # noqa: E402
 ROOT = Path(__file__).resolve().parents[3]
 WORKFLOWS = ROOT / ".github/workflows"
 
-REPO = "trycua/cua"
+REPO = "goat-si/goat-cua"
 SHA = "a" * 40
 HEAD = "b" * 40
 TREE = "c" * 40

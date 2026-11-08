@@ -35,13 +35,13 @@ class StampInstallersTest(unittest.TestCase):
         self.assertEqual((self.out / "install.sh").stat().st_mode, (HERE / "install.sh").stat().st_mode)
 
     def test_canonical_repository_is_byte_identical(self):
-        result = run("--repo", "trycua/cua", "--out", str(self.out))
+        result = run("--repo", "goat-si/goat-cua", "--out", str(self.out))
         self.assertEqual(result.returncode, 0, result.stderr)
         for name in ("install.sh", "install.ps1"):
             self.assertEqual((self.out / name).read_bytes(), (HERE / name).read_bytes(), name)
 
     def test_the_uninstallers_are_copied_as_they_are_for_every_repository(self):
-        for repo in ("trycua/cua", "trycua/cua-staging"):
+        for repo in ("goat-si/goat-cua", "trycua/cua-staging"):
             out = self.out / repo.split("/")[1]
             result = run("--repo", repo, "--out", str(out))
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -50,13 +50,13 @@ class StampInstallersTest(unittest.TestCase):
             self.assertEqual((out / "uninstall.sh").stat().st_mode, (HERE / "uninstall.sh").stat().st_mode)
 
     def test_rejects_a_bad_repository(self):
-        for bad in ("", "trycua", "a/b/c", "trycua/cua; rm -rf /", "trycua/cua'"):
+        for bad in ("", "trycua", "a/b/c", "goat-si/goat-cua; rm -rf /", "goat-si/goat-cua'"):
             self.assertNotEqual(run("--repo", bad, "--out", str(self.out)).returncode, 0, bad)
 
     def test_fails_when_the_default_line_is_gone(self):
         src = self.out / "src"
         src.mkdir()
-        (src / "install.sh").write_text('REPO="${SOMETHING_ELSE:-trycua/cua}"\n')
+        (src / "install.sh").write_text('REPO="${SOMETHING_ELSE:-goat-si/goat-cua}"\n')
         (src / "install.ps1").write_text((HERE / "install.ps1").read_text())
         for name in ("uninstall.sh", "uninstall.ps1"):
             (src / name).write_text((HERE / name).read_text())

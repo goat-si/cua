@@ -157,7 +157,7 @@ jobs:
           fi
           # IGNORE_RE (from the scope step) names workflow files that belong only to areas this PR
           # did not touch. Empty means wait for every run.
-          # contributor-attribution enforces the CLA, so the gate never waits on cla.yml.
+          # Ignore historical CLA runs; contributor-attribution checks authorship only.
           scope_jq='(env.IGNORE_RE // "") == "" or ((.path | sub("@.*"; "") | split("/") | last) | test(env.IGNORE_RE) | not)'
           runs() {
             api --paginate "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&per_page=100" \

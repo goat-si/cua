@@ -72,7 +72,7 @@ A bot drives the app with a few markers in its replies, which its instructions f
 
 ## Run it
 
-From a clone of [trycua/cua](https://github.com/trycua/cua). The sample builds the Cua Spaces app export (which carries the cua SDK) from source, so you need Rust, and local Spaces need Docker.
+From a clone of [goat-si/goat-cua](https://github.com/goat-si/goat-cua). The sample builds the Cua Spaces app export (which carries the cua SDK) from source, so you need Rust, and local Spaces need Docker.
 
 ```bash skip="no-runner"
 (cd libs/cua && cargo build --locked --release -p cua-spaces-ffi)
@@ -83,7 +83,7 @@ swift build && .build/debug/CuaBots
 
 Give the app a model key for the agents you pick (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`). The iPhone app is in `examples/cua-bots-ios`; its README covers the Xcode build and pairing.
 
-The app registers the Cua Spaces extensions at launch (`cuaSpacesRegister()`), so the runtime it embeds has persistent agents, the Keyvault and teleport. Because it links those Cua Spaces pieces, both samples are source-available under the FSL-1.1-MIT, like Cua Spaces; see [LICENSING.md](https://github.com/trycua/cua/blob/main/legal/LICENSING.md). For examples in TypeScript and Rust (Tauri), see [Use Spaces from code](/spaces/guides/create-a-space-with-the-sdk#examples-in-other-languages).
+The app registers the Cua Spaces extensions at launch (`cuaSpacesRegister()`), so the runtime it embeds has persistent agents, the Keyvault and teleport. Because it links those Cua Spaces pieces, both samples are source-available under the FSL-1.1-MIT, like Cua Spaces; see [LICENSING.md](https://github.com/goat-si/goat-cua/blob/main/legal/LICENSING.md). For examples in TypeScript and Rust (Tauri), see [Use Spaces from code](/spaces/guides/create-a-space-with-the-sdk#examples-in-other-languages).
 
 ## Limits
 

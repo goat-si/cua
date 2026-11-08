@@ -272,7 +272,7 @@ def artifact(
     kind: str,
     license_id: str,
     notice: bool = True,
-    source_url: str = "https://github.com/trycua/cua",
+    source_url: str = "https://github.com/goat-si/goat-cua",
     **extra: Any,
 ) -> dict[str, Any]:
     relative = path.relative_to(root).as_posix()
@@ -405,7 +405,7 @@ def assemble(args: argparse.Namespace) -> tuple[Path, Path]:
         corresponding_source(repo, args.source_sha, source)
         source_entries = [{
                 "artifact": source.name, "artifactSha256": sha256(source), "artifactSize": source.stat().st_size,
-                "repository": "https://github.com/trycua/cua", "revision": args.source_sha, "license": "MIT",
+                "repository": "https://github.com/goat-si/goat-cua", "revision": args.source_sha, "license": "MIT",
                 "durableLocation": f"Candidate archive {source.relative_to(bundle).as_posix()}",
                 "sourceOfferStatus": "bundled", "contentKind": "cua-source",
                 "format": "tar.gz", "requiredPaths": [
@@ -430,7 +430,7 @@ def assemble(args: argparse.Namespace) -> tuple[Path, Path]:
         source_ledger = {"schemaVersion": 1, "sources": source_entries}
         write_json(bundle / "source-ledger.json", source_ledger)
         write_json(bundle / "source-inventory.json", {
-            "schema_version": 1, "component": "cua-perception", "repository": "https://github.com/trycua/cua",
+            "schema_version": 1, "component": "cua-perception", "repository": "https://github.com/goat-si/goat-cua",
             "revision": args.source_sha,
             "archive": {"path": source.relative_to(bundle).as_posix(), "sha256": sha256(source), "size": source.stat().st_size},
             "included_paths": list(SOURCE_PATHS), "source_offer": "SOURCE_OFFER.md",

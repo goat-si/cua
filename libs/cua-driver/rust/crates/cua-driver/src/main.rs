@@ -303,7 +303,7 @@ fn maybe_init_pip() {
             });
             eprintln!(
                 "⚗️  PiP preview enabled (experimental — macOS only today; \
-                 see https://github.com/trycua/cua/issues for follow-up)"
+                 see https://github.com/goat-si/goat-cua/issues for follow-up)"
             );
         }
         Err(e) => {

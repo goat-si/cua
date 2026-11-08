@@ -28,7 +28,7 @@ pub const TERMS_URL: &str = "https://cua.ai/terms-of-service";
 /// downloads and billing are up.
 pub const STATUS_URL: &str = "https://status.cua.ai";
 /// A new issue from the repository's bug report form.
-pub const ISSUE_URL: &str = "https://github.com/trycua/cua/issues/new";
+pub const ISSUE_URL: &str = "https://github.com/goat-si/goat-cua/issues/new";
 /// The copyright line.
 pub const COPYRIGHT: &str = "\u{a9} 2026 Cua AI, Inc. All rights reserved.";
 
@@ -568,7 +568,7 @@ mod tests {
     fn the_issue_form_carries_the_app_and_the_os() {
         assert_eq!(
             issue_url(&input()),
-            "https://github.com/trycua/cua/issues/new?template=bug.yml&environment=\
+            "https://github.com/goat-si/goat-cua/issues/new?template=bug.yml&environment=\
              Cua%20Spaces%20for%20macOS%200.2.0%20%280.2.0.123%29%0AmacOS%2026.0%20%28arm64%29"
         );
     }
@@ -621,8 +621,8 @@ mod tests {
 
     #[test]
     fn nightly_reads_its_own_appcast() {
-        let stable = "https://github.com/trycua/cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml";
-        let nightly = "https://github.com/trycua/cua/releases/download/cua-spaces-nightly/cua-spaces-nightly-appcast.xml";
+        let stable = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest/cua-spaces-appcast.xml";
+        let nightly = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-nightly/cua-spaces-nightly-appcast.xml";
         assert_eq!(nightly_feed_url(stable).as_deref(), Some(nightly));
         assert_eq!(
             feed_url(UpdateChannel::Nightly, stable).as_deref(),

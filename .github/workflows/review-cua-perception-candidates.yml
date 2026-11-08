@@ -42,7 +42,7 @@ jobs:
           EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
-          [[ "$GITHUB_REPOSITORY" == "trycua/cua" ]]
+          [[ "$GITHUB_REPOSITORY" == "goat-si/goat-cua" ]]
           [[ "$EVENT_PR_NUMBER" =~ ^[1-9][0-9]*$ ]]
           [[ "$EVENT_HEAD_REPOSITORY" == "$GITHUB_REPOSITORY" ]]
           [[ "$EVENT_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]

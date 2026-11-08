@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trycua/cua.git"
+    "url": "git+https://github.com/goat-si/goat-cua.git"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

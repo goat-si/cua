@@ -615,7 +615,7 @@ def labels(b: dict, variant: str, stamp: str | None = None) -> dict[str, str]:
     # Public benchmarks are linked; private ones never carry the label, so
     # nothing about the public repository's access reaches their packages.
     if b.get("visibility") == "public":
-        out[SOURCE_LABEL] = "https://github.com/trycua/cua"
+        out[SOURCE_LABEL] = "https://github.com/goat-si/goat-cua"
     if b.get("server"):
         out["ai.cua.bench.server"] = json.dumps(b["server"], separators=(",", ":"))
     if b.get("sources"):

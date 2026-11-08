@@ -204,7 +204,7 @@ jobs:
           retention-days: 90
       - name: Commit the manifest to the ${{ env.COMPAT_BRANCH }} branch
         if: >-
-          github.repository == 'trycua/cua' && github.ref == 'refs/heads/main' &&
+          github.repository == 'goat-si/goat-cua' && github.ref == 'refs/heads/main' &&
           (github.event_name == 'schedule' ||
            (github.event_name == 'workflow_dispatch' && inputs.publish_manifest))
         run: |

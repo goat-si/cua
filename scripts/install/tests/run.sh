@@ -484,7 +484,7 @@ mkdir -p "$csig" "$work/fakebin-cosign"
 cp "$tag_dir"/cua-cli-* "$csig/"
 for f in "$csig"/cua-cli-*.tar.gz; do printf '{}\n' >"$f.sigstore.json"; done
 python3 "$manifest_tool" --component cli --version "$version" --dir "$csig" --out "$csig/release-artifacts.json"
-want_identity="https://github.com/trycua/cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v$version"
+want_identity="https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v$version"
 cat >"$work/fakebin-cosign/cosign" <<COSIGN
 #!/bin/sh
 printf '%s\n' "\$*" >>"$work/cosign.log"
@@ -589,8 +589,8 @@ cp "$tag_dir"/cua-cli-* "$tag_dir"/cua-spaces-"$version"-linux-x64.AppImage "$si
 for f in "$sig3"/cua-cli-*.tar.gz "$sig3"/*.AppImage; do printf '{}\n' >"$f.sigstore.json"; done
 python3 "$manifest_tool" --component cli --version "$version" --dir "$sig3" --out "$sig3/cli.json"
 python3 "$manifest_tool" --component app --version "$version" --dir "$sig3" --merge "$sig3/cli.json" --out "$sig3/release-artifacts.json"
-cli_identity="https://github.com/trycua/cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v$version"
-main_identity="https://github.com/trycua/cua/.github/workflows/cd-cua-spaces.yml@refs/heads/main"
+cli_identity="https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-sdk.yml@refs/tags/cua-sdk-v$version"
+main_identity="https://github.com/goat-si/goat-cua/.github/workflows/cd-cua-spaces.yml@refs/heads/main"
 appimage="$(basename "$sig3"/*.AppImage)"
 appsum="$(sha256sum "$sig3/$appimage" | cut -d' ' -f1)"
 # The fake cosign knows only the CLI tag identity, and the app's main identity
@@ -609,7 +609,7 @@ for a in "\$@"; do
     prev="\$a"
 done
 [ "\$id" = "$cli_identity" ] && exit 0
-[ "\$id" = "$main_identity" ] && [ "\$repo" = trycua/cua ] && [ "\$ref" = refs/heads/main ] && [ "\$trig" = workflow_dispatch ] && exit 0
+[ "\$id" = "$main_identity" ] && [ "\$repo" = goat-si/goat-cua ] && [ "\$ref" = refs/heads/main ] && [ "\$trig" = workflow_dispatch ] && exit 0
 exit 1
 COSIGN
 chmod +x "$work/fakebin-cosign3/cosign"

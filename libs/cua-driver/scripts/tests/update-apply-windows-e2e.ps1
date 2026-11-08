@@ -55,7 +55,7 @@ $oneLiner = 'iwr -useb https://cua.ai/driver/install.ps1 | iex'
 $withdrawn = @(Get-Content -LiteralPath (Join-Path $repoRoot '.github/release-state/cua-driver-rs-withdrawn-versions') |
     ForEach-Object { ($_ -replace '#.*', '').Trim() } |
     Where-Object { $_ })
-$tags = Invoke-Native 'gh' @('api', '--paginate', 'repos/trycua/cua/releases?per_page=100', '--jq', '.[] | select(.draft == false) | .tag_name')
+$tags = Invoke-Native 'gh' @('api', '--paginate', 'repos/goat-si/goat-cua/releases?per_page=100', '--jq', '.[] | select(.draft == false) | .tag_name')
 Assert-True ($tags.ExitCode -eq 0) "could not list releases: $($tags.Output)"
 $versions = @($tags.Output -split "`r?`n" |
     Where-Object { $_ -match '^cua-driver-rs-v\d+\.\d+\.\d+$' } |

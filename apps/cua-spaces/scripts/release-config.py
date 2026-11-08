@@ -12,7 +12,7 @@ as `tauri build --config`. It holds:
   - the cua CLI sidecar (everything in src-tauri/tauri.sidecar.conf.json);
   - the updater endpoint on the repository that builds the release, so a
     staging build updates from its own `cua-spaces-latest` feed and a
-    trycua/cua build from trycua/cua's;
+    goat-si/goat-cua build from goat-si/goat-cua's;
   - the release version. A stable tag must equal src-tauri/tauri.conf.json's
     version (Release Please bumps both); a prerelease tag (X.Y.Z-suffix) is
     stamped in, with the numeric X.Y.Z as the MSI version (WiX takes numbers

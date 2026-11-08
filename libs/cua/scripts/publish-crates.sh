@@ -115,7 +115,7 @@ fi
 : "${CARGO_REGISTRY_TOKEN:?CARGO_REGISTRY_TOKEN is required to publish}"
 published() {
   [[ "$(curl -sS -o /dev/null -w '%{http_code}' \
-    -A 'trycua/cua release (https://github.com/trycua/cua)' \
+    -A 'goat-si/goat-cua release (https://github.com/goat-si/goat-cua)' \
     "https://crates.io/api/v1/crates/$1/$2")" == 200 ]]
 }
 pending=()

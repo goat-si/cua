@@ -97,10 +97,10 @@ conflicts = [
 cua-s1-mcp = "cua_s1.server:main"
 
 [project.urls]
-Homepage = "https://github.com/trycua/cua"
-Documentation = "https://github.com/trycua/cua/tree/main/libs/cua-s1"
-Repository = "https://github.com/trycua/cua"
-Issues = "https://github.com/trycua/cua/issues"
+Homepage = "https://github.com/goat-si/goat-cua"
+Documentation = "https://github.com/goat-si/goat-cua/tree/main/libs/cua-s1"
+Repository = "https://github.com/goat-si/goat-cua"
+Issues = "https://github.com/goat-si/goat-cua/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cua_s1"]

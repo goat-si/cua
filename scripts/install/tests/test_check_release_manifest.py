@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent.parent
 CHECK = HERE / "check_release_manifest.py"
 BUILD = HERE / "release_manifest.py"
 V = "0.8.0-beta.6"
-BASE = f"https://github.com/trycua/cua/releases/download/cua-spaces-v{V}"
+BASE = f"https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v{V}"
 
 
 class CheckReleaseManifestTest(unittest.TestCase):

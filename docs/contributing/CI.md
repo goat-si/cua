@@ -162,7 +162,7 @@ Rules, in order:
 5. Any other file belongs to the first area (top to bottom in the table) whose globs match it. A file, or an
    affected package, outside every area makes the gate wait for every run.
 6. A workflow listed under an area is required only when one of its areas is affected.
-7. A workflow listed under no area (for example the eMudhra and release-metadata checks) is always required. A new workflow is therefore required until someone maps it. The gate never waits for **CI: CLA**, because the required `contributor-attribution` check enforces the CLA.
+7. A workflow listed under no area (for example the eMudhra and release-metadata checks) is always required. A new workflow is therefore required until someone maps it. The gate ignores historical **CI: CLA** runs; GOAT Cua does not require a CLA signature, and `contributor-attribution` checks authorship without enforcing one.
 
 Unaffected workflows still run if their own `paths:` match; the gate just doesn't wait for them. `ci-gate`
 is the only required check, so nothing else needs a placeholder status. Main pushes, nightly and manual runs
@@ -273,6 +273,6 @@ Label a pull request `urgent` for a production fix that cannot wait for the full
 - The pull request description must reference a Linear issue (`CUA-123`, `CLE-45` or a Linear issue URL) or an
   incident (`Incident #482`, `incident 2026-10-25 relay outage`). The gate fails the pull request without one,
   so it blocks the merge. Edit the description to fix it; the gate re-runs on `edited`.
-- `trycua/cua` has no merge queue, so an urgent pull request merges with `gh pr merge --auto --squash` as soon
+- `goat-si/goat-cua` has no merge queue, so an urgent pull request merges with `gh pr merge --auto --squash` as soon
   as its scoped gate is green. Nothing is waiting in front of it.
 - Do not use the lane to skip a failing check. A failing required check still blocks the merge.

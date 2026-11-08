@@ -57,13 +57,13 @@ describe("release config", () => {
     expect(read(c.mac.entitlementsInherit)).toContain("com.apple.security.cs.allow-jit");
   });
 
-  it("stable: package.json's version on the latest channel, feed on trycua/cua by default", () => {
+  it("stable: package.json's version on the latest channel, feed on goat-si/goat-cua by default", () => {
     const c = config();
     const pkg = JSON.parse(readFileSync(path.join(import.meta.dirname, "../package.json"), "utf8"));
     expect(c.extraMetadata.version).toBe(pkg.version);
     expect(c.buildVersion).toBe(`${pkg.version}.0`);
     expect(c.publish).toEqual([
-      { provider: "generic", url: "https://github.com/trycua/cua/releases/download/cua-spaces-latest", channel: "latest" },
+      { provider: "generic", url: "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest", channel: "latest" },
     ]);
   });
 
@@ -96,8 +96,8 @@ describe("updater channels", () => {
   });
 
   it("reads each channel's feed from its own rolling release, whatever the build baked in", () => {
-    const latest = "https://github.com/trycua/cua/releases/download/cua-spaces-latest";
-    const nightly = "https://github.com/trycua/cua/releases/download/cua-spaces-nightly";
+    const latest = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-latest";
+    const nightly = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-nightly";
     for (const baked of [latest, nightly, `${latest}/`]) {
       expect(feedUrlFor("stable", baked)).toBe(latest);
       expect(feedUrlFor("nightly", baked)).toBe(nightly);
@@ -138,7 +138,7 @@ describe("feed-urls", () => {
     "releaseDate: '2026-10-07T00:00:00.000Z'",
     "",
   ].join("\n");
-  const base = "https://github.com/trycua/cua/releases/download/cua-spaces-v0.8.0-beta.1";
+  const base = "https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v0.8.0-beta.1";
 
   it("puts relative installer URLs under the version's release", () => {
     const out = absolutize(feed, base);

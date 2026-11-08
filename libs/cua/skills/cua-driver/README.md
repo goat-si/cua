@@ -2,7 +2,7 @@
 
 This cross-agent skill teaches an AI agent to operate native applications on
 macOS, Windows, and Linux with the
-[`cua-driver`](https://github.com/trycua/cua/tree/main/libs/cua-driver/rust)
+[`cua-driver`](https://github.com/goat-si/goat-cua/tree/main/libs/cua-driver/rust)
 CLI or MCP server.
 
 It covers the canonical snapshot-action-verify loop, exact window addressing,

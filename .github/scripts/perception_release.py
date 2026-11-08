@@ -557,7 +557,7 @@ def generated_documents(
         "candidate": True,
         "releaseStatus": "staging-candidate",
         "source": {
-            "repository": os.environ.get("GITHUB_REPOSITORY", "trycua/cua"),
+            "repository": os.environ.get("GITHUB_REPOSITORY", "goat-si/goat-cua"),
             "commit": manifest["sourceSha"],
         },
         "build": {
@@ -647,7 +647,7 @@ def extension_manifest(stage: Path, manifest: Mapping[str, Any], payload_root: P
             "sha256": source["sha256"],
         },
         "license": "LicenseRef-Mixed",
-        "source": "https://github.com/trycua/cua",
+        "source": "https://github.com/goat-si/goat-cua",
         "corresponding_source_uri": f"source/{source['name']}",
         "corresponding_source_revision": manifest["sourceSha"],
         "provenance": "metadata/provenance.redacted.json",
@@ -769,7 +769,7 @@ def catalog_payload(
         "archive_sha256": file_digest(archive),
         "manifest_sha256": file_digest(manifest_file),
         "license": "LicenseRef-Mixed",
-        "source": "https://github.com/trycua/cua",
+        "source": "https://github.com/goat-si/goat-cua",
         "corresponding_source_uri": f"source/{source['name']}",
         "corresponding_source_revision": manifest["sourceSha"],
         "provenance": "metadata/provenance.redacted.json",

@@ -84,7 +84,7 @@ jobs:
     # run is reported as `cancelled`, not failed. Raising the ceiling makes more
     # of the gate run, not less; no test or assertion is skipped or relaxed.
     # workflow_dispatch proxy-idle runs keep upstream's 90-minute budget.
-    # A warm Rust cache runs in about 15 minutes (trycua/cua); the cache is
+    # A warm Rust cache runs in about 15 minutes (goat-si/goat-cua); the cache is
     # saved only from main, so a repository without one builds cold, where
     # the first test step alone took 22 minutes and the job passed 45.
     timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.proxy_idle_seconds > 1 && 90 || 60 }}

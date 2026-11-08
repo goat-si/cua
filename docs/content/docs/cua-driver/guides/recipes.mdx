@@ -293,13 +293,13 @@ own. It comes in two packages that produce the same trajectories:
 
 Both are tested against the same golden trajectories, so a motion you tune on a
 web page plays the same way in the driver. Neither is published to crates.io or
-npm. Use them from [trycua/cua](https://github.com/trycua/cua).
+npm. Use them from [goat-si/goat-cua](https://github.com/goat-si/goat-cua).
 
 In Rust, add a git dependency. Cargo finds the crate inside the repository:
 
 ```toml skip="no-runner"
 [dependencies]
-cua-cursor-motion = { git = "https://github.com/trycua/cua" }
+cua-cursor-motion = { git = "https://github.com/goat-si/goat-cua" }
 ```
 
 On the web, build the single-file ES module once and copy it with its types
@@ -307,7 +307,7 @@ into your project. The file has no imports, so it also loads from a plain
 `<script type="module">`.
 
 ```bash skip="host-install"
-git clone --depth 1 https://github.com/trycua/cua
+git clone --depth 1 https://github.com/goat-si/goat-cua
 cd cua/libs/typescript
 pnpm install
 pnpm --filter @trycua/cursor-motion build

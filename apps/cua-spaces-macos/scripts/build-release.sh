@@ -52,7 +52,7 @@
 # one, so a nightly app on Stable takes the next stable release.
 #
 # --feed-url sets the updater's appcast (SUFeedURL; default Support/Info.plist's,
-# trycua/cua's rolling cua-spaces-latest release). The release workflow passes
+# goat-si/goat-cua's rolling cua-spaces-latest release). The release workflow passes
 # its own repository's, so a staging build updates from staging.
 #
 # --sign takes a codesign identity ("Developer ID Application: Name (TEAM)");

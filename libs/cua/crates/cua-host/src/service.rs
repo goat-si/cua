@@ -483,7 +483,7 @@ pub fn systemd_unit(spec: &ServiceSpec, system: bool) -> String {
          # Unattended access to this computer through cua-spacesd.\n\
          [Unit]\n\
          Description=Cua unattended access (cua-spacesd)\n\
-         Documentation=https://github.com/trycua/cua/tree/main/libs/cua-spacesd\n\
+         Documentation=https://github.com/goat-si/goat-cua/tree/main/libs/cua-spacesd\n\
          After={after}\n\
          Wants=network-online.target\n\
          \n\

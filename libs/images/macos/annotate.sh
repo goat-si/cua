@@ -48,7 +48,7 @@ jq --arg variants "{\"lume\":\"$REPOSITORY:$NEW\"}" --arg source "$REPOSITORY:$S
         "ai.cua.image.variant": "lume",
         "ai.cua.image.variants": $variants,
         "ai.cua.image.source": $source,
-        "org.opencontainers.image.source": "https://github.com/trycua/cua"}
+        "org.opencontainers.image.source": "https://github.com/goat-si/goat-cua"}
         + (if $tier != "" then {"ai.cua.image.tier": $tier} else {} end)
         + (if $tier == "xcode" then {"ai.cua.image.notice": $notice} else {} end)
         + (if $key != "" then {"ai.cua.image.content-key": $key} else {} end))' \

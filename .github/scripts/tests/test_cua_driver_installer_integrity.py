@@ -21,8 +21,8 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SCRIPTS = REPO_ROOT / "libs/cua-driver/scripts"
-RELEASE_URL = "https://github.com/trycua/cua/releases/download/"
-WORKFLOW_IDENTITY = "https://github.com/trycua/cua/.github/workflows/cd-rust-cua-driver.yml@refs/tags/"
+RELEASE_URL = "https://github.com/goat-si/goat-cua/releases/download/"
+WORKFLOW_IDENTITY = "https://github.com/goat-si/goat-cua/.github/workflows/cd-rust-cua-driver.yml@refs/tags/"
 
 linux_only = pytest.mark.skipif(
     sys.platform != "linux", reason="runs the Linux install path against a temporary HOME"
@@ -346,7 +346,7 @@ foreach ($assign in $ast.EndBlock.Statements | Where-Object {
 $RequireSignature = $Require -eq '1'
 $Script:CuaDriverRsReleaseTag = $Tag
 function Invoke-WebRequest([string]$Uri, [string]$OutFile, [switch]$UseBasicParsing) {
-    $prefix = 'https://github.com/trycua/cua/releases/download/'
+    $prefix = 'https://github.com/goat-si/goat-cua/releases/download/'
     $path = Join-Path $Releases $Uri.Substring($prefix.Length)
     if (-not (Test-Path -LiteralPath $path)) {
         $response = [pscustomobject]@{ StatusCode = 404 }

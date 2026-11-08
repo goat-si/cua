@@ -289,7 +289,7 @@ pub fn plan(def: &Definition, o: &BuildOpts) -> Result<Vec<Step>, CuaError> {
     }
     let mut labels: Vec<String> = Vec::new();
     for l in [
-        "org.opencontainers.image.source=https://github.com/trycua/cua".to_string(),
+        "org.opencontainers.image.source=https://github.com/goat-si/goat-cua".to_string(),
         "ai.cua.image.variant=rootfs".into(),
         "ai.cua.image.os=linux".into(),
         format!("ai.cua.spacesd={spacesd}"),
@@ -699,7 +699,7 @@ pub fn publish_spec(def: &Definition, o: &PublishOpts) -> Result<PublishSpec, Cu
     let mut annotations = BTreeMap::new();
     annotations.insert(
         "org.opencontainers.image.source".into(),
-        "https://github.com/trycua/cua".into(),
+        "https://github.com/goat-si/goat-cua".into(),
     );
     if let Some(rev) = git_head(&def.root) {
         annotations.insert("org.opencontainers.image.revision".into(), rev);

@@ -85,7 +85,7 @@ def run(env: dict[str, object], pulls: list[dict], tags: dict, **extra) -> tuple
     environment = dict(os.environ)
     environment.update({
         "PATH": f"{env['bin']}{os.pathsep}{environment['PATH']}",
-        "GITHUB_REPOSITORY": "trycua/cua",
+        "GITHUB_REPOSITORY": "goat-si/goat-cua",
         "FAKE_GH_STATE": str(env["state"]),
         "FAKE_GH_LOG": str(env["log"]),
     })
@@ -111,7 +111,7 @@ def test_pending_pull_request_with_anchored_tag_is_marked_tagged(env) -> None:
     result, calls = run(env, [pull(env)], tags)
     assert result.returncode == 0, result.stdout + result.stderr
     assert edits(calls) == [[
-        "pr", "edit", "4075", "--repo", "trycua/cua",
+        "pr", "edit", "4075", "--repo", "goat-si/goat-cua",
         "--remove-label", "autorelease: pending",
         "--add-label", "autorelease: tagged",
     ]]

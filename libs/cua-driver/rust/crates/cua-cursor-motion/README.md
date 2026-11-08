@@ -5,21 +5,21 @@ small Rust library: six motion styles, seven timing modes, the comet trail and
 the other effects, and an API for designing your own motions.
 
 Cua Driver plans every agent cursor move with this crate, and the
-[`@trycua/cursor-motion`](https://github.com/trycua/cua/tree/main/libs/typescript/cursor-motion) web package is a port that is
+[`@trycua/cursor-motion`](https://github.com/goat-si/goat-cua/tree/main/libs/typescript/cursor-motion) web package is a port that is
 tested against the same golden trajectories. There is no runtime dependency;
 the `serde` feature adds `Serialize`/`Deserialize` to the public types.
 
 ## Use it
 
 Cua Cursor Motion is not published to crates.io. It lives in the
-[trycua/cua](https://github.com/trycua/cua) repository; add it as a git
+[goat-si/goat-cua](https://github.com/goat-si/goat-cua) repository; add it as a git
 dependency:
 
 ```toml
 [dependencies]
-cua-cursor-motion = { git = "https://github.com/trycua/cua" }
+cua-cursor-motion = { git = "https://github.com/goat-si/goat-cua" }
 # Pin a commit for reproducible builds, and add features = ["serde"] if needed:
-# cua-cursor-motion = { git = "https://github.com/trycua/cua", rev = "<commit>", features = ["serde"] }
+# cua-cursor-motion = { git = "https://github.com/goat-si/goat-cua", rev = "<commit>", features = ["serde"] }
 ```
 
 Cargo finds the crate inside the repository's Cua Driver workspace by name.

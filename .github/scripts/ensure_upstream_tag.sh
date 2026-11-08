@@ -3,7 +3,7 @@
 #
 #   ensure_upstream_tag.sh TAG...
 #
-# Staging shares trycua/cua's history but not its release tags, and pushing
+# Staging shares goat-si/goat-cua's history but not its release tags, and pushing
 # them here would start the stable release workflows. For each TAG missing
 # from the local clone, fetch it read-only from the public repository into
 # this runner's refs/tags only. Tags that already resolve are left alone.

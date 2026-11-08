@@ -4,7 +4,7 @@
 The release workflows call this after collecting their artifacts:
 
     release_manifest.py --component cli --version 0.3.0 --dir release/ \
-        --base-url https://github.com/trycua/cua/releases/download/cua-sdk-v0.3.0 \
+        --base-url https://github.com/goat-si/goat-cua/releases/download/cua-sdk-v0.3.0 \
         --merge previous.json --out release/release-artifacts.json
 
 Artifact names it recognises (anything else in --dir is ignored):
@@ -190,7 +190,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dir", required=True, help="directory holding the release artifacts")
     parser.add_argument("--base-url", help="download URL prefix (default: names relative to the manifest)")
     parser.add_argument("--merge", help="existing manifest; its other components are kept")
-    parser.add_argument("--repo", default="trycua/cua")
+    parser.add_argument("--repo", default="goat-si/goat-cua")
     parser.add_argument(
         "--carry-forward-platforms",
         action="store_true",

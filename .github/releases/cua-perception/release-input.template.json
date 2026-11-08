@@ -16,7 +16,7 @@
       "size": 1,
       "target": { "triple": "x86_64-unknown-linux-gnu", "os": "linux", "arch": "x86_64" },
       "protocolVersion": 1,
-      "license": { "spdx": "Apache-2.0", "source": "https://github.com/trycua/cua", "notice": "payload/NOTICE" }
+      "license": { "spdx": "Apache-2.0", "source": "https://github.com/goat-si/goat-cua", "notice": "payload/NOTICE" }
     },
     {
       "kind": "notice",
@@ -24,7 +24,7 @@
       "path": "payload/NOTICE",
       "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "size": 1,
-      "license": { "spdx": "Apache-2.0", "source": "https://github.com/trycua/cua" }
+      "license": { "spdx": "Apache-2.0", "source": "https://github.com/goat-si/goat-cua" }
     },
     {
       "kind": "model-manifest",
@@ -32,7 +32,7 @@
       "path": "payload/model-manifest.json",
       "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "size": 1,
-      "license": { "spdx": "Apache-2.0", "source": "https://github.com/trycua/cua", "notice": "payload/NOTICE" }
+      "license": { "spdx": "Apache-2.0", "source": "https://github.com/goat-si/goat-cua", "notice": "payload/NOTICE" }
     }
   ],
   "modelLedger": "model-ledger.json",

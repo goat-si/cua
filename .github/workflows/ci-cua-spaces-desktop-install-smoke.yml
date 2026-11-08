@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: "Optional trycua/cua workflow run id holding the electron-windows and electron-linux artifacts. Empty = latest run whose artifacts have not expired."
+        description: "Optional goat-si/goat-cua workflow run id holding the electron-windows and electron-linux artifacts. Empty = latest run whose artifacts have not expired."
         default: ""
   pull_request:
     paths:

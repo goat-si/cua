@@ -14,7 +14,7 @@ describe("the update state machine", () => {
     s = reduceUpdate(s, { type: "checking" });
     expect(s.status).toBe("checking");
     s = reduceUpdate(s, { type: "available", version: "0.9.3" });
-    expect(s).toMatchObject({ status: "available", version: "0.9.3", percent: null, notesUrl: "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3" });
+    expect(s).toMatchObject({ status: "available", version: "0.9.3", percent: null, notesUrl: "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3" });
     s = reduceUpdate(s, { type: "progress", percent: 41.5 });
     expect(s).toMatchObject({ status: "downloading", percent: 41.5 });
     s = reduceUpdate(s, { type: "downloaded", version: "0.9.3" });
@@ -53,9 +53,9 @@ describe("the update state machine", () => {
   });
 
   it("points at the repository's release tag", () => {
-    expect(releaseNotesUrl(" 0.9.3-rc.4 ")).toBe("https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3-rc.4");
-    expect(releaseNotesUrl("0.21.0-nightly.20261105.42")).toBe("https://github.com/trycua/cua/releases/tag/cua-spaces-nightly");
-    expect(releaseNotesUrl("0.21.0-nightly.20261105")).toBe("https://github.com/trycua/cua/releases/tag/cua-spaces-nightly");
+    expect(releaseNotesUrl(" 0.9.3-rc.4 ")).toBe("https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3-rc.4");
+    expect(releaseNotesUrl("0.21.0-nightly.20261105.42")).toBe("https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-nightly");
+    expect(releaseNotesUrl("0.21.0-nightly.20261105")).toBe("https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-nightly");
   });
 
   it("checks shortly after launch, and every few hours", () => {

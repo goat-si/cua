@@ -213,7 +213,7 @@ export const DEMO_CREATE_FAILURES = {
   disk: "not enough disk space to pull ghcr.io/trycua/macos:26: it needs about 30.0 GB and cua keeps 5.0 GB free, but only 12.4 GB is available on /Users/me/.lume (run `cua cache prune` to free space, or lower CUA_DISK_MIN_FREE)",
 } as const;
 
-const DEMO_NOTES = "https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.3";
+const DEMO_NOTES = "https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.3";
 
 /** `?demo=fresh` (signed out, first run), `?demo=no-team`, `?demo=team-full`, `?demo=slow` (slow answers), `?demo=locked` (Keyvault locked), `?demo=novault` (no Keyvault yet),
  * `?demo=empty` (no Spaces yet), `?demo=nothread` (a daemon without the Space thread), `?demo=thread-lookalike` (a look-alike agent in the thread), `?demo=thread-request` (an agent asks to join), `?demo=thread-cards` (the host's push card and notice), `?demo=thread-join-slow` / `?demo=thread-join-expire` (join codes never redeemed / expiring), `?demo=keychain` (the startup screen),

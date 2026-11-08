@@ -57,7 +57,7 @@
 #   CUA_INSTALL_MANIFEST_URL  release-artifacts.json to read
 #   CUA_INSTALL_BASE_URL      release download base (default GitHub releases)
 #   CUA_INSTALL_DRIVER_URL    cua-driver installer (default cua.ai/driver/install.sh)
-#   CUA_INSTALL_REPO          GitHub repo (default trycua/cua)
+#   CUA_INSTALL_REPO          GitHub repo (default goat-si/goat-cua)
 #   CUA_INSTALL_OS, CUA_INSTALL_ARCH  override platform detection
 #   CUA_INSTALL_MINISIGN_PUBKEY       minisign public key for artifacts
 #   CUA_HOME                  cua state dir (default ~/.cua)
@@ -71,7 +71,7 @@
 # https://cua.ai/docs/cua-sdk/concepts/telemetry
 set -eu
 
-REPO="${CUA_INSTALL_REPO:-trycua/cua}"
+REPO="${CUA_INSTALL_REPO:-goat-si/goat-cua}"
 BASE_URL="${CUA_INSTALL_BASE_URL:-https://github.com/$REPO/releases/download}"
 # Rolling release that always carries the newest release-artifacts.json.
 LATEST_TAG="cua-install-latest"

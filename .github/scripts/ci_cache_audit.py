@@ -38,7 +38,7 @@ drop the cache.
 
 Usage (needs the `gh` CLI, authenticated; run from any directory):
 
-  ci_cache_audit.py --repo trycua/cua                       # every workflow with a rust-cache step
+  ci_cache_audit.py --repo goat-si/goat-cua                       # every workflow with a rust-cache step
   ci_cache_audit.py --workflows ci-elastic.yml e2b-bindings.yml --runs 20
   ci_cache_audit.py --format json > audit.json
 
@@ -243,7 +243,7 @@ def markdown(report: list[dict]) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--repo", default="trycua/cua")
+    parser.add_argument("--repo", default="goat-si/goat-cua")
     parser.add_argument("--workflows", nargs="*", help="workflow file names (default: every workflow with a rust-cache step)")
     parser.add_argument("--runs", type=int, default=12, help="completed runs sampled per workflow")
     parser.add_argument("--min-runs", type=int, default=3)

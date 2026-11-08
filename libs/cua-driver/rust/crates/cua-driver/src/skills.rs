@@ -857,7 +857,7 @@ fn fetch_into(dest: &Path, from_main: bool, all_platforms: bool) -> Result<()> {
 
     if from_main {
         // Per-file raw GitHub fetch — used for bleeding-edge dev validation.
-        let base = "https://raw.githubusercontent.com/trycua/cua/main/libs/cua-driver/rust/Skills/cua-driver";
+        let base = "https://raw.githubusercontent.com/goat-si/goat-cua/main/libs/cua-driver/rust/Skills/cua-driver";
         for f in SKILL_FILES {
             if is_excluded_platform_doc(f, all_platforms) {
                 continue;
@@ -884,7 +884,7 @@ fn skill_release_url(version: &str) -> String {
         STABLE_RELEASE_TAG_PREFIX
     };
     format!(
-        "https://github.com/trycua/cua/releases/download/{tag_prefix}{version}/\
+        "https://github.com/goat-si/goat-cua/releases/download/{tag_prefix}{version}/\
          {STABLE_RELEASE_TAG_PREFIX}{version}-skills.tar.gz"
     )
 }
@@ -1574,7 +1574,7 @@ mod tests {
     fn stable_skill_pack_uses_the_stable_release_tag() {
         assert_eq!(
             skill_release_url("0.19.3"),
-            "https://github.com/trycua/cua/releases/download/\
+            "https://github.com/goat-si/goat-cua/releases/download/\
              cua-driver-rs-v0.19.3/cua-driver-rs-v0.19.3-skills.tar.gz"
         );
     }
@@ -1583,7 +1583,7 @@ mod tests {
     fn nightly_skill_pack_uses_the_nightly_tag_and_compatible_asset_name() {
         assert_eq!(
             skill_release_url("0.19.4-nightly.20260812.3097"),
-            "https://github.com/trycua/cua/releases/download/\
+            "https://github.com/goat-si/goat-cua/releases/download/\
              nightly-cua-driver-rs-v0.19.4-nightly.20260812.3097/\
              cua-driver-rs-v0.19.4-nightly.20260812.3097-skills.tar.gz"
         );

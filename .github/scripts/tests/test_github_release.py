@@ -33,7 +33,7 @@ class FakeApi:
             "prerelease": False,
             "body": "generated placeholder",
             "upload_url": "https://uploads.example/releases/7/assets{?name,label}",
-            "html_url": "https://github.com/trycua/cua/releases/tag/lume-v0.4.0",
+            "html_url": "https://github.com/goat-si/goat-cua/releases/tag/lume-v0.4.0",
         }
 
     def get(self, path: str):
@@ -74,7 +74,7 @@ class FakeApi:
             "body": body["body"],
             "target_commitish": body["target_commitish"],
             "upload_url": "https://uploads.example/releases/8/assets{?name,label}",
-            "html_url": f"https://github.com/trycua/cua/releases/tag/{body['tag_name']}",
+            "html_url": f"https://github.com/goat-si/goat-cua/releases/tag/{body['tag_name']}",
         }
         return self.release
 
@@ -86,7 +86,7 @@ def test_finalize_verifies_tag_replaces_incomplete_assets_then_publishes(tmp_pat
 
     release = finalize_release(
         api=api,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         tag="lume-v0.4.0",
         expected_sha="abc123",
         body="final body",
@@ -95,8 +95,8 @@ def test_finalize_verifies_tag_replaces_incomplete_assets_then_publishes(tmp_pat
         make_latest=True,
     )
 
-    assert tag_commit_sha(api, "trycua/cua", "lume-v0.4.0") == "abc123"
-    assert api.deleted == ["repos/trycua/cua/releases/assets/21"]
+    assert tag_commit_sha(api, "goat-si/goat-cua", "lume-v0.4.0") == "abc123"
+    assert api.deleted == ["repos/goat-si/goat-cua/releases/assets/21"]
     assert [name for _, name in api.uploaded] == ["new.sha256", "old.zip"]
     assert api.patches[0][1] == {
         "body": "final body",
@@ -112,7 +112,7 @@ def test_release_and_tag_invariants_fail_closed():
     with pytest.raises(ReleaseError, match="expected expected"):
         finalize_release(
             api=api,
-            repository="trycua/cua",
+            repository="goat-si/goat-cua",
             tag="lume-v0.4.0",
             expected_sha="expected",
             body="body",
@@ -122,7 +122,7 @@ def test_release_and_tag_invariants_fail_closed():
         )
     api.release = None
     with pytest.raises(ReleaseError, match="does not exist"):
-        unique_release(api, "trycua/cua", "lume-v0.4.0")
+        unique_release(api, "goat-si/goat-cua", "lume-v0.4.0")
 
 
 def test_published_release_is_verified_without_mutation(tmp_path: Path):
@@ -141,7 +141,7 @@ def test_published_release_is_verified_without_mutation(tmp_path: Path):
 
     finalize_release(
         api=api,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         tag="lume-v0.4.0",
         expected_sha="abc123",
         body="final body",
@@ -168,7 +168,7 @@ def test_github_api_retries_transient_server_error(monkeypatch: pytest.MonkeyPat
     responses = iter(
         [
             HTTPError(
-                "https://api.github.com/repos/trycua/cua/releases",
+                "https://api.github.com/repos/goat-si/goat-cua/releases",
                 503,
                 "Service Unavailable",
                 {"Retry-After": "0.25"},
@@ -189,7 +189,7 @@ def test_github_api_retries_transient_server_error(monkeypatch: pytest.MonkeyPat
     monkeypatch.setattr(github_release.time, "sleep", sleeps.append)
 
     api = GitHubApi("token", max_attempts=3, retry_base_seconds=0.1)
-    assert api.get("repos/trycua/cua/releases") == {"ok": True}
+    assert api.get("repos/goat-si/goat-cua/releases") == {"ok": True}
     assert sleeps == [0.25]
 
 
@@ -201,7 +201,7 @@ def test_nightly_can_create_a_private_draft_at_the_exact_sha():
 
     release = ensure_release(
         api,
-        "trycua/cua",
+        "goat-si/goat-cua",
         tag,
         sha,
         channel="nightly",
@@ -211,7 +211,7 @@ def test_nightly_can_create_a_private_draft_at_the_exact_sha():
     assert release["draft"] is True
     assert api.posts == [
         (
-            "repos/trycua/cua/releases",
+            "repos/goat-si/goat-cua/releases",
             {
                 "tag_name": tag,
                 "target_commitish": sha,
@@ -246,7 +246,7 @@ def test_nightly_creation_validates_registry_with_stable_authority(
     api.release = None
     ensure_release(
         api,
-        "trycua/cua",
+        "goat-si/goat-cua",
         "nightly-cua-driver-rs-v0.19.4-nightly.20260812.42",
         "a" * 40,
         channel="nightly",
@@ -261,7 +261,7 @@ def test_stable_and_unregistered_tags_cannot_create_drafts():
     with pytest.raises(ReleaseError, match="only for the nightly channel"):
         ensure_release(
             api,
-            "trycua/cua",
+            "goat-si/goat-cua",
             "lume-v0.5.4",
             "a" * 40,
             channel="stable",
@@ -270,7 +270,7 @@ def test_stable_and_unregistered_tags_cannot_create_drafts():
     with pytest.raises(ReleaseError, match="exactly one registered component"):
         ensure_release(
             api,
-            "trycua/cua",
+            "goat-si/goat-cua",
             "nightly-other-v0.5.4-nightly.20260812.42",
             "a" * 40,
             channel="nightly",
@@ -285,7 +285,7 @@ def test_nightly_draft_requires_an_exact_commit_sha_before_creation():
     with pytest.raises(ReleaseError, match="exact lowercase commit SHA"):
         ensure_release(
             api,
-            "trycua/cua",
+            "goat-si/goat-cua",
             "nightly-lume-v0.5.4-nightly.20260812.42",
             "main",
             channel="nightly",
@@ -299,7 +299,7 @@ def test_nightly_publication_flags_fail_closed_before_mutation(tmp_path: Path):
     with pytest.raises(ReleaseError, match="must be prereleases"):
         finalize_release(
             api=api,
-            repository="trycua/cua",
+            repository="goat-si/goat-cua",
             tag="nightly-lume-v0.5.4-nightly.20260812.42",
             expected_sha="a" * 40,
             body="body",
@@ -323,7 +323,7 @@ def test_nightly_creation_upload_and_publish_is_one_idempotent_transaction(tmp_p
 
     release = finalize_release(
         api=api,
-        repository="trycua/cua",
+        repository="goat-si/goat-cua",
         tag=tag,
         expected_sha=sha,
         body="nightly body",
@@ -338,7 +338,7 @@ def test_nightly_creation_upload_and_publish_is_one_idempotent_transaction(tmp_p
     assert [name for _, name in api.uploaded] == ["lume.tar.gz"]
     assert api.patches == [
         (
-            "repos/trycua/cua/releases/8",
+            "repos/goat-si/goat-cua/releases/8",
             {
                 "body": "nightly body",
                 "draft": False,

@@ -71,10 +71,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           INPUT_VERSIONS: ${{ inputs.versions }}
-          # The installers download from trycua/cua releases, so the versions
+          # The installers download from goat-si/goat-cua releases, so the versions
           # under test come from there too, on this repository and on forks
           # such as cua-staging whose own releases are unrelated.
-          RELEASE_REPOSITORY: trycua/cua
+          RELEASE_REPOSITORY: goat-si/goat-cua
         run: |
           if [[ -n "$INPUT_VERSIONS" ]]; then
             VERSIONS=$(tr ', ' '\n' <<< "$INPUT_VERSIONS" |

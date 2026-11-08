@@ -417,7 +417,7 @@ A macOS signature failure always fails closed. The installer never downgrades to
 To check a published release on a Mac:
 
 ```bash
-gh release download cua-driver-rs-v0.28.2 --repo trycua/cua --dir /tmp/cua-release \
+gh release download cua-driver-rs-v0.28.2 --repo goat-si/goat-cua --dir /tmp/cua-release \
   --pattern 'cua-driver-rs-0.28.2-darwin-*.tar.gz'
 python3 .github/scripts/verify_cua_driver_release_signatures.py macos \
   --artifacts /tmp/cua-release --version 0.28.2 --legacy-unsigned-node-runtime

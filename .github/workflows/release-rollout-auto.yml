@@ -39,7 +39,7 @@ concurrency:
 jobs:
   decide:
     name: "Rollout decision${{ inputs.dry_run && ' (dry run)' || '' }}"
-    if: github.repository == 'trycua/cua'
+    if: github.repository == 'goat-si/goat-cua'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

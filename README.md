@@ -7,7 +7,11 @@
     </picture>
   </a>
 
+  <h1>GOAT Cua</h1>
+
   <p align="center"><strong>Give AI agents computers they can use.</strong><br>Cua Spaces gives your agents full desktops on your Mac and on computers you own. This repository also holds Cua Driver for desktop automation, Lume for local VMs, CUA-S1 decision models and Cua Bench for evaluating computer-use agents.</p>
+
+  <p align="center">GOAT Cua is an independently maintained fork of <a href="https://github.com/trycua/cua">Cua</a>. Upstream copyrights, licences, trademarks, and third-party notices are preserved.</p>
 
   <p align="center"><strong><a href="https://spaces.cua.ai">Get Cua Spaces</a></strong></p>
 
@@ -17,7 +21,7 @@
     <a href="https://x.com/trycua" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/trycua?style=social" alt="Twitter"></a>
     <a href="https://cua.ai/docs" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Docs-0ea5e9.svg" alt="Documentation"></a>
     <br>
-<a href="https://www.star-history.com/#trycua/cua" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/badge?repo=trycua/cua&type=trending" alt="trycua/cua | GitHub Trending on Star History" width="266" height="64"/></a>
+<a href="https://www.star-history.com/#goat-si/goat-cua" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/badge?repo=goat-si/goat-cua&type=trending" alt="goat-si/goat-cua | GitHub Trending on Star History" width="266" height="64"/></a>
   </p>
 
 </div>
@@ -80,7 +84,7 @@ https://github.com/user-attachments/assets/a2ccc86b-10d0-48c0-bee6-7ae652ba1c59
 curl -fsSL https://cua.ai/install.sh | sh
 ```
 
-On macOS the installer selects the Cua Spaces app by default and adds the `cua` CLI. You can also [download the signed `.dmg`](https://github.com/trycua/cua/releases/download/cua-spaces-v0.9.4/cua-spaces-0.9.4-darwin-universal.dmg), or get the `.pkg` from the [Cua Spaces 0.9.4 release](https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.4).
+On macOS the installer selects the Cua Spaces app by default and adds the `cua` CLI. You can also [download the signed `.dmg`](https://github.com/goat-si/goat-cua/releases/download/cua-spaces-v0.9.4/cua-spaces-0.9.4-darwin-universal.dmg), or get the `.pkg` from the [Cua Spaces 0.9.4 release](https://github.com/goat-si/goat-cua/releases/tag/cua-spaces-v0.9.4).
 
 Spaces is free for individuals. Pro is $18 a month and Teams is $30 per seat a month, available now from 1 seat. See [pricing](https://cua.ai/pricing). The app is source-available under [FSL-1.1-MIT](#licensing).
 
@@ -246,24 +250,24 @@ Cua no longer maintains these. They will not receive updates or fixes, their CI/
 - [Documentation](https://cua.ai/docs): guides, examples, and API reference
 - [Blog](https://cua.ai/blog): tutorials, updates, and research
 - [Discord](https://discord.com/invite/mVnXXpdE85): community support and discussions
-- [GitHub Issues](https://github.com/trycua/cua/issues): bug reports and feature requests
+- [GitHub Issues](https://github.com/goat-si/goat-cua/issues): bug reports and feature requests
 - [Security](.github/SECURITY.md): private vulnerability reporting
 
 ## Citation
 
-If Cua supports your research, please cite the software:
+If GOAT Cua supports your research, please cite the software:
 
 ```bibtex
-@software{cua2025,
-  author  = {{Cua AI, Inc.}},
-  title   = {Cua},
-  year    = {2025},
-  url     = {https://github.com/trycua/cua},
+@software{goatcua2026,
+  author  = {{Cua AI, Inc.} and {goat-si}},
+  title   = {GOAT Cua},
+  year    = {2026},
+  url     = {https://github.com/goat-si/goat-cua},
   license = {MIT}
 }
 ```
 
-For reproducibility, include the Cua release or commit used in your experiments. Citation metadata is also available in [`CITATION.cff`](CITATION.cff).
+For reproducibility, include the GOAT Cua release or commit used in your experiments. Citation metadata is also available in [`CITATION.cff`](CITATION.cff).
 
 ## Contributing
 

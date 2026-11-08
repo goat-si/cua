@@ -3,7 +3,7 @@
 # Copyright (c) 2026 Cua AI, Inc.
 
 # Packages one cua-spacesd binary into the release assets its consumers
-# download from https://github.com/trycua/cua/releases/download/cua-spacesd-v<version>/:
+# download from https://github.com/goat-si/goat-cua/releases/download/cua-spacesd-v<version>/:
 #
 #   cua-spacesd-<triple>.tar.gz   Linux/macOS: kasm, xfce, qemu-docker, lume,
 #                                    cua-sandbox builder
