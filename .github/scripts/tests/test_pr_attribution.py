@@ -224,7 +224,7 @@ def test_explicit_cherry_pick_source_reference_is_parsed_but_supersedes_is_not()
         "goat-si/goat-cua",
     ) == [2280]
     assert source_pull_numbers(
-        "The identity is verified by [PR #2280](https://github.com/trycua/cua/pull/2280)",
+        "The identity is verified by [PR #2280](https://github.com/goat-si/goat-cua/pull/2280)",
         "goat-si/goat-cua",
     ) == [2280]
     assert source_pull_numbers("Supersedes #2280", "goat-si/goat-cua") == []
@@ -354,7 +354,7 @@ def test_mapping_only_override_requires_and_accepts_exact_source_evidence():
 
     validate(
         pull_value=pull(
-            body=("The identity is verified by [PR #20](https://github.com/trycua/cua/pull/20)")
+            body=("The identity is verified by [PR #20](https://github.com/goat-si/goat-cua/pull/20)")
         ),
         changes=changes,
         authors={20: "historic-author"},

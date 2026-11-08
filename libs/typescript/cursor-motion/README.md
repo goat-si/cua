@@ -19,7 +19,7 @@ checkout and copy the single-file ES module and its types into your project:
 
 ```bash
 git clone --depth 1 https://github.com/goat-si/goat-cua
-cd cua/libs/typescript
+cd goat-cua/libs/typescript
 pnpm install
 pnpm --filter @trycua/cursor-motion build
 cp cursor-motion/dist/index.js   ../../../my-app/src/vendor/cua-cursor-motion.js

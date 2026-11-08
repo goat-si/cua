@@ -39,7 +39,7 @@ Clone the repository and enter it:
 
 ```bash
 git clone https://github.com/goat-si/goat-cua.git
-cd cua
+cd goat-cua
 ```
 
 Install only the toolchains required by your component:

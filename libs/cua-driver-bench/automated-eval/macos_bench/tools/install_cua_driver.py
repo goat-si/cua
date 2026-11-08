@@ -4,7 +4,7 @@
 
 """Install the pinned Cua Driver release for arm A as a private copy.
 
-Downloads the release assets named in pins.json from github.com/goat-si/goat-cua, checks their sha256 against pins.json
+Downloads the release assets named in pins.json from github.com/trycua/cua, checks their sha256 against pins.json
 and against the release's SHA256SUMS, and unpacks them under $CDB_BENCH_WORK/cua-0.34.0/. It never touches an
 installed Cua Driver (the app in /Applications or ~/.local/bin). The harness calls the private binary by absolute path.
 
@@ -27,7 +27,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 PINS = json.loads((HERE.parent / "pins.json").read_text("utf-8"))
 BASE = (
-    "https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v" + PINS["cua_driver_version"]
+    "https://github.com/trycua/cua/releases/download/cua-driver-rs-v" + PINS["cua_driver_version"]
 )
 
 

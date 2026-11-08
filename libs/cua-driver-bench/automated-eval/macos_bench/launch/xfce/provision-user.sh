@@ -14,7 +14,7 @@ PACK=${1:-$(cd "$HERE/../../../../taskpack" && pwd)}
 mkdir -p "$CDB_HOME" && cd "$CDB_HOME"
 
 if [ ! -x cua-driver-rs-0.38.0-linux-x86_64/cua-driver ]; then
-  curl -fsSL -o cd.tgz https://github.com/goat-si/goat-cua/releases/download/cua-driver-rs-v0.38.0/cua-driver-rs-0.38.0-linux-x86_64.tar.gz
+  curl -fsSL -o cd.tgz https://github.com/trycua/cua/releases/download/cua-driver-rs-v0.38.0/cua-driver-rs-0.38.0-linux-x86_64.tar.gz
   tar -xzf cd.tgz && rm cd.tgz
 fi
 mkdir -p agent-desktop && (cd agent-desktop && [ -d node_modules/agent-desktop ] || npm install --no-audit --no-fund --silent agent-desktop@1.2.0)

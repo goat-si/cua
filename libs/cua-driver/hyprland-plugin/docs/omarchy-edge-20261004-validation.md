@@ -10,7 +10,7 @@ fresh ISO installation or Omarchy's Omabot acceptance run.
 
 | Item | Value |
 | --- | --- |
-| Driver release | [`cua-driver-rs-v0.33.2`](https://github.com/goat-si/goat-cua/releases/tag/cua-driver-rs-v0.33.2), source `c82d32e3e1adbc6578a148962002ddf6e3e8a15a` |
+| Driver release | [`cua-driver-rs-v0.33.2`](https://github.com/trycua/cua/releases/tag/cua-driver-rs-v0.33.2), source `c82d32e3e1adbc6578a148962002ddf6e3e8a15a` |
 | Plugin source archive | `cua-hyprland-plugin-0.33.2-c82d32e3e1adbc6578a148962002ddf6e3e8a15a.tar.gz`, SHA-256 `79596a9a5e7300546ad4ab0646430edcf3e0c0456a541458de2a52b8c44a8fad` (matches the published asset digest) |
 | Packaging tooling | `c82d32e3e1adbc6578a148962002ddf6e3e8a15a` |
 | Profile | [`omarchy-edge-20261004`](../packaging/release/profiles/omarchy-edge-20261004.json), kit `1.3.0`, package release `2`, SHA-256 `0ada2c227d0817b0228e9d8127e2363a785c13175a9b74fbebaedc9825d3a4fd` |

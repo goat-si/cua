@@ -17,7 +17,7 @@ The sample links Cua Spaces pieces, so it is source-available under the
 ## Quick start
 
 ```sh
-git clone https://github.com/goat-si/goat-cua && cd cua
+git clone https://github.com/goat-si/goat-cua && cd goat-cua
 (cd libs/cua && cargo build --locked --release -p cua-spaces-ffi)
 libs/spaces-app-swift/scripts/stage-library.sh
 cd examples/cua-bots-macos

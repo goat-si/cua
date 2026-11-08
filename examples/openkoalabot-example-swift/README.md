@@ -12,7 +12,7 @@ source-available under the
 ## Quick start
 
 ```sh
-git clone https://github.com/goat-si/goat-cua && cd cua/examples/openkoalabot-example-swift
+git clone https://github.com/goat-si/goat-cua && cd goat-cua/examples/openkoalabot-example-swift
 (cd ../../libs/cua && cargo build --release -p cua-sdk && node scripts/stage-uniffi-library.mjs --only=swift)
 swift build && .build/debug/OpenKoalaBotExample
 ```

@@ -805,7 +805,7 @@ secret_account = "trycua"
         );
         let r = Scope::parse("repo:goat-si/goat-cua").unwrap();
         assert_eq!(r.api_prefix(), "repos/goat-si/goat-cua");
-        assert_eq!(r.default_pool_name(), "trycua-cua");
+        assert_eq!(r.default_pool_name(), "goat-si-goat-cua");
         assert_eq!(r.to_string(), "repo:goat-si/goat-cua");
         for bad in ["trycua", "org:", "repo:trycua", "org:a/b", "repo:a/b c"] {
             assert!(Scope::parse(bad).is_err(), "{bad}");
