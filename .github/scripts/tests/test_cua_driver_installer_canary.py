@@ -136,7 +136,7 @@ def test_report_creates_then_comments_instead_of_duplicating(tmp_path: Path, wor
         "--label", "bug",
     ]
     assert calls[1][8] == "--body"
-    assert "Workflow run: https://github.com/trycua/cua/actions/runs/42" in calls[1][9]
+    assert "Workflow run: https://github.com/goat-si/goat-cua/actions/runs/42" in calls[1][9]
     assert len(calls) == 2
 
     (tmp_path / "gh-calls").unlink()

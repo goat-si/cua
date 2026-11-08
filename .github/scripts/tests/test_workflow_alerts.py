@@ -44,7 +44,7 @@ class BuildAlert(unittest.TestCase):
         self.assertEqual(alert["startsAt"], "2026-10-25T00:07:00Z")
         self.assertIn("is red", alert["annotations"]["summary"])
         self.assertIn("a job failed", alert["annotations"]["description"])
-        self.assertEqual(alert["annotations"]["run_url"], "https://github.com/trycua/cua/actions/runs/1")
+        self.assertEqual(alert["annotations"]["run_url"], "https://github.com/goat-si/goat-cua/actions/runs/1")
 
     def test_startup_failure_explains_the_missing_log(self):
         alert = wa.build_alert(run("startup_failure"), "Nightly: Cua Driver", "goat-si/goat-cua", "ci", NOW, 2)

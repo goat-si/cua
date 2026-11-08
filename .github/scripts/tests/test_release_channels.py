@@ -621,7 +621,7 @@ def test_nightly_manifest_reuses_pr_attribution_and_renders_contributors(tmp_pat
     body = render_nightly_body(manifest)
     assert "LUME_VERSION=nightly-lume-v0.5.4-nightly.20260812.42" in body
     assert "never replace stable" in body
-    assert "[#42](https://github.com/trycua/cua/pull/42)" in body
+    assert "[#42](https://github.com/goat-si/goat-cua/pull/42)" in body
     assert body.count("@nightly-contributor") == 2
 
 

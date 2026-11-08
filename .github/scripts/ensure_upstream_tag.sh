@@ -8,7 +8,7 @@
 # from the local clone, fetch it read-only from the public repository into
 # this runner's refs/tags only. Tags that already resolve are left alone.
 set -euo pipefail
-UPSTREAM="${CUA_RELEASE_TAG_UPSTREAM:-https://github.com/trycua/cua.git}"
+UPSTREAM="${CUA_RELEASE_TAG_UPSTREAM:-https://github.com/goat-si/goat-cua.git}"
 for tag in "$@"; do
     [ -n "$tag" ] || continue
     if git rev-parse -q --verify "refs/tags/$tag^{commit}" >/dev/null; then

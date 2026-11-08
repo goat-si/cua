@@ -127,7 +127,7 @@ body:
     attributes:
       label: RFC document pull request
       description: Optional link to the detailed repository-local RFC.
-      placeholder: https://github.com/trycua/cua/pull/...
+      placeholder: https://github.com/goat-si/goat-cua/pull/...
 
   - type: checkboxes
     id: checks
