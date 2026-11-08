@@ -76,7 +76,8 @@ jobs:
     needs: quick
     if: ${{ !failure() && !cancelled() && (!startsWith(github.head_ref, 'release-please--branches--')) }}
     name: build ${{ matrix.component }}
-    runs-on: ubuntu-latest
+    # Build against the same glibc baseline as the Ubuntu 24.04 sandbox guest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
       fail-fast: true
