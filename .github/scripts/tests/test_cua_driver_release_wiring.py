@@ -1168,8 +1168,8 @@ fi
         self.assertIn("workflow_call:\n", workflow)
         self.assertIn("Installer compatibility summary", workflow)
         self.assertIn("ubuntu-latest, macos-26, windows-latest", workflow)
-        # Versions come from the repository the installers download from.
-        self.assertIn("RELEASE_REPOSITORY: goat-si/goat-cua", workflow)
+        # Compatibility fixtures are published on trycua/cua; forks have none.
+        self.assertIn("RELEASE_REPOSITORY: trycua/cua", workflow)
         self.assertIn("repos/$RELEASE_REPOSITORY/releases?per_page=100", workflow)
         self.assertIn("libs/cua-driver/scripts/install.sh", workflow)
         self.assertIn("libs/cua-driver/scripts/install.ps1", workflow)
