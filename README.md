@@ -1,11 +1,11 @@
 # Cua Hyprland plugin compatibility manifest
 
 This branch is written by the
-[`nightly-hyprland-plugin-requalify.yml`](https://github.com/trycua/cua/blob/main/.github/workflows/nightly-hyprland-plugin-requalify.yml)
+[`nightly-hyprland-plugin-requalify.yml`](https://github.com/goat-si/goat-cua/blob/main/.github/workflows/nightly-hyprland-plugin-requalify.yml)
 workflow ([#4909](https://github.com/trycua/cua/issues/4909)). Do not edit it by hand.
 
 - `compatibility.json` is the machine-readable manifest:
-  <https://raw.githubusercontent.com/trycua/cua/hyprland-plugin-compat/compatibility.json>
+  <https://raw.githubusercontent.com/goat-si/goat-cua/hyprland-plugin-compat/compatibility.json>
 - `matrix.md` is the same data as a table.
 
 Each daily run reads the tracked packages in Arch `core`/`extra` and in Omarchy
