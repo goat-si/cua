@@ -1,15 +1,15 @@
-# Hyprland plugin requalification, 2026-11-09T16:53:24Z
+# Hyprland plugin requalification, 2026-11-10T15:15:58Z
 
 CI requalification of the Cua Hyprland plugin per Hyprland build. Not native certification and not a package: the reviewed kit/profile process stays the release gate.
 
 | Channel | Hyprland | ABI key | Plugin (refs) | Build | CTest | Load | Input smoke | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| arch | 0.57.2-1 | `ed463faab0af9283` | main (`48b1b7fa3712`) | pass | pass (21/21) | pass | pass | pass |
-| arch | 0.57.2-1 | `ed463faab0af9283` | cua-driver-rs-v0.38.0 (`aa330aebe172`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
-| arch | 0.57.2-1 | `ed463faab0af9283` | cua-driver-rs-v0.33.2 (`5b3d63841bb6`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
-| omarchy-edge | 0.57.2-1 | `ed463faab0af9283` | main (`48b1b7fa3712`) | pass | pass (21/21) | pass | pass | pass |
-| omarchy-edge | 0.57.2-1 | `ed463faab0af9283` | cua-driver-rs-v0.38.0 (`aa330aebe172`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
-| omarchy-edge | 0.57.2-1 | `ed463faab0af9283` | cua-driver-rs-v0.33.2 (`5b3d63841bb6`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
+| arch | 0.57.2-1 | `069d70ecae97ef36` | main (`48b1b7fa3712`) | pass | pass (21/21) | pass | pass | pass |
+| arch | 0.57.2-1 | `069d70ecae97ef36` | cua-driver-rs-v0.33.2 (`5b3d63841bb6`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
+| arch | 0.57.2-1 | `069d70ecae97ef36` | cua-driver-rs-v0.38.0 (`aa330aebe172`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
+| omarchy-edge | 0.57.2-1 | `069d70ecae97ef36` | main (`48b1b7fa3712`) | pass | pass (21/21) | pass | pass | pass |
+| omarchy-edge | 0.57.2-1 | `069d70ecae97ef36` | cua-driver-rs-v0.33.2 (`5b3d63841bb6`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
+| omarchy-edge | 0.57.2-1 | `069d70ecae97ef36` | cua-driver-rs-v0.38.0 (`aa330aebe172`) | **FAIL** | n/a | n/a | n/a | **FAIL** |
 | omarchy-rc | 0.56.2-4 | `89cc2f58bf5a70e9` | main (`48b1b7fa3712`) | pass | pass (21/21) | pass | pass | pass |
 | omarchy-rc | 0.56.2-4 | `89cc2f58bf5a70e9` | main (`aa330aebe172`) | pass | pass (20/20) | pass | pass | pass |
 | omarchy-rc | 0.56.2-4 | `89cc2f58bf5a70e9` | main (`b477f0617505`) | pass | pass (20/20) | pass | pass | pass |
@@ -25,7 +25,6 @@ CI requalification of the Cua Hyprland plugin per Hyprland build. Not native cer
 
 | Hyprland | Binary SHA-256 | Header inventory SHA-256 | GCC | Module SHA-256 | Plugin tree |
 | --- | --- | --- | --- | --- | --- |
-| 0.56.2-4 | `55da553be71222566ee73b973d2f56dbb9939044d8f22f81aa54b66c83f2f6d1` | `1fdefe6ac027a159d04a5dfee4928ec7ebd15544a9a25b5f66d2f5a46fcf364a` | 16.2.1 20260810 | `0095d0c1de9b13a2ae358120a32981234b5ca7f1be6e1c3ed751de2d94f1ac78` | `48b1b7fa3712` |
 | 0.57.2-1 | `2d4d863fa3c1d4c1243324674a9e97fe3cad0203a3715b8054a02953d03988b4` | `816164635c4d3aca63ca58f58edc7a863360ba7b92fd649f9d302381a8244c40` | 16.2.1 20260810 | `89c46bde21d1497955af88a90777e785cdd6d09aa42eb6a0e022778b82253222` | `48b1b7fa3712` |
 | 0.57.2-1 | `2d4d863fa3c1d4c1243324674a9e97fe3cad0203a3715b8054a02953d03988b4` | `816164635c4d3aca63ca58f58edc7a863360ba7b92fd649f9d302381a8244c40` | 16.2.1 20260810 | `` | `5b3d63841bb6` |
 | 0.57.2-1 | `2d4d863fa3c1d4c1243324674a9e97fe3cad0203a3715b8054a02953d03988b4` | `816164635c4d3aca63ca58f58edc7a863360ba7b92fd649f9d302381a8244c40` | 16.2.1 20260810 | `` | `aa330aebe172` |
