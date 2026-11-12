@@ -26,30 +26,18 @@
       },
       "omarchy_plugin": {
         "broken_pins": {
-          "aquamarine": {
-            "channel": "0.16.0-1",
-            "pinned": "0.15.1-1"
-          },
-          "hyprcursor": {
-            "channel": "0.1.14-1",
-            "pinned": "0.1.13-7"
-          },
-          "hyprgraphics": {
-            "channel": "0.6.0-1",
-            "pinned": "0.5.1-4"
-          },
           "hyprland": {
             "channel": "0.57.2-1",
-            "pinned": "0.56.2-4"
+            "pinned": "0.57.2-2"
           }
         },
         "installable": false,
         "pins": {
-          "aquamarine": "0.15.1-1",
+          "aquamarine": "0.16.0-1",
           "glibc": "2.44+r50+g1848099f063e-1",
-          "hyprcursor": "0.1.13-7",
-          "hyprgraphics": "0.5.1-4",
-          "hyprland": "0.56.2-4",
+          "hyprcursor": "0.1.14-1",
+          "hyprgraphics": "0.6.0-1",
+          "hyprland": "0.57.2-2",
           "hyprlang": "0.6.8-5",
           "hyprutils": "0.14.3-1",
           "libgcc": "16.2.1+r23+gd564253eb6c8-1",
@@ -57,7 +45,7 @@
           "libxkbcommon": "1.13.2-1",
           "wayland": "1.26.0-1"
         },
-        "version": "0.33.2-4"
+        "version": "0.47.8-3"
       },
       "packages": {
         "aquamarine": "0.16.0-1",
@@ -156,12 +144,12 @@
   "current": {
     "arch": {
       "cua-driver-rs-v0.33.2": {
-        "checked_at": "2026-11-11T14:43:53Z",
+        "checked_at": "2026-11-12T15:37:09Z",
         "status": "fail",
         "tree": "5b3d63841bb61cf07d20f964e545bed5e23dd787"
       },
       "cua-driver-rs-v0.38.0": {
-        "checked_at": "2026-11-11T14:45:57Z",
+        "checked_at": "2026-11-12T15:37:07Z",
         "status": "fail",
         "tree": "aa330aebe172dcc6372a23965fd01ab8c50da03f"
       },
@@ -173,12 +161,12 @@
     },
     "omarchy-edge": {
       "cua-driver-rs-v0.33.2": {
-        "checked_at": "2026-11-11T14:43:53Z",
+        "checked_at": "2026-11-12T15:37:09Z",
         "status": "fail",
         "tree": "5b3d63841bb61cf07d20f964e545bed5e23dd787"
       },
       "cua-driver-rs-v0.38.0": {
-        "checked_at": "2026-11-11T14:45:57Z",
+        "checked_at": "2026-11-12T15:37:07Z",
         "status": "fail",
         "tree": "aa330aebe172dcc6372a23965fd01ab8c50da03f"
       },
@@ -232,7 +220,7 @@
         "arch",
         "omarchy-edge"
       ],
-      "checked_at": "2026-11-11T14:45:57Z",
+      "checked_at": "2026-11-12T15:37:09Z",
       "checks": {
         "build": {
           "status": "fail",
@@ -264,15 +252,15 @@
         "sha256": "2d4d863fa3c1d4c1243324674a9e97fe3cad0203a3715b8054a02953d03988b4"
       },
       "plugin": {
-        "driver_version": "0.38.0",
+        "driver_version": "0.33.2",
         "module_sha256": null,
         "options": null,
         "refs": [
-          "cua-driver-rs-v0.38.0"
+          "cua-driver-rs-v0.33.2"
         ],
-        "tree": "aa330aebe172dcc6372a23965fd01ab8c50da03f"
+        "tree": "5b3d63841bb61cf07d20f964e545bed5e23dd787"
       },
-      "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43040963199",
+      "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43249430726",
       "runtime": {
         "basename": "libstdc++.so.6.0.36",
         "packages": {
@@ -384,7 +372,7 @@
         "arch",
         "omarchy-edge"
       ],
-      "checked_at": "2026-11-11T14:43:53Z",
+      "checked_at": "2026-11-12T15:37:07Z",
       "checks": {
         "build": {
           "status": "fail",
@@ -416,15 +404,15 @@
         "sha256": "2d4d863fa3c1d4c1243324674a9e97fe3cad0203a3715b8054a02953d03988b4"
       },
       "plugin": {
-        "driver_version": "0.33.2",
+        "driver_version": "0.38.0",
         "module_sha256": null,
         "options": null,
         "refs": [
-          "cua-driver-rs-v0.33.2"
+          "cua-driver-rs-v0.38.0"
         ],
-        "tree": "5b3d63841bb61cf07d20f964e545bed5e23dd787"
+        "tree": "aa330aebe172dcc6372a23965fd01ab8c50da03f"
       },
-      "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43040963199",
+      "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43249430726",
       "runtime": {
         "basename": "libstdc++.so.6.0.36",
         "packages": {
@@ -2817,9 +2805,9 @@
       }
     }
   ],
-  "generated_at": "2026-11-11T14:47:05Z",
+  "generated_at": "2026-11-12T15:38:18Z",
   "note": "CI requalification of the Cua Hyprland plugin per Hyprland build. Not native certification and not a package: the reviewed kit/profile process stays the release gate.",
-  "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43040963199",
+  "run_url": "https://github.com/goat-si/goat-cua/actions/runs/43249430726",
   "schema": 1,
   "tracked_packages": [
     "hyprland",
